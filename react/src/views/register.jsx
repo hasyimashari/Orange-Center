@@ -33,9 +33,9 @@ export default function Register() {
         }
 
         axiosClient.post('/register', payload)
-        .then((data) => {
-            setUser(data.user)
-            setToken(data.token)
+        .then((response) => {
+            setUser(response.data.pengguna)
+            setToken(response.data.token_id)
         })
 
         .catch(error => {
