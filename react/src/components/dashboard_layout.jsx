@@ -1,5 +1,8 @@
 import Icon from "../assets/logo.png"
-import Bg_image from "../assets/bg_db.png"
+import Artikel from "../assets/Artikel Logo.png"
+import Konsultasi from "../assets/Konsultasi Logo.png"
+import Profil from "../assets/Ellipse.png"
+import Permintaan from "../assets/Permintaan Kebutuhan Logo.png"
 
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/20/solid"
 import { BookOpenIcon } from "@heroicons/react/20/solid"
@@ -12,39 +15,41 @@ import { useStateContext } from "../context/ContextProvider"
 
 export default function Layout_dashboard() {
 
+
+    
     const {user, token} = useStateContext();
     if (!token) {
         return <Navigate to='/login'/>
     }
-
+    
     return (
     <>
-
-    <img src={Bg_image} className="absolute w-full h-screen object-cover brightness-90"/>
-    <div className='relative w-full h-screen flex flex-wrap'>
-        <ul className='flex flex-col w-[6%] h-screen pt-32 text-white '>
-            <li> 
-                <Link to='/profil'>
-                <UserCircleIcon className='h-8 w-8 my-8 mx-6 '/>
-                </Link>
-            </li>
-            <li>
-                <ChatBubbleBottomCenterTextIcon className='h-8 w-8 my-8 mx-6 '/>
-            </li>
-            <li>
-                <BookOpenIcon className='h-8 w-8 my-8 mx-6 '/>
-            </li>
-        </ul>
-
-        <div className="w-[94%] h-screen ">
-            <div className="h-1/5 flex flex-row items-center">
-                <img src={Icon} className="drop-shadow-xl w-32" />
-                <p className="text-5xl text-white font-bold pt-6" >OrangeCenter</p>
+        <div className='relative w-full min-h-screen bg-[url("src/assets/bg_db.png")] bg-center bg-cover flex flex-row'>
+            <div className="relative h-screen flex flex-col gap-y-6 py-8 w-16 pt-36">
+                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                    <img src={Profil} className='h-8 w-8 mx-auto m-2' alt="" />
+                </div>
+                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                    <img src={Konsultasi} className='h-8 w-8 mx-auto m-2' alt="" />
+                </div>
+                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                    <img src={Artikel} className='h-8 w-8 mx-auto m-2' alt="" />
+                </div>
+                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                    <img src={Permintaan} className='h-8 w-8 mx-auto m-2' alt="" />
+                </div>
             </div>
-            <Outlet />
-
+            
+            <div className="relative w-full">
+                <div className="h-1/5 flex items-center cursor-default">
+                    <img src={Icon} className=" drop-shadow-[-2px_2px_4px_rgba(0,0,0,0.25)] w-32" />
+                    <p className="absolute text-5xl text-white font-bold pt-6 ml-16 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]" >OrangeCenter</p>
+                </div>
+                <div className="bg-white rounded-tl-3xl h-4/5">
+                    <Outlet/>
+                </div>
+            </div>
         </div>
-    </div>
     </>
 )
 }

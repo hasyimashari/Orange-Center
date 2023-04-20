@@ -12,21 +12,20 @@ export default function Layout_signinup() {
         return <Navigate to='/user'/>
     }
 
-return (
-    <>
-    <img src={Bg_image} className="absolute w-full h-screen object-cover brightness-90"/>
-    <div className='relative w-full h-screen flex items-center justify-center bg-transparent'>
+    return (
+        <div className='relative w-full min-h-screen bg-[url("src/assets/bg_logres.png")] bg-center bg-cover flex flex-col items-center justify-center'>
+            <div className='relative w-8/12 bg-white rounded-3xl flex shadow-[2px_6px_25px_-4px_rgba(0,0,0,0.25)]'>
+                <div className='w-5/12 p-2 m-5 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-3xl shadow-[2px_6px_4px_rgba(0,0,0,0.25)] text-white'>
+                    <ul className='flex flex-col gap-5 py-20'>
+                        <li className="mx-auto text-[44px]  font-bold">OrangeCenter</li>
+                        <li><img src={Icon} className="drop-shadow-[-8px_6px_8px_rgba(0,0,0,0.25)] w-72 mx-auto my-auto"/></li>
+                        <li className="mx-auto text-xl">deksripsi singkat web</li>
+                    </ul>
+                </div>
 
-        <div className="relative w-8/12 h-5/6 p-3 bg-slate-100 flex rounded-3xl shadow-xl">
-            <div className="w-5/12 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-3xl shadow-md text-white flex flex-col justify-center" >
-                <h1 className="mx-auto text-4xl font-bold mt-10">OrangeCenter</h1>
-                <img src={Icon} className="drop-shadow-xl w-72 mx-auto my-auto"/>
-                <p className="mx-auto text-xl mb-20">deskripsi singkat web</p>
+                <Outlet/>
+
             </div>
-
-            <Outlet />
         </div>
-    </div>
-    </>
-)
+    )
 }

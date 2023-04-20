@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        bold: ['Poppins', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
