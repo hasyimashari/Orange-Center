@@ -1,11 +1,12 @@
+import axiosClient from  "../axios-client"
 import {Link, useNavigate} from "react-router-dom"
 import { useRef, useState } from "react"
-import axiosClient from  "../axios-client"
-import Arrow_right from "../assets/arrow_right.png"
-import Cancel from "../assets/cancel.png"
 import { useStateContext } from "../context/ContextProvider.jsx";
 
-export default function edit_profil() {
+import Arrow_right from "../assets/arrow_right.png"
+import Cancel from "../assets/cancel.png"
+
+export default function edit_profil({visible, onClose}) {
 
     const namaref = useRef();
     const usernameref = useRef();
@@ -47,12 +48,13 @@ export default function edit_profil() {
         })
     }
 
+    if (!visible) return null;
+
     return (
 
-        
         // form
-        <div className='flex items-center justify-center pt-8 gap-10'>
-        <form onSubmit={onSubmit} className="w-2/5 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
+        <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref} 
@@ -100,7 +102,7 @@ export default function edit_profil() {
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="passwordcon" id="pwcon" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
-                    <button type="submit" className="text-sm w-4/12 p-5 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Batal <img src={Cancel}/></button>
+                    <button onClick={onClose} className="text-sm w-4/12 p-5 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Batal <img src={Cancel}/></button>
                     <button type="submit" className="text-sm w-4/12 p-5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
                 </div>
             </form>

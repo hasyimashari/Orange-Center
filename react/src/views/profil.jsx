@@ -1,14 +1,26 @@
 import React from 'react'
 import Profil from "../assets/Ellipse.png"
 import { useStateContext } from "../context/ContextProvider"
+import { useState } from 'react';
+
+import Edit from '../components/edit_profil';
+import View from '../components/view_profil';
 
 export default function dasboard_user() {
     
     const {user, token} = useStateContext();
+    const [showEdit, setShowEdit] = useState(false)
+    const [showProfil, setShowProfil] = useState(false)
+
+    const closeModal = () => {
+        setShowEdit(false)
+        setShowProfil(false)
+    }
 
     return (
 
-        // profil 
+        <div>
+        {/* // profil  */}
         <div className='flex items-center justify-center py-16 gap-10'>
             <div className='w-80 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
                 <div className='w-full h-2/6 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl'></div>
@@ -20,10 +32,10 @@ export default function dasboard_user() {
                     </div>
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                        <button onClick={() => setShowProfil(true)} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
-                        <button className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                        <button onClick={() => setShowEdit(true)} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
                         <button className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
@@ -32,6 +44,10 @@ export default function dasboard_user() {
                     </div>
                 </div>
             </div>
+        </div>
+
+        <View onClose={closeModal} visible={showProfil} />
+        <Edit onClose={closeModal} visible={showEdit} />
         </div>
         
     )

@@ -1,23 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout_dashboard from "./components/dashboard_layout";
 import Layout_signinup from "./components/signin_up_layout";
+import Layout_admin from "./components/dashboard_admin_layout";
+import Layout_user from "./components/dashboard_user_layout";
+import Layout_pakar from "./components/dashboard_pakar_layout";
+
 
 import Dashboar_admin from "./views/dashboard_admin"
 import Dashboard_user from "./views/dashboard_user";
 import Dashboard_pakar from "./views/dashboard_pakar";
-
-import Not_found from "./views/not_found";
-import Login from "./views/login";
-import Register from "./views/register"
-import Profile from "./views/profil"
-import View_profile from "./views/view_profil"
-import Edit_porfil from "./views/edit_profil"
 import Administrasi_akun from "./views/administrasi_akun";
+
+import Profile from "./views/profil"
+import View_profile from "./components/view_profil"
+import Edit_porfil from "./components/edit_profil"
+
+import Register from "./views/register"
+import Login from "./views/login";
+import Not_found from "./views/not_found";
+
+import Dec from "./components/decision";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout_dashboard/>,
+        element: <Layout_user/>,
         children: [
             {
                 path: 'user',
@@ -25,17 +31,40 @@ const router = createBrowserRouter([
             },
             {
                 path: 'profil',
-                element: <Profile/>
+                element: <Profile/>,
+            },
+        ],
+    },
+    {
+        path: '/',
+        element: <Layout_admin/>,
+        children: [
+            {
+                path: 'admin',
+                element: <Dashboar_admin/>
             },
             {
-                path: 'view',
-                element: <View_profile/>
+                path: 'profil',
+                element: <Profile/>,
             },
             {
-                path: 'edit',
-                element: <Edit_porfil/>
-
-            }
+                path: '/admin akun',
+                element: <Administrasi_akun/>
+            },
+        ],
+    },
+    {
+        path: '/',
+        element: <Layout_pakar/>,
+        children: [
+            {
+                path: '/pakar',
+                element: <Dashboard_pakar/>,
+            },
+            {
+                path: 'profil',
+                element: <Profile/>,
+            },
         ],
     },
     {
@@ -51,22 +80,10 @@ const router = createBrowserRouter([
                 element: <Register/>
             },
             ]
-        },
+    },
     {
         path: '*',
         element: <Not_found/>,
-    },
-    {
-        path: '/admin',
-        element: <Dashboar_admin/>,
-    },
-    {
-        path: '/admin akun',
-        element: <Administrasi_akun/>
-    },
-    {
-        path: '/pakar',
-        element: <Dashboard_pakar/>,
     }
 ])
 
