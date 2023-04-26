@@ -60,11 +60,20 @@ return [
     */
 
     'providers' => [
+        // 'pengguna' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
+
+        // 'pengguna' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Pakar::class,
+        // ],
+
         'pengguna' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pengguna::class,
         ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

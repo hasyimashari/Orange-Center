@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('alamat', 50);
             $table->string('username', 12)->unique('Username');
             $table->string('email', 30)->unique('Email');
-            $table->string('password', 12);
+            $table->string('password', 60);
             $table->string('no_hp', 15);
             $table->integer('jenis_kelamin')->index('jenis_kelamin_admin');
         });

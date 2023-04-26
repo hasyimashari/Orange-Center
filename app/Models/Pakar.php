@@ -7,15 +7,15 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Pakar
  * 
  * @property int $id_pakar
  * @property string $nama_lengkap
- * @property Carbon $tanggal-lahir
+ * @property Carbon $tanggal_lahir
  * @property string $alamat
  * @property string $username
  * @property string $email
@@ -28,14 +28,15 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Pakar extends Model
+class Pakar extends Authenticatable
 {
+	use HasApiTokens;
 	protected $table = 'pakar';
 	protected $primaryKey = 'id_pakar';
 	public $timestamps = false;
 
 	protected $casts = [
-		'tanggal-lahir' => 'datetime',
+		'tanggal_lahir' => 'string',
 		'jenis_kelamin' => 'int',
 		'status_akun' => 'int'
 	];
@@ -46,7 +47,7 @@ class Pakar extends Model
 
 	protected $fillable = [
 		'nama_lengkap',
-		'tanggal-lahir',
+		'tanggal_lahir',
 		'alamat',
 		'username',
 		'email',

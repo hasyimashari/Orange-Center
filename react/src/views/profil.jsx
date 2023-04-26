@@ -18,15 +18,15 @@ export default function dasboard_user() {
         setShowProfil(false)
     }
 
-    // const onLogout = (ev) => {
-    //     ev.preventDefault()
-
-    //     axiosClient.post('/logout')
-    //     .then(() => {
-    //         setUser({}),
-    //         setToken(null)
-    //     })
-    // }
+    const onLogout = ev => {
+        ev.preventDefault()
+    
+        axiosClient.post('/logout')
+        .then(() => {
+            setUser({})
+            setToken(null)
+        })
+    }
 
     return (
 

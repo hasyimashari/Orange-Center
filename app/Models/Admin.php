@@ -7,8 +7,8 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Admin
@@ -27,14 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Admin extends Model
+class Admin extends Authenticatable
 {
+	use HasApiTokens;
 	protected $table = 'admin';
 	protected $primaryKey = 'id_admin';
 	public $timestamps = false;
 
 	protected $casts = [
-		'tanggal_lahir' => 'datetime',
+		'tanggal_lahir' => 'string',
 		'jenis_kelamin' => 'int'
 	];
 

@@ -21,6 +21,16 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
+        // return [           
+        //     'email' => 'required|email|string|exists:Admin,email|max:30',
+        //     'password' => 'required|max:12',
+        // ];
+
+        // return [           
+        //     'email' => 'required|email|string|exists:Pakar,email|max:30',
+        //     'password' => 'required|max:12',
+        // ];
+
         return [           
             'email' => 'required|email|string|exists:Pengguna,email|max:30',
             'password' => 'required|max:12',
