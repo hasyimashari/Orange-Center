@@ -17,26 +17,26 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        // $data = $request->validated();
+        $data = $request->validated();
 
-        // /** @var \App\Models\Admin $user*/
-        // $user = Admin::create([
-        //     'nama_lengkap' => $data['nama_lengkap'],
-        //     'username' => $data['username'],
-        //     'jenis_kelamin' => $data['jenis_kelamin'],
-        //     'tanggal_lahir' => $data['tanggal_lahir'],
-        //     'no_hp' => $data['no_hp'],
-        //     'alamat' => $data['alamat'],
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password'])
-        // ]);
+        /** @var \App\Models\Admin $user*/
+        $user = Admin::create([
+            'nama_lengkap' => $data['nama_lengkap'],
+            'username' => $data['username'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'no_hp' => $data['no_hp'],
+            'alamat' => $data['alamat'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
 
-        // $token = $user -> createToken('main') -> plainTextToken;
+        $token = $user -> createToken('main') -> plainTextToken;
 
-        // return response([
-        //     'Admin' => $user,
-        //     'token_id' => $token
-        // ]);
+        return response([
+            'Admin' => $user,
+            'token_id' => $token
+        ]);
 
         // ==============================
 
@@ -63,66 +63,30 @@ class AuthController extends Controller
 
         // ==============================
 
-        $data = $request->validated();
+        // $data = $request->validated();
 
-        /** @var \App\Models\Pengguna $user*/
-        $user = Pengguna::create([
-            'nama_lengkap' => $data['nama_lengkap'],
-            'username' => $data['username'],
-            'jenis_kelamin' => $data['jenis_kelamin'],
-            'tanggal_lahir' => $data['tanggal_lahir'],
-            'no_hp' => $data['no_hp'],
-            'alamat' => $data['alamat'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password'])
-        ]);
+        // /** @var \App\Models\Pengguna $user*/
+        // $user = Pengguna::create([
+        //     'nama_lengkap' => $data['nama_lengkap'],
+        //     'username' => $data['username'],
+        //     'jenis_kelamin' => $data['jenis_kelamin'],
+        //     'tanggal_lahir' => $data['tanggal_lahir'],
+        //     'no_hp' => $data['no_hp'],
+        //     'alamat' => $data['alamat'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password'])
+        // ]);
 
-        $token = $user -> createToken('main') -> plainTextToken;
+        // $token = $user -> createToken('main') -> plainTextToken;
 
-        return response([
-            'Pengguna' => $user,
-            'token_id' => $token
-        ]);
+        // return response([
+        //     'Pengguna' => $user,
+        //     'token_id' => $token
+        // ]);
     }
 
     public function login(LoginRequest $request)
     {
-        // $credentials = $request->validated();
-        // if (!Auth::attempt($credentials)) {
-        //     return response([
-        //         'message' => 'Provided password is incorrect'
-        //     ], 422);
-        // }
-
-        // /** @var \App\Models\Pakar $user */
-        // $user = Auth::user();
-        // $token = $user->createToken('main')->plainTextToken;
-
-        // return response([
-        //     'user' => $user,
-        //     'token' => $token
-        // ]);
-
-        // ====================================
-
-        // $credentials = $request->validated();
-        // if (!Auth::attempt($credentials)) {
-        //     return response([
-        //         'message' => 'Provided password is incorrect'
-        //     ], 422);
-        // }
-
-        // /** @var \App\Models\Pakar $user */
-        // $user = Auth::user();
-        // $token = $user->createToken('main')->plainTextToken;
-
-        // return response([
-        //     'user' => $user,
-        //     'token' => $token
-        // ]);
-
-        // ====================================
-
         $credentials = $request->validated();
         if (!Auth::attempt($credentials)) {
             return response([
@@ -130,7 +94,7 @@ class AuthController extends Controller
             ], 422);
         }
 
-        /** @var \App\Models\Pengguna $user */
+        /** @var \App\Models\Admin $user */
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
 
@@ -138,6 +102,42 @@ class AuthController extends Controller
             'user' => $user,
             'token' => $token
         ]);
+
+        // ====================================
+
+        // $credentials = $request->validated();
+        // if (!Auth::attempt($credentials)) {
+        //     return response([
+        //         'message' => 'Provided password is incorrect'
+        //     ], 422);
+        // }
+
+        // /** @var \App\Models\Pakar $user */
+        // $user = Auth::user();
+        // $token = $user->createToken('main')->plainTextToken;
+
+        // return response([
+        //     'user' => $user,
+        //     'token' => $token
+        // ]);
+
+        // ====================================
+
+        // $credentials = $request->validated();
+        // if (!Auth::attempt($credentials)) {
+        //     return response([
+        //         'message' => 'Provided password is incorrect'
+        //     ], 422);
+        // }
+
+        // /** @var \App\Models\Pengguna $user */
+        // $user = Auth::user();
+        // $token = $user->createToken('main')->plainTextToken;
+
+        // return response([
+        //     'user' => $user,
+        //     'token' => $token
+        // ]);
     }
 
     public function logout(Request $request){

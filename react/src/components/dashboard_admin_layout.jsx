@@ -19,11 +19,11 @@ export default function dashboard_admin_layout() {
     }
 
     useEffect(() => {
-        axiosClient.get("/user")
+        axiosClient.get('/user')
         .then(({data}) => {
             setUser(data)
         })
-    })
+    }, [])
 
     return (
         <div className='relative w-full min-h-screen bg-[url("src/assets/bg_db.png")] bg-center bg-cover flex flex-row'>
