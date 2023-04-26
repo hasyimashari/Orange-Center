@@ -9,7 +9,7 @@ export default function Layout_signinup() {
 
     const {token} = useStateContext();
     if (token) {
-        return <Navigate to='/user'/>
+        return <Navigate to='/admin-dashboard'/>
     }
 
     return (

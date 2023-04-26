@@ -22,14 +22,14 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string|max:30',            
-            'username' => 'required|string|max:12',
-            'email' => 'required|email|max:30',
+            'nama_lengkap' => 'required|string|max:30',            
+            'username' => 'required|string|max:12|unique:Pengguna,username',
+            'email' => 'required|email|max:30|unique:Pengguna,email',
             'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required|date',
+            'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',
             'alamat' => 'required|string|max:50',
-            'password' => 'required|max:12',
+            'password' => 'required|string|max:12',
         ];
     }
 }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('alamat', 50);
             $table->string('username', 12);
             $table->string('email', 30);
-            $table->string('password', 12);
+            $table->string('password', 60);
             $table->string('no_hp', 15);
             $table->integer('jenis_kelamin')->index('jenis_kelamin');
             $table->integer('status_akun')->default(1)->index('status_akun');

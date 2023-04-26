@@ -1,21 +1,32 @@
 import React from 'react'
 import Profil from "../assets/Ellipse.png"
-import { useStateContext } from "../context/ContextProvider"
+import { useStateContext } from "../context/ContextProvider.jsx";
 import { useState } from 'react';
 
 import Edit from '../components/edit_profil';
 import View from '../components/view_profil';
+import axiosClient from '../axios-client';
 
 export default function dasboard_user() {
     
-    const {user, token} = useStateContext();
     const [showEdit, setShowEdit] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
+    const {user, setUser, setToken} = useStateContext();
 
     const closeModal = () => {
         setShowEdit(false)
         setShowProfil(false)
     }
+
+    // const onLogout = (ev) => {
+    //     ev.preventDefault()
+
+    //     axiosClient.post('/logout')
+    //     .then(() => {
+    //         setUser({}),
+    //         setToken(null)
+    //     })
+    // }
 
     return (
 
@@ -38,7 +49,7 @@ export default function dasboard_user() {
                         <button onClick={() => setShowEdit(true)} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
-                        <button className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                        <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Keluar
                         </button>
                     </div>

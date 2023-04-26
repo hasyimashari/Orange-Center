@@ -7,7 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 /**
  * Class Pengguna
@@ -26,7 +26,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @package App\Models
  */
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
 	use HasApiTokens;
 	protected $table = 'pengguna';
@@ -34,7 +34,7 @@ class Pengguna extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'tanggal_lahir' => 'datetime',
+		'tanggal_lahir' => 'string',
 		'jenis_kelamin' => 'int',
 		'status_akun' => 'int'
 	];

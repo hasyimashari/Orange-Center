@@ -15,14 +15,14 @@ export default function Register() {
     const emailref = useRef();
     const passwrodref = useRef();
     
-    const [errors, setErrors] = useState()
+    const [errors, setErrors] = useState(null)
     const {setUser, setToken} = useStateContext()
     
     const onSubmit = (ev) => {
 
         ev.preventDefault()
         const payload = {
-            nama: namaref.current.value,
+            nama_lengkap: namaref.current.value,
             username: usernameref.current.value,
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
@@ -52,6 +52,13 @@ return (
         <form onSubmit={onSubmit} className="w-full px-16">
                 <h1 className="font-bold text-4xl">Daftar</h1>
 
+                {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
+                    {Object.keys(errors).map(key => (
+                        <p key={key}>{errors[key][0]}</p>
+                    ))}
+                </div>
+                }
+
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref} 
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
@@ -65,7 +72,7 @@ return (
                         <label className="text-sm">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
-                            <option>Pilih</option>
+                            <option value={""}>Pilih</option>
                             <option value={1}>Laki-laki</option>
                             <option value={2}>Perempuan</option>
                         </select>

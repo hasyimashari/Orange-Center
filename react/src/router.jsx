@@ -40,15 +40,15 @@ const router = createBrowserRouter([
         element: <Layout_admin/>,
         children: [
             {
-                path: 'admin',
+                path: 'admin-dashboard',
                 element: <Dashboar_admin/>
             },
             {
-                path: 'profil',
+                path: 'admin-profil',
                 element: <Profile/>,
             },
             {
-                path: '/admin akun',
+                path: 'admin-administrasi',
                 element: <Administrasi_akun/>
             },
         ],
@@ -58,11 +58,11 @@ const router = createBrowserRouter([
         element: <Layout_pakar/>,
         children: [
             {
-                path: '/pakar',
+                path: 'pakar-dashboard',
                 element: <Dashboard_pakar/>,
             },
             {
-                path: 'profil',
+                path: 'pakar-profil',
                 element: <Profile/>,
             },
         ],

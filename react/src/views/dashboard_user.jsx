@@ -1,12 +1,15 @@
 import React from 'react'
+
 import artikel_img from "../assets/Artikel_db.png"
 import konsultasi_img from "../assets/Konsultasi_db.png"
 import permintaan_img from "../assets/Permintaan_db.png"
 import Arrow_right from "../assets/arrow_right.png"
 
-import { Link } from 'react-router-dom'
+import { useStateContext } from "../context/ContextProvider.jsx";
+
 
 export default function dasboard_user() {
+
     return (
         <div className='flex items-center justify-center py-24 gap-10'>
             <div className='w-80 h-80 rounded-3xl shadow-[-6px_6px_0px_3px_rgba(78,148,79,0.5)] flex flex-col items-center gap-y-2 text-center py-6 border-2'>

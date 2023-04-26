@@ -23,7 +23,7 @@ return (
     <>
         <div className="bg-white rounded-tl-3xl h-4/5 py-10">
             {/* conten header */}
-            <div className="h-1/5 font-bold flex flex-col gap-4 px-4 rounded-tl-3xl">
+            <div className="h-16 font-bold flex flex-col gap-4 px-4 rounded-tl-3xl">
                 <h1 className="w-full text-center text-4xl">Administrasi akun</h1>
                 <ul className="flex justify-normal gap-2">
                     <li className="w-64 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
@@ -37,7 +37,7 @@ return (
             </div>
             
             {/* conten */}
-            <div className="h-4/5 px-4 flex flex-col gap-2 mt-8">
+            <div className="h-80 px-4 flex flex-col gap-2 mt-8">
                 {/* list */}
                 <ul onClick={() => setShowProfil(true)} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
                     <li className="w-64 text-center p-1">Nama lengkap</li>
