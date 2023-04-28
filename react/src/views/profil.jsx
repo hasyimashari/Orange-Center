@@ -11,7 +11,7 @@ export default function dasboard_user() {
     
     const [showEdit, setShowEdit] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
-    const {user, setUser, setToken} = useStateContext();
+    const {user, setUser, setToken, setRole} = useStateContext();
 
     const closeModal = () => {
         setShowEdit(false)
@@ -25,6 +25,7 @@ export default function dasboard_user() {
         .then(() => {
             setUser({})
             setToken(null)
+            setRole(null)
         })
     }
 

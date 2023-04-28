@@ -38,6 +38,14 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'pkr' => [
+            'driver' => 'session',
+            'provider' => 'pakar',
+        ],
+        'usr' => [
+            'driver' => 'session',
             'provider' => 'pengguna',
         ],
     ],
@@ -60,20 +68,20 @@ return [
     */
 
     'providers' => [
-        'pengguna' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
 
-        // 'pengguna' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\Pakar::class,
-        // ],
+        'pakar' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pakar::class,
+        ],
 
-        // 'pengguna' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\Pengguna::class,
-        // ],
+        'pengguna' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pengguna::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

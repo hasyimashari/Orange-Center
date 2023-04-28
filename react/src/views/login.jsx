@@ -11,7 +11,7 @@ export default function Login() {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState(null)
-    const {setUser, setToken} = useStateContext()
+    const {setUser, setToken, setRole} = useStateContext()
     
     const onSubmit = (ev) => {
 
@@ -26,6 +26,7 @@ export default function Login() {
         .then((response) => {
             setUser(response.data.user)
             setToken(response.data.token)
+            setRole(response.data.role)
         })
 
         .catch(error => {

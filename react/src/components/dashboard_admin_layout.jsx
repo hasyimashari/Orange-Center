@@ -13,9 +13,12 @@ import axiosClient from '../axios-client'
 
 export default function dashboard_admin_layout() {
 
-    const {token, setUser} = useStateContext();
+    const {token, role, setUser} = useStateContext();
     if (!token) {
         return <Navigate to='/login'/>
+    }
+    if (role!=="adm") {
+        return <Navigate to='*'/>
     }
 
     useEffect(() => {

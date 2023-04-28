@@ -23,20 +23,6 @@ import Dec from "./components/decision";
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout_user/>,
-        children: [
-            {
-                path: 'user',
-                element: <Dashboard_user/>
-            },
-            {
-                path: 'profil',
-                element: <Profile/>,
-            },
-        ],
-    },
-    {
-        path: '/',
         element: <Layout_admin/>,
         children: [
             {
@@ -63,6 +49,20 @@ const router = createBrowserRouter([
             },
             {
                 path: 'pakar-profil',
+                element: <Profile/>,
+            },
+        ],
+    },
+    {
+        path: '/',
+        element: <Layout_user/>,
+        children: [
+            {
+                path: 'user-dashboard',
+                element: <Dashboard_user/>
+            },
+            {
+                path: 'user-profil',
                 element: <Profile/>,
             },
         ],

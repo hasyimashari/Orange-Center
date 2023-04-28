@@ -7,9 +7,13 @@ import { useStateContext } from "../context/ContextProvider";
 
 export default function Layout_signinup() {
 
-    const {token} = useStateContext();
-    if (token) {
+    const {role} = useStateContext();
+    if (role==="adm") {
         return <Navigate to='/admin-dashboard'/>
+    } else if (role==="pkr") {
+        return <Navigate to='/pakar-dashboard'/>
+    } else if (role==="usr") {
+        return <Navigate to='/user-dashboard'/>
     }
 
     return (
