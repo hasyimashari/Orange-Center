@@ -18,7 +18,7 @@ export default function edit_profil({visible, onClose}) {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState()
-    const {setUser, setToken} = useStateContext()
+    const {user, setUser, setToken} = useStateContext()
     
     const onSubmit = (ev) => {
 
@@ -57,11 +57,11 @@ export default function edit_profil({visible, onClose}) {
         <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 <label className="text-sm">Nama Lengkap</label>
-                <input ref={namaref} 
+                <input ref={namaref} defaultValue={user.nama_lengkap}
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
 
                 <label className="text-sm">Username</label>
-                <input ref={usernameref} 
+                <input ref={usernameref} defaultValue={user.username}
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
 
                 <div className="flex flex-row">
@@ -76,25 +76,25 @@ export default function edit_profil({visible, onClose}) {
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm" >Tanggal Lahir</label>
-                        <input ref={tanggallahirref} 
+                        <input ref={tanggallahirref} defaultValue={user.tanggal_lahir}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="tanggallahir" id="tanggal" />
                     </div>
                 </div>
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Nomor Hp</label>
-                        <input ref={nohpref}
+                        <input ref={nohpref} defaultValue={user.no_hp}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nomorhp" id="nohp" maxLength={15}/>
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Alamat</label>
-                        <input ref={alamatref} 
+                        <input ref={alamatref} defaultValue={user.alamat}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="alamatuser" id="alamat" maxLength={50}/>
                     </div>
                 </div>
 
                 <label className="py-1">Email</label>
-                <input ref={emailref}
+                <input ref={emailref} defaultValue={user.email}
                 className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailoc" id="emaoc" maxLength={30}/>
 
                 <label className="text-sm">Password</label>

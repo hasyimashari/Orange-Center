@@ -45,22 +45,16 @@ class AuthController extends Controller
         $data = $request->validated();
 
         /** @var \App\Models\Pengguna $user*/
-        $user = Pengguna::create([
-            'nama_lengkap' => $data['nama_lengkap'],
-            'username' => $data['username'],
-            'jenis_kelamin' => $data['jenis_kelamin'],
-            'tanggal_lahir' => $data['tanggal_lahir'],
-            'no_hp' => $data['no_hp'],
-            'alamat' => $data['alamat'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password'])
-        ]);
+        $data['password'] = bcrypt($data['password']);
+        $user = Pengguna::create($data);
 
         $token = $user -> createToken('main') -> plainTextToken;
+        $role = 'usr';
 
         return response([
-            'Pengguna' => $user,
-            'token_id' => $token
+            'user' => $user,
+            'token' => $token,
+            'role' => $role
         ]);
     }
 

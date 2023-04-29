@@ -55,12 +55,12 @@ return (
                 }
 
                 <div className="my-2">
-                    <label for="emac"> Email</label>
+                    <label htmlFor="emac"> Email</label>
                     <input ref={emailref}
                     className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emaliac" id="emac" maxLength={30}/>
                 </div>
                 <div className="my-2">
-                    <label for="pwac">Passwords</label>
+                    <label htmlFor="pwac">Passwords</label>
                     <input ref={passwrodref}
                     className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="password" name="passwordac" id="pwac" maxLength={12}/>
                 </div>
