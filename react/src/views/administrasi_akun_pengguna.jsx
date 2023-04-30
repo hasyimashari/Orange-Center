@@ -40,9 +40,9 @@ export default function administrasi_akun_pengguna() {
 
 return (
     <>
-        <div className="bg-white rounded-tl-3xl h-4/5 py-10">
+
             {/* conten header */}
-            <div className="h-16 font-bold flex flex-col gap-4 px-4 rounded-tl-3xl">
+            <div className="sticky top-0 bg-white h-28 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
                 <div className="w-full flex flex-row items-center justify-between">
                     <div className="w-3/4 text-center text-4xl pl-20">
                         <h1>Administrasi akun</h1>
@@ -56,7 +56,7 @@ return (
                         </Link>
                     </div>
                 </div>
-                <ul className="flex justify-normal gap-2">
+                <ul className="flex justify-normal gap-2 pb-4">
                     <li className="w-64 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
                     <li className="w-40 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Username</li>
                     <li className="w-32 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
@@ -68,7 +68,7 @@ return (
             </div>
             
             {/* conten */}
-            {loading && <div className="h-80 px-4 flex flex-col gap-2 mt-8">
+            {loading && <div className="h-80 px-4 flex flex-col gap-2">
                 <ul  className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
                     <li className="w-64 text-center p-1">Loading...</li>
                     <li className="w-40 text-center p-1">Loading...</li>
@@ -80,7 +80,7 @@ return (
                 </ul>
             </div>}
 
-            {!loading && <div className="h-80 px-4 flex flex-col gap-2 mt-8">
+            {!loading && <div className="h-80 px-4 flex flex-col gap-2 ">
                 {/* list */}
                 {!loading
                 }
@@ -97,7 +97,6 @@ return (
                 ))}
             </div>}
 
-        </div>
         <View onClose={closeModal} visible={showProfil} nilai={nilai}/>
     </>
 )
