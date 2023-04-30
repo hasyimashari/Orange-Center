@@ -8,7 +8,7 @@ import Decision from './decision'
 import { useStateContext } from "../context/ContextProvider"
 import { useState, useEffect } from 'react';
 
-export default function dasboard_user({visible, onClose}) {
+export default function dasboard_user({onClose, visible, nilai}) {
     
     if (!visible) return null;
 
@@ -17,10 +17,9 @@ export default function dasboard_user({visible, onClose}) {
         setShowDec(false)
     }
 
-    const {user, token} = useStateContext();
     const [kelamin, setKelamin] = useState();
 
-    if (user.jenis_kelamin === 1) {
+    if (nilai.jenis_kelamin === 1) {
         useEffect(()=>{
             setKelamin("Laki-laki");
         }, []);
@@ -40,8 +39,8 @@ export default function dasboard_user({visible, onClose}) {
                 </div>
                 <div className='w-full flex flex-col items-center pt-8'>
                     <div>
-                        <h1 className='font-bold mt-2'>{user.nama_lengkap}</h1>
-                        <h4 className='text-sm mb-2'>{user.username}</h4>
+                        <h1 className='font-bold mt-2'>{nilai.nama_lengkap}</h1>
+                        <h4 className='text-sm mb-2'>{nilai.username}</h4>
                     </div>
                     <div className='w-full text-sm flex flex-col gap-2 items-start pl-6'>
                         <div className='flex gap-1 w-full text-left'>
@@ -50,19 +49,19 @@ export default function dasboard_user({visible, onClose}) {
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Tanggal lahir</p>
-                            <p className='w-2/3'>: {user.tanggal_lahir}</p>
+                            <p className='w-2/3'>: {nilai.tanggal_lahir}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>No HP</p>
-                            <p className='w-2/3'>: {user.no_hp}</p>
+                            <p className='w-2/3'>: {nilai.no_hp}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Alamat</p>
-                            <p className='w-2/3'>: {user.alamat}</p>
+                            <p className='w-2/3'>: {nilai.alamat}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Email</p>
-                            <p className='w-2/3'>: {user.email}</p>
+                            <p className='w-2/3'>: {nilai.email}</p>
                         </div>
                     </div>
                 </div>

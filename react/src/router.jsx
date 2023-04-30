@@ -8,7 +8,8 @@ import Layout_pakar from "./components/dashboard_pakar_layout";
 import Dashboar_admin from "./views/dashboard_admin"
 import Dashboard_user from "./views/dashboard_user";
 import Dashboard_pakar from "./views/dashboard_pakar";
-import Administrasi_akun from "./views/administrasi_akun";
+import Administrasi_akun_pakar from "./views/administrasi_akun_pakar";
+import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
 
 import Profile from "./views/profil"
 import View_profile from "./components/view_profil"
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
                 element: <Profile/>,
             },
             {
-                path: 'admin-administrasi',
-                element: <Administrasi_akun/>
+                path: 'admin-administrasi-pakar',
+                element: <Administrasi_akun_pakar/>
+            },
+            {
+                path: 'admin-administrasi-pengguna',
+                element: <Administrasi_akun_pengguna/>
             },
         ],
     },
