@@ -4,6 +4,7 @@ import Icon from "../assets/logo.png"
 import Administrasi from "../assets/Administrasi Akun Icon.png"
 import Artikel from "../assets/Artikel Logo.png"
 import Profil from "../assets/Ellipse.png"
+import Permintaan from "../assets/Permintaan Kebutuhan Logo.png"
 
 import { Navigate, Outlet } from "react-router-dom"
 
@@ -39,6 +40,9 @@ export default function dashboard_admin_layout() {
                 </Link>
                 <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Artikel} className='h-8 w-8 mx-auto m-2' alt="" />
+                </div>
+                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                    <img src={Permintaan} className='h-8 w-8 mx-auto m-2' alt="" />
                 </div>
             </div>
 

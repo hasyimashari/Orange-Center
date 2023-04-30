@@ -42,7 +42,7 @@ return (
     <>
 
             {/* conten header */}
-            <div className="sticky top-0 bg-white h-28 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
+            <div className="sticky top-0 bg-white h-32 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
                 <div className="w-full flex flex-row items-center justify-between">
                     <div className="w-3/4 text-center text-4xl pl-20">
                         <h1>Administrasi akun</h1>
@@ -80,7 +80,7 @@ return (
                 </ul>
             </div>}
 
-            {!loading && <div className="h-80 px-4 flex flex-col gap-2 ">
+            {!loading && <div className="h-80 px-4 flex flex-col gap-2">
                 {/* list */}
                 {!loading
                 }
