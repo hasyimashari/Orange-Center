@@ -33,6 +33,7 @@ export default function administrasi_akun_pakar() {
 
     const closeModal = () => {
         setShowProfil(false)
+        getUsers()
     }
     
     const closeModalEdit = () => {        

@@ -28,6 +28,7 @@ export default function administrasi_akun_pengguna() {
 
     const closeModal = () => {
         setShowProfil(false)
+        getUsers()
     }
 
 return (

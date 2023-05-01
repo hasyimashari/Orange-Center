@@ -9,17 +9,32 @@ export default function decision({oCls, vsb, nil}) {
 
     const onSuspend = (ev) => {
 
-        // ev.preventDefault()
-        // nil.status_akun = 2
+        ev.preventDefault()
 
-        // axiosClient.put(`/pakar/${nil.id_pakar}`, nil)
-        // .then(({data}) => {
-        //     console.log(data)
-        // })
-        // .catch((response) => {
-        //     console.log(response)
-        // })
+        const suspend = {
+            status_akun:"2"
+        }
+        const aktif = {
+            status_akun: "1"
+        }
 
+        if (nil.status_akun===1){
+            axiosClient.put(`/suspend_pengguna/${nil.id_user}`, suspend)
+            .then(() => {
+                oCls(true)
+            })
+            .catch((response) => {
+                console.log(response)
+            })
+        } else {
+            axiosClient.put(`/suspend_pengguna/${nil.id_user}`, aktif)
+            .then(() => {
+                oCls(true)
+            })
+            .catch((response) => {
+                console.log(response)
+            })
+        }
     }
 
     return (

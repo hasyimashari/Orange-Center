@@ -13,13 +13,12 @@ import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
 
 import Profile_pakar from "./views/profil_pakar"
 import Profile_admin from "./views/profil_admin"
-import Profile_user from "./views/profil_user"
+import Profile_user from "./views/profil_pengguna"
 
 import Register from "./views/register"
 import Login from "./views/login";
 import Not_found from "./views/not_found";
 
-import Dec from "./components/decision";
 
 const router = createBrowserRouter([
     {

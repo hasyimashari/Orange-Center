@@ -3,7 +3,7 @@ import Profil from "../assets/Ellipse.png"
 import Ban from "../assets/ban.png"
 import Cancel from "../assets/cancel.png"
 
-import Decision from './decision'
+import Decision from './decision_pakar'
 
 import { useState, useEffect } from 'react';
 

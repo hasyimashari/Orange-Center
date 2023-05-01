@@ -3,7 +3,7 @@ import Profil from "../assets/Ellipse.png"
 import Ban from "../assets/ban.png"
 import Cancel from "../assets/cancel.png"
 
-import Decision from './decision'
+import Decision from './decision_pengguna'
 
 import { useState, useEffect } from 'react';
 
@@ -69,7 +69,7 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
                 <button className="text-sm w-10 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex  justify-center text-white cursor-pointer"> <img src={Cancel}/></button>
                 </div>
             </div>
-            <Decision oCls={closeModal} vsb={showDec} />
+            <Decision oCls={closeModal} vsb={showDec} nil={nilai}/>
         </div>
     )
 }
