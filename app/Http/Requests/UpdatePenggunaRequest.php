@@ -23,13 +23,13 @@ class UpdatePenggunaRequest extends FormRequest
     {
         return [
             'nama_lengkap' => 'required|string|max:30',            
-            'username' => 'required|string|max:12|unique:Pakar,username'.$this->id_user,
-            'email' => 'required|email|max:30|unique:Pakar,email'.$this->id_user,
+            'username' => 'required|string|max:12',
+            'email' => 'required|email|max:30',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',
             'alamat' => 'required|string|max:50',
-            'password' => 'required|confirmed|string|max:12',
+            'password' => 'required|string|max:12',
         ];
     }
 }

@@ -5,7 +5,7 @@ import { useRef, useState } from "react"
 import { useStateContext } from "../context/ContextProvider.jsx";
 import {Link} from 'react-router-dom';
 
-export default function Login() {
+export default function login() {
 
     const emailref = useRef();
     const passwrodref = useRef();

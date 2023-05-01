@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UpdateAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,14 +17,14 @@ class RegisterRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
             'nama_lengkap' => 'required|string|max:30',            
-            'username' => 'required|string|max:12|unique:Pengguna,username',
-            'email' => 'required|email|max:30|unique:Pengguna,email',
+            'username' => 'required|string|max:12',
+            'email' => 'required|email|max:30',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',

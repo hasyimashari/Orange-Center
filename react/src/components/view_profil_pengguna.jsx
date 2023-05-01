@@ -5,18 +5,18 @@ import Cancel from "../assets/cancel.png"
 
 import Decision from './decision'
 
-import { useStateContext } from "../context/ContextProvider"
 import { useState, useEffect } from 'react';
 
-export default function dasboard_user({onClose, visible, nilai}) {
+export default function view_profil_pengguna({onClose, visible, nilai}) {
     
     if (!visible) return null;
 
     const [showDec, setShowDec] = useState(false)
+
     const closeModal = () => {
         setShowDec(false)
     }
-
+    
     const [kelamin, setKelamin] = useState();
 
     if (nilai.jenis_kelamin === 1) {
@@ -69,7 +69,7 @@ export default function dasboard_user({onClose, visible, nilai}) {
                 <button className="text-sm w-10 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex  justify-center text-white cursor-pointer"> <img src={Cancel}/></button>
                 </div>
             </div>
-            <Decision oCls={closeModal} vsb={showDec}/>
+            <Decision oCls={closeModal} vsb={showDec} />
         </div>
     )
 }

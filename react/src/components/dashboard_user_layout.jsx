@@ -11,7 +11,7 @@ import axiosClient from '../axios-client'
 
 import React, { useEffect } from 'react'
 
-export default function Layout_dashboard() {
+export default function dashboard_user_layout() {
     
     const {token, role, setUser} = useStateContext();
     if (!token) {

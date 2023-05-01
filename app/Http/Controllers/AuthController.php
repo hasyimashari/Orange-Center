@@ -17,30 +17,6 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        // ==============================
-
-        // $data = $request->validated();
-
-        // /** @var \App\Models\Pakar $user*/
-        // $user = Pakar::create([
-        //     'nama_lengkap' => $data['nama_lengkap'],
-        //     'username' => $data['username'],
-        //     'jenis_kelamin' => $data['jenis_kelamin'],
-        //     'tanggal_lahir' => $data['tanggal_lahir'],
-        //     'no_hp' => $data['no_hp'],
-        //     'alamat' => $data['alamat'],
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password'])
-        // ]);
-
-        // $token = $user -> createToken('main') -> plainTextToken;
-
-        // return response([
-        //     'Pakar' => $user,
-        //     'token_id' => $token
-        // ]);
-
-        // ==============================
 
         $data = $request->validated();
 

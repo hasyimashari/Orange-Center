@@ -3,7 +3,7 @@ import artikel_img from "../assets/Artikel_db.png"
 import permintaan_img from "../assets/Permintaan_db.png"
 import Arrow_right from "../assets/arrow_right.png"
 
-export default function DashboardAd() {
+export default function dashboard_admin() {
 
 return (
     <>

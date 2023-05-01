@@ -1,4 +1,4 @@
-import View from '../components/view_profil_aktor';
+import View from '../components/view_profil_pengguna';
 
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"

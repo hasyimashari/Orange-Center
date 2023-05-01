@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Bg_image from "../assets/bg_logres.png";
-import Icon from "../assets/logo.png";
 
 export default function not_found() {
     return (

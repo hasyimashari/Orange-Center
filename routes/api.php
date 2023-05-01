@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PakarController;
 use App\Http\Controllers\PenggunaController;
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
+    Route::apiResource('/admin', AdminController::class);
     Route::apiResource('/pakar', PakarController::class);
     Route::apiResource('/pengguna', PenggunaController::class);
 });

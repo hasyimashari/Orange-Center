@@ -4,7 +4,7 @@ import Icon from "../assets/logo.png";
 import { Navigate, Outlet } from "react-router-dom"
 import { useStateContext } from "../context/ContextProvider";
 
-export default function Layout_signinup() {
+export default function signin_up_layout() {
 
     const {role} = useStateContext();
     if (role==="adm") {

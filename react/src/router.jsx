@@ -11,9 +11,9 @@ import Dashboard_pakar from "./views/dashboard_pakar";
 import Administrasi_akun_pakar from "./views/administrasi_akun_pakar";
 import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
 
-import Profile from "./views/profil"
-import View_profile from "./components/view_profil"
-import Edit_porfil from "./components/edit_profil"
+import Profile_pakar from "./views/profil_pakar"
+import Profile_admin from "./views/profil_admin"
+import Profile_user from "./views/profil_user"
 
 import Register from "./views/register"
 import Login from "./views/login";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'admin-profil',
-                element: <Profile/>,
+                element: <Profile_admin/>,
             },
             {
                 path: 'admin-administrasi-pakar',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'pakar-profil',
-                element: <Profile/>,
+                element: <Profile_pakar/>,
             },
         ],
     },
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'user-profil',
-                element: <Profile/>,
+                element: <Profile_user/>,
             },
         ],
     },

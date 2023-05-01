@@ -1,20 +1,19 @@
 import Add_pakar from "../assets/Add Pakar.png"
 
 import Edit from "../components/add_actor"
-import View from '../components/view_profil_aktor';
+import View from '../components/view_profil_pakar';
 
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"
 import { Link } from 'react-router-dom';
 
-export default function administrasi_akun() {
+export default function administrasi_akun_pakar() {
 
     const [showEdit, setShowEdit] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
-    const [loading, setLoading] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const [users, setUsers] = useState([])
     const [nilai, setNilai] = useState()
-    const [kelamin, setKelamin] = useState();
 
     const getUsers = () => {
         setLoading(true)
