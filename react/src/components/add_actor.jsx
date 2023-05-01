@@ -1,7 +1,5 @@
 import axiosClient from  "../axios-client"
-import {Link, useNavigate} from "react-router-dom"
 import { useRef, useState } from "react"
-import { useStateContext } from "../context/ContextProvider.jsx";
 
 import Arrow_right from "../assets/arrow_right.png"
 import Cancel from "../assets/cancel.png"
@@ -18,13 +16,12 @@ export default function add_actor({visible, onClose}) {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState()
-    const {user, setUser, setToken} = useStateContext()
     
     const onSubmit = (ev) => {
 
         ev.preventDefault()
         const payload = {
-            nama: namaref.current.value,
+            nama_lengkap: namaref.current.value,
             username: usernameref.current.value,
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
@@ -34,10 +31,9 @@ export default function add_actor({visible, onClose}) {
             password: passwrodref.current.value,
         }
 
-        axiosClient.post('/register', payload)
-        .then((response) => {
-            setUser(response.data.pengguna)
-            setToken(response.data.token_id)
+        axiosClient.post('/pakar', payload)
+        .then(() => {
+            onClose(true)
         })
 
         .catch(error => {
@@ -55,6 +51,14 @@ export default function add_actor({visible, onClose}) {
         // form
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
         <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+
+                {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
+                    {Object.keys(errors).map(key => (
+                        <p key={key}>{errors[key][0]}</p>
+                    ))}
+
+                </div>
+                }
 
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref}

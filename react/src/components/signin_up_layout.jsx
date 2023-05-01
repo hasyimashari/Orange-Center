@@ -1,5 +1,4 @@
 
-import Bg_image from "../assets/bg_logres.png";
 import Icon from "../assets/logo.png";
 
 import { Navigate, Outlet } from "react-router-dom"

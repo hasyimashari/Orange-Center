@@ -47,7 +47,7 @@ export default function dashboard_pakar_layout() {
                     <img src={Icon} className=" drop-shadow-[-2px_2px_4px_rgba(0,0,0,0.25)] w-32" />
                     <p className="absolute text-5xl text-white font-bold pt-6 ml-16 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]" >OrangeCenter</p>
                 </Link>
-                <div className="bg-white rounded-tl-3xl h-4/5">
+                <div className="bg-white rounded-tl-3xl h-4/5 max-h-screen">
                     <Outlet/>
                 </div>
             </div>
