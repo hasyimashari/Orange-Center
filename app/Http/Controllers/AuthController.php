@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Admin;
-use App\Models\Pakar;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use function Psy\debug;
 
 class AuthController extends Controller
 {
@@ -40,23 +37,30 @@ class AuthController extends Controller
         if (Auth::guard('web')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("web")->user();
-            $token = $user->createToken('main')->plainTextToken;
             $role = 'adm';
         } 
 
         elseif (Auth::guard('pkr')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("pkr")->user();
-            $token = $user->createToken('main')->plainTextToken;
-            $role = 'pkr';
-        } 
+            if ($user['status_akun']===1) {
+                $role = 'pkr';
+            } else {
+                return response([
+                    'message' => 'User is suspended'
+                ], 422);
+            }} 
         
         elseif (Auth::guard('usr')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("usr")->user();
-            $token = $user->createToken('main')->plainTextToken;
-            $role = 'usr';
-        } 
+            if ($user['status_akun']===1) {
+                $role = 'usr';
+            } else {
+                return response([
+                    'message' => 'User is suspended'
+                ], 422);
+            }} 
         
         else {
             return response([
@@ -64,6 +68,7 @@ class AuthController extends Controller
             ], 422);
         } 
 
+        $token = $user->createToken('main')->plainTextToken;
         return response([
             'user' => $user,
             'token' => $token,

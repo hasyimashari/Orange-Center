@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Icon from "../assets/logo.png"
 
@@ -10,24 +10,17 @@ import { Navigate, Outlet } from "react-router-dom"
 
 import { useStateContext } from "../context/ContextProvider"
 import { Link } from 'react-router-dom';
-import axiosClient from '../axios-client'
 
 export default function dashboard_pakar_layout() {
 
-    const {token, role, setUser} = useStateContext();
+    const {token, role} = useStateContext();
+
     if (!token) {
         return <Navigate to='/login'/>
     }
     if (role!=="pkr") {
         return <Navigate to='*'/>
     }
-
-    useEffect(() => {
-        axiosClient.get('/user')
-        .then(({data}) => {
-            setUser(data)
-        })
-    }, [])
 
     return (
         <div className='relative w-full min-h-screen bg-[url("src/assets/bg_db.png")] bg-center bg-cover flex flex-row'>

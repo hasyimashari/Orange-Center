@@ -7,26 +7,19 @@ import Permintaan from "../assets/Permintaan Kebutuhan Logo.png"
 import { Navigate, Outlet } from "react-router-dom"
 import { useStateContext } from "../context/ContextProvider"
 import { Link } from 'react-router-dom';
-import axiosClient from '../axios-client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export default function dashboard_user_layout() {
     
-    const {token, role, setUser} = useStateContext();
+    const {token, role} = useStateContext();
+    
     if (!token) {
         return <Navigate to='/login'/>
     }
     if (role!=="usr") {
         return <Navigate to='*'/>
     }
-    
-    useEffect(() => {
-        axiosClient.get('/user')
-        .then(({data}) => {
-            setUser(data)
-        })
-    }, [])
 
     return (
     <>
@@ -50,7 +43,7 @@ export default function dashboard_user_layout() {
             
             <div className="relative w-full">
 
-                <Link to='user' className="h-1/5 flex items-center cursor-pointer">
+                <Link to='/user-dashboard' className="h-1/5 flex items-center cursor-pointer">
                     <img src={Icon} className=" drop-shadow-[-2px_2px_4px_rgba(0,0,0,0.25)] w-32" />
                     <p className="absolute text-5xl text-white font-bold pt-6 ml-16 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]" >OrangeCenter</p>
                 </Link>

@@ -34,6 +34,7 @@ export default function add_actor({visible, onClose}) {
         axiosClient.post('/pakar', payload)
         .then(() => {
             onClose(true)
+            setErrors()
         })
 
         .catch(error => {
@@ -44,6 +45,11 @@ export default function add_actor({visible, onClose}) {
         })
     }
 
+    const onCancelSubmit = () => {
+        onClose(true);
+        setErrors(null);
+    }
+    
     if (!visible) return null;
 
     return (
@@ -106,8 +112,8 @@ export default function add_actor({visible, onClose}) {
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="passwordcon" id="pwcon" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
-                    <button onClick={onClose} className="text-sm w-4/12 p-5 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Batal <img src={Cancel}/></button>
-                    <button type="submit" className="text-sm w-4/12 p-5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
+                    <button onClick={onCancelSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
+                    <button type="submit" className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
                 </div>
             </form>
         </div>

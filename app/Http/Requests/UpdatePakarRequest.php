@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePakarRequest extends FormRequest
 {
@@ -23,8 +24,8 @@ class UpdatePakarRequest extends FormRequest
     {
         return [
             'nama_lengkap' => 'required|string|max:30',            
-            'username' => 'required|string|max:12',
-            'email' => 'required|email|max:30',
+            'username' => ['required','string','max:12', Rule::unique('Pakar')->ignore($this->user())],
+            'email' => ['required','email','max:30', Rule::unique('Pakar')->ignore($this->user())],
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',

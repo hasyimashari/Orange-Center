@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Profil from "../assets/Ellipse.png"
 import { useStateContext } from "../context/ContextProvider.jsx";
 import { useState } from 'react';
@@ -13,11 +13,11 @@ export default function profil_user() {
     const [showProfil, setShowProfil] = useState(false)
     const [loading, setLoading] = useState(false)
     const {user, setUser, setToken, setRole} = useStateContext()
-    
+
     const closeModal = () => {
         setShowProfil(false)
     }
-    
+
     const closeModalEdit = () => {        
         setShowEdit(false)
         setUser({})
@@ -29,7 +29,7 @@ export default function profil_user() {
             })
     }
 
-    const onLogout = ev => {
+    const onLogout = (ev) => {
         ev.preventDefault()
         axiosClient.post('/logout')
         .then(() => {
@@ -38,6 +38,15 @@ export default function profil_user() {
             setRole(null)
         })
     }
+
+    useEffect(() => {
+        setLoading(true)
+        axiosClient.get('/user')
+        .then(({data}) => {
+            setUser(data)
+            setLoading(false)
+        })
+    }, [])
 
     return (
 

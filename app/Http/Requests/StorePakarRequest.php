@@ -22,7 +22,7 @@ class StorePakarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_lengkap' => 'required|string|max:30|unique:Pakar,nama_lengkap',            
+            'nama_lengkap' => 'required|string|max:30',            
             'username' => 'required|string|max:12|unique:Pakar,username',
             'email' => 'required|email|max:30|unique:Pakar,email',
             'jenis_kelamin' => 'required',

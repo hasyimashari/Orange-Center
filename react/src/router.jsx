@@ -10,6 +10,7 @@ import Dashboard_user from "./views/dashboard_user";
 import Dashboard_pakar from "./views/dashboard_pakar";
 import Administrasi_akun_pakar from "./views/administrasi_akun_pakar";
 import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
+import Konsultasi_user from "./views/konsultasi_user";
 
 import Profile_pakar from "./views/profil_pakar"
 import Profile_admin from "./views/profil_admin"
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
                 path: 'user-profil',
                 element: <Profile_user/>,
             },
+            // {
+            //     path: 'user-konsultasi',
+            //     element: </>,
+            // },
         ],
     },
     {
