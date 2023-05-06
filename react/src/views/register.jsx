@@ -6,6 +6,8 @@ import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function Register() {
 
+    const navigate = useNavigate();
+
     const namaref = useRef();
     const usernameref = useRef();
     const jeniskelaminref = useRef();
@@ -16,7 +18,6 @@ export default function Register() {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState(null)
-    const {setUser, setToken, setRole, role} = useStateContext()
     
     const onSubmit = (ev) => {
 
@@ -33,10 +34,8 @@ export default function Register() {
         }
 
         axiosClient.post('/register', payload)
-        .then((response) => {
-            setUser(response.data.user)
-            setToken(response.data.token)
-            setRole(response.data.role)
+        .then(() => {
+            navigate('/login')
         })
 
         .catch(error => {
