@@ -2,7 +2,6 @@ import {Link, useNavigate} from "react-router-dom"
 import { useRef, useState } from "react"
 import axiosClient from  "../axios-client"
 import Arrow_right from "../assets/arrow_right.png"
-import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function Register() {
 

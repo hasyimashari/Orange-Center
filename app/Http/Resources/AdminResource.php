@@ -22,7 +22,7 @@ class AdminResource extends JsonResource
             'username' => $this-> username,
             'email' => $this-> email,
             'no_hp'=> $this-> no_hp,
-            'jenis_kelamin' => $this-> jenis_kelamin,
+            'jenis_kelamin' => $this-> kelamin-> jenis_kelamin,
         ];
     }
 }

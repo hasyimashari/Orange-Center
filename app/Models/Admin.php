@@ -54,7 +54,7 @@ class Admin extends Authenticatable
 		'jenis_kelamin'
 	];
 
-	public function jenis_kelamin()
+	public function kelamin()
 	{
 		return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin');
 	}

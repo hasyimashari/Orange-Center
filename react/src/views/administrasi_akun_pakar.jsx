@@ -86,20 +86,20 @@ return (
             {/* list */}
             {users.map(u=>(
                 <div>
-                    {u.status_akun===1?
+                    {u.status_akun==="Aktif"?
                     <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
                         <li className="w-64 text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-40 text-center p-1">{u.username}</li>
-                        {u.jenis_kelamin===1? <li className="w-32 text-center p-1">Laki-laki</li>:<li className="w-32 text-center p-1">Perempuan</li>} 
+                        <li className="w-32 text-center p-1">{u.jenis_kelamin}</li>
                         <li className="w-32 text-center p-1">{u.tanggal_lahir}</li>
                         <li className="w-40 text-center p-1">{u.no_hp}</li>
                         <li className="w-40 text-center p-1">{u.alamat}</li>
                         <li className="w-40 text-center p-1">{u.email}</li>
                     </ul>:
-                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-red-200 hover:brightness-90 rounded-2xl">
+                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl">
                         <li className="w-64 text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-40 text-center p-1">{u.username}</li>
-                        {u.jenis_kelamin===1? <li className="w-32 text-center p-1">Laki-laki</li>:<li className="w-32 text-center p-1">Perempuan</li>} 
+                        <li className="w-32 text-center p-1">{u.jenis_kelamin}</li>
                         <li className="w-32 text-center p-1">{u.tanggal_lahir}</li>
                         <li className="w-40 text-center p-1">{u.no_hp}</li>
                         <li className="w-40 text-center p-1">{u.alamat}</li>

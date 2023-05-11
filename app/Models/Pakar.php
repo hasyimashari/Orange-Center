@@ -57,12 +57,12 @@ class Pakar extends Authenticatable
 		'status_akun'
 	];
 
-	public function jenis_kelamin()
+	public function kelamin()
 	{
 		return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin');
 	}
 
-	public function status_akun()
+	public function status()
 	{
 		return $this->belongsTo(StatusAkun::class, 'status_akun');
 	}

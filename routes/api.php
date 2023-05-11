@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PakarController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SuspendController;
+use App\Http\Controllers\PembuatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/pengguna', PenggunaController::class);
     Route::put('/suspend_pakar/{id}', [SuspendController::class, 'suspend_pakar']);
     Route::put('/suspend_pengguna/{id}', [SuspendController::class, 'suspend_user']);
+    Route::post('/pembuat', [PembuatController::class, 'upmaker']);
 });
 
 Route::post('/register', [AuthController::class, 'register']);

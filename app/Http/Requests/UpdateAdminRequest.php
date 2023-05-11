@@ -23,7 +23,7 @@ class UpdateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_lengkap' => 'required|string|max:30',            
+            'nama_lengkap' => ['required','string', 'max:30', Rule::unique('Admin')->ignore($this->user())],            
             'username' => ['required','string','max:12', Rule::unique('Admin')->ignore($this->user())],
             'email' => ['required','email','max:30', Rule::unique('Admin')->ignore($this->user())],
             'jenis_kelamin' => 'required',

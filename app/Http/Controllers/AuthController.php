@@ -19,15 +19,10 @@ class AuthController extends Controller
 
         /** @var \App\Models\Pengguna $user*/
         $data['password'] = bcrypt($data['password']);
-        $user = Pengguna::create($data);
-
-        $token = $user -> createToken('main') -> plainTextToken;
-        $role = 'usr';
+        Pengguna::create($data);
 
         return response([
-            'user' => $user,
-            'token' => $token,
-            'role' => $role
+            'success' => true
         ]);
     }
 

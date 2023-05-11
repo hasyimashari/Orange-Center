@@ -1,5 +1,6 @@
 import axiosClient from  "../axios-client"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useStateContext } from "../context/ContextProvider.jsx";
 
 import Arrow_right from "../assets/arrow_right.png"
 import Cancel from "../assets/cancel.png"
@@ -14,8 +15,16 @@ export default function add_actor({visible, onClose}) {
     const alamatref = useRef();
     const emailref = useRef();
     const passwrodref = useRef();
-    
+
+    const {user, setUser} = useStateContext()
     const [errors, setErrors] = useState()
+
+    useEffect(() => {
+        axiosClient.get('/user')
+        .then(({data}) => {
+            setUser(data)
+        })
+    }, [])
     
     const onSubmit = (ev) => {
 
@@ -32,9 +41,18 @@ export default function add_actor({visible, onClose}) {
         }
 
         axiosClient.post('/pakar', payload)
-        .then(() => {
-            onClose(true)
-            setErrors()
+        .then((response) => {
+            
+            const payload_maker = {
+                id_admin: user.id_admin,
+                id_pakar: response.data.id_pakar,
+            }
+            
+            axiosClient.post('/pembuat', payload_maker)
+            .then(() => {
+                onClose(true)
+                setErrors()
+            })
         })
 
         .catch(error => {
