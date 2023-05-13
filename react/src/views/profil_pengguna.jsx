@@ -3,8 +3,8 @@ import Profil from "../assets/Ellipse.png"
 import { useStateContext } from "../context/ContextProvider.jsx";
 import { useState } from 'react';
 
-import Edit from '../components/edit_profil_pengguna';
-import View from '../components/view_profil_all_actor';
+import Edit from './edit_profil_pengguna';
+import View from './view_profil_all_actor';
 import axiosClient from '../axios-client';
 
 export default function profil_user() {

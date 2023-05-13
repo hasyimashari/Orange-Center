@@ -3,11 +3,11 @@ import Profil from "../assets/Ellipse.png"
 import Ban from "../assets/ban.png"
 import Cancel from "../assets/cancel.png"
 
-import Decision from './decision_pengguna'
+import Decision from './decision_pakar'
 
 import { useState, useEffect } from 'react';
 
-export default function view_profil_pengguna({onClose, visible, nilai}) {
+export default function view_profil_pakar({onClose, visible, nilai}) {
     
     if (!visible) return null;
 
@@ -16,7 +16,7 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
     const closeModal = () => {
         setShowDec(false)
     }
-    
+
     const [kelamin, setKelamin] = useState();
 
     if (nilai.jenis_kelamin === 1) {
@@ -28,9 +28,9 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
             setKelamin("Perempuan");
         }, []);
     }
-    
+
     return (
-        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
+        <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             <div className='bg-white w-96 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
 
                 <div className='w-full h-2/6 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>

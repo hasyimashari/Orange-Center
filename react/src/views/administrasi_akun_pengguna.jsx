@@ -1,4 +1,4 @@
-import View from '../components/view_profil_pengguna';
+import View from './view_profil_pengguna';
 
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"
@@ -34,7 +34,7 @@ export default function administrasi_akun_pengguna() {
 return (
     <>
         {/* conten header */}
-        <div className="sticky top-0 bg-white h-32 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
+        <div className="sticky top-0 z-10 bg-white h-32 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
             <div className="w-full flex flex-row items-center justify-between">
                 <div className="w-3/4 text-center text-4xl pl-20">
                     <h1>Administrasi akun</h1>
@@ -49,55 +49,54 @@ return (
                 </div>
             </div>
             <ul className="flex justify-normal gap-2 pb-4">
-                <li className="w-64 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
-                <li className="w-40 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Username</li>
-                <li className="w-32 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
-                <li className="w-32 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Tanggal Lahir</li>
-                <li className="w-40 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">No. HP</li>
-                <li className="w-40 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Alamat</li>
-                <li className="w-40 rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Email</li>
+                <li className="w-[15rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
+                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Username</li>
+                <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
+                <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Tanggal Lahir</li>
+                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">No. HP</li>
+                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Alamat</li>
+                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Email</li>
             </ul>
         </div>
         
         {/* conten */}
-        {loading && <div className="h-80 pl-8 flex flex-col gap-2">
+        {loading && <div className="h-[20rem] pl-8 flex flex-col gap-2">
             <ul  className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
-                <li className="w-64 text-center p-1">Loading...</li>
-                <li className="w-40 text-center p-1">Loading...</li>
-                <li className="w-32 text-center p-1">Loading...</li>
-                <li className="w-32 text-center p-1">Loading...</li>
-                <li className="w-40 text-center p-1">Loading...</li>
-                <li className="w-40 text-center p-1">Loading...</li>
-                <li className="w-40 text-center p-1">Loading...</li>
+                <li className="w-[15rem] text-center p-1">Loading...</li>
+                <li className="w-[10rem] text-center p-1">Loading...</li>
+                <li className="w-[8rem] text-center p-1">Loading...</li>
+                <li className="w-[8rem] text-center p-1">Loading...</li>
+                <li className="w-[10rem] text-center p-1">Loading...</li>
+                <li className="w-[10rem] text-center p-1">Loading...</li>
+                <li className="w-[10rem] text-center p-1">Loading...</li>
             </ul>
         </div>}
 
-        {!loading && <div className="h-80 pl-8 flex flex-col gap-2">
+        {!loading && <div className="h-[20rem] pl-8 flex flex-col gap-2">
             {/* list */}
             {users.map(u=>(
                 <div>
                     {u.status_akun==="Aktif"?
                     <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
-                        <li className="w-64 text-center p-1">{u.nama_lengkap}</li>
-                        <li className="w-40 text-center p-1">{u.username}</li>
-                        <li className="w-32 text-center p-1">{u.jenis_kelamin}</li> 
-                        <li className="w-32 text-center p-1">{u.tanggal_lahir}</li>
-                        <li className="w-40 text-center p-1">{u.no_hp}</li>
-                        <li className="w-40 text-center p-1">{u.alamat}</li>
-                        <li className="w-40 text-center p-1">{u.email}</li>
+                        <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
+                        <li className="w-[10rem] text-center p-1">{u.username}</li>
+                        <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
+                        <li className="w-[10rem] text-center p-1">{u.alamat}</li>
+                        <li className="w-[10rem] text-center p-1">{u.email}</li>
                     </ul>:
                     <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl">
-                        <li className="w-64 text-center p-1">{u.nama_lengkap}</li>
-                        <li className="w-40 text-center p-1">{u.username}</li>
-                        <li className="w-32 text-center p-1">{u.jenis_kelamin}</li> 
-                        <li className="w-32 text-center p-1">{u.tanggal_lahir}</li>
-                        <li className="w-40 text-center p-1">{u.no_hp}</li>
-                        <li className="w-40 text-center p-1">{u.alamat}</li>
-                        <li className="w-40 text-center p-1">{u.email}</li>
+                        <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
+                        <li className="w-[10rem] text-center p-1">{u.username}</li>
+                        <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
+                        <li className="w-[10rem] text-center p-1">{u.alamat}</li>
+                        <li className="w-[10rem] text-center p-1">{u.email}</li>
                     </ul>
                     }
                 </div>
-
             ))}
         </div>}
 

@@ -73,7 +73,7 @@ export default function add_actor({visible, onClose}) {
     return (
 
         // form
-        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
+        <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
         <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
