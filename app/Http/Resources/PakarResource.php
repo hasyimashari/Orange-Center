@@ -20,10 +20,11 @@ class PakarResource extends JsonResource
             'tanggal_lahir' => $this-> tanggal_lahir,
             'alamat' => $this-> alamat,
             'username' => $this-> username,
+            'spesialis' => $this -> spesiali -> spesialis,
             'email' => $this-> email,
             'no_hp'=> $this-> no_hp,
-            'jenis_kelamin' => $this-> kelamin-> jenis_kelamin,
-            'status_akun' => $this-> status-> status_akun,
+            'jenis_kelamin' => $this-> kelamin -> jenis_kelamin,
+            'status_akun' => $this-> status -> status_akun,
         ];
     }
 }

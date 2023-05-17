@@ -11,6 +11,9 @@ import Dashboard_pakar from "./views/dashboard_pakar";
 import Administrasi_akun_pakar from "./views/administrasi_akun_pakar";
 import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
 import Konsultasi_user from "./views/konsultasi_user";
+import Konsultasi_pakar from "./views/konsultasi_pakar";
+import Chat_pakar from "./views/chat_pakar";
+import Chat_user from "./views/chat_user";
 
 import Profile_pakar from "./views/profil_pakar"
 import Profile_admin from "./views/profil_admin"
@@ -56,6 +59,14 @@ const router = createBrowserRouter([
                 path: 'pakar-profil',
                 element: <Profile_pakar/>,
             },
+            {
+                path: 'pakar-konsultasi',
+                element: <Konsultasi_pakar/>,
+            },
+            {
+                path: 'pakar-chat',
+                element: <Chat_pakar/>,
+            },
         ],
     },
     {
@@ -70,10 +81,14 @@ const router = createBrowserRouter([
                 path: 'user-profil',
                 element: <Profile_user/>,
             },
-            // {
-            //     path: 'user-konsultasi',
-            //     element: </>,
-            // },
+            {
+                path: 'user-konsultasi',
+                element: <Konsultasi_user/>,
+            },
+            {
+                path: 'user-chat',
+                element: <Chat_user/>,
+            },
         ],
     },
     {

@@ -6,7 +6,7 @@ import { useStateContext } from '../context/ContextProvider';
 
 import Profil from "../assets/Ellipse.png"
 
-export default function konsultasi_user() {
+export default function konsultasi_pakar() {
 
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -14,7 +14,7 @@ export default function konsultasi_user() {
 
     const getUsers = () => {
         setLoading(true)
-        axiosClient.get('/pakar')
+        axiosClient.get('/pengguna')
         .then(({ data }) => {
             setLoading(false)
             setUsers(data.data)
@@ -103,9 +103,9 @@ export default function konsultasi_user() {
                         </div>
                 </div>}
 
-                {/* content not loading */}
+                {/* content not loading*/}
                 {users.map(u=>(
-                    u.status_akun==="Aktif" && !loading &&
+                    u.status_akun==="Aktif" &&
                     <div onClick={() => {setTo(u)}} className='m-2 mx-4 h-56 bg-white shadow-[-3px_3px_0px_3px_rgba(78,148,79,0.5)] border-[1px] border-[#4E944F] rounded-xl'>
                         {
                         <div className=' w-full h-full flex flex-col items-center justify-center gap-3 '>
@@ -120,7 +120,7 @@ export default function konsultasi_user() {
                                     {u.spesialis}
                                 </div>
                             </div>
-                            <Link to='/user-chat' className="w-5/12 p-2 text-center text-sm font-bold bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-lg text-white">
+                            <Link to='/pakar-chat' className="w-5/12 p-2 text-center text-sm font-bold bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-lg text-white">
                                 Chat
                             </Link>
                         </div>

@@ -32,12 +32,15 @@ class AuthController extends Controller
         if (Auth::guard('web')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("web")->user();
+            $user->kelamin->get();
             $role = 'adm';
         } 
 
         elseif (Auth::guard('pkr')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("pkr")->user();
+            $user->kelamin->get();
+            $user->status->get();
             if ($user['status_akun']===1) {
                 $role = 'pkr';
             } else {
@@ -49,6 +52,8 @@ class AuthController extends Controller
         elseif (Auth::guard('usr')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("usr")->user();
+            $user->kelamin->get();
+            $user->status->get();
             if ($user['status_akun']===1) {
                 $role = 'usr';
             } else {

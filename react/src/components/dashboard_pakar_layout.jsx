@@ -31,9 +31,9 @@ export default function dashboard_pakar_layout() {
                 <Link to='/pakar-profil' className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Profil} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </Link>
-                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                <Link to='/pakar-konsultasi' className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Konsultasi} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
-                </div>
+                </Link>
                 <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Artikel} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </div>

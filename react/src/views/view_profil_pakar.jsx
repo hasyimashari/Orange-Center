@@ -17,18 +17,6 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
         setShowDec(false)
     }
 
-    const [kelamin, setKelamin] = useState();
-
-    if (nilai.jenis_kelamin === 1) {
-        useEffect(()=>{
-            setKelamin("Laki-laki");
-        }, []);
-    } else {
-        useEffect(()=>{
-            setKelamin("Perempuan");
-        }, []);
-    }
-
     return (
         <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             <div className='bg-white w-96 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
@@ -48,7 +36,7 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                     <div className='w-full text-sm flex flex-col gap-2 items-start pl-6'>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Jenis kelamin</p>
-                            <p className='w-2/3'  >: {kelamin}</p>
+                            <p className='w-2/3'  >: {nilai.jenis_kelamin}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Tanggal lahir</p>

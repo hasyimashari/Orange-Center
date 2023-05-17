@@ -24,12 +24,14 @@ class StorePakarRequest extends FormRequest
         return [
             'nama_lengkap' => 'required|string|max:30',            
             'username' => 'required|string|max:12|unique:Pakar,username',
+            'spesialis' => 'required',
             'email' => 'required|email|max:30|unique:Pakar,email',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',
             'alamat' => 'required|string|max:50',
             'password' => 'required|string|max:12',
+            'status_akun' => 'required',
         ];
     }
 }

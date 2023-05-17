@@ -22,8 +22,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $password
  * @property string $no_hp
  * @property int $jenis_kelamin
+ * @property int $spesialis
  * @property int $status_akun
  * 
+ * @property Spesiali $spesiali
  * @property Collection|PembuatAkunPakar[] $pembuat_akun_pakars
  *
  * @package App\Models
@@ -38,6 +40,7 @@ class Pakar extends Authenticatable
 	protected $casts = [
 		'tanggal_lahir' => 'string',
 		'jenis_kelamin' => 'int',
+		'spesialis' => 'int',
 		'status_akun' => 'int'
 	];
 
@@ -54,6 +57,7 @@ class Pakar extends Authenticatable
 		'password',
 		'no_hp',
 		'jenis_kelamin',
+		'spesialis',
 		'status_akun'
 	];
 
@@ -65,6 +69,11 @@ class Pakar extends Authenticatable
 	public function status()
 	{
 		return $this->belongsTo(StatusAkun::class, 'status_akun');
+	}
+
+	public function spesiali()
+	{
+		return $this->belongsTo(Spesiali::class, 'spesialis');
 	}
 
 	public function pembuat_akun_pakars()

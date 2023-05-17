@@ -3,24 +3,14 @@ import Profil from "../assets/Ellipse.png"
 import Cancel from "../assets/cancel.png"
 
 import { useStateContext } from "../context/ContextProvider.jsx";
-import { useState, useEffect } from 'react';
 
 export default function dasboard_user({visible, onClose}) {
     
     if (!visible) return null;
 
-    const {user, token} = useStateContext();
-    const [kelamin, setKelamin] = useState();
+    const {user} = useStateContext();
 
-    if (user.jenis_kelamin === 1) {
-        useEffect(()=>{
-            setKelamin("Laki-laki");
-        }, []);
-    } else {
-        useEffect(()=>{
-            setKelamin("Perempuan");
-        }, []);
-    }
+    console.log(user)
 
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
@@ -37,7 +27,7 @@ export default function dasboard_user({visible, onClose}) {
                     <div className='w-full text-sm flex flex-col gap-2 items-start pl-6'>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Jenis kelamin</p>
-                            <p className='w-2/3'  >: {kelamin}</p>
+                            <p className='w-2/3'>: {user.kelamin.jenis_kelamin}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Tanggal lahir</p>

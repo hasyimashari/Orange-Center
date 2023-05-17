@@ -18,7 +18,7 @@ export default function decision({oCls, vsb, nil}) {
             status_akun: "1"
         }
 
-        if (nil.status_akun===1){
+        if (nil.status_akun==="Aktif"){
             axiosClient.put(`/suspend_pakar/${nil.id_pakar}`, suspend)
             .then(() => {
                 oCls(true)

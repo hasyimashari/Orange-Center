@@ -32,12 +32,14 @@ export default function dashboard_user_layout() {
                     <img src={Profil} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </Link>
 
-                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                <Link to='/user-konsultasi' className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Konsultasi} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
-                </div>
+                </Link>
+
                 <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Artikel} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </div>
+
                 <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Permintaan} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </div>
@@ -45,13 +47,13 @@ export default function dashboard_user_layout() {
             
             <div className="relative w-full">
                 {/* header */}
-                <Link to='/admin-dashboard' className="h-[8rem] flex items-center cursor-pointer">
+                <Link to='/user-dashboard' className="h-[8rem] flex items-center cursor-pointer">
                     <img src={Icon} className=" drop-shadow-[-2px_2px_4px_rgba(0,0,0,0.25)] w-32" />
                     <p className="absolute text-5xl text-white font-bold pt-6 ml-16 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]" >OrangeCenter</p>
                 </Link>
 
                 {/* content */}
-                <div className="bg-white rounded-tl-3xl h-[81.5%] max-h-screen overflow-y-auto scrollbar-hide">
+                <div className="bg-white rounded-tl-3xl h-[81.5%] max-h-screen overflow-y-auto scrollbar-hide scroll-smooth">
                     <Outlet/>
                 </div>
             </div>

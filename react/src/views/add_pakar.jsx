@@ -9,10 +9,11 @@ export default function add_actor({visible, onClose}) {
 
     const namaref = useRef();
     const usernameref = useRef();
+    const spesialisref = useRef();
     const jeniskelaminref = useRef();
     const tanggallahirref = useRef();
     const nohpref = useRef();
-    const alamatref = useRef();
+    const asalref = useRef();
     const emailref = useRef();
     const passwrodref = useRef();
 
@@ -25,24 +26,25 @@ export default function add_actor({visible, onClose}) {
             setUser(data)
         })
     }, [])
-    
+
     const onSubmit = (ev) => {
 
         ev.preventDefault()
         const payload = {
             nama_lengkap: namaref.current.value,
             username: usernameref.current.value,
+            spesialis: spesialisref.current.value,
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
             no_hp: nohpref.current.value,
-            alamat: alamatref.current.value,
+            alamat: asalref.current.value,
             email: emailref.current.value,
             password: passwrodref.current.value,
+            status_akun: "1"
         }
 
         axiosClient.post('/pakar', payload)
         .then((response) => {
-            
             const payload_maker = {
                 id_admin: user.id_admin,
                 id_pakar: response.data.id_pakar,
@@ -88,9 +90,22 @@ export default function add_actor({visible, onClose}) {
                 <input ref={namaref}
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
 
-                <label className="text-sm">Username</label>
-                <input ref={usernameref}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
+                <div className="flex flex-row">
+                    <div className="w-1/2 mr-1">
+                        <label className="text-sm">Username</label>
+                        <input ref={usernameref}
+                        className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
+                    </div>
+                    <div className="w-1/2 mr-1">
+                        <label className="text-sm">Spesialis</label>
+                        <select ref={spesialisref} 
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
+                            <option value={""}>Pilih</option>
+                            <option value={1}>Pakar Jeruk</option>
+                            <option value={2}>Pakar Pupuk</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
@@ -108,6 +123,7 @@ export default function add_actor({visible, onClose}) {
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="tanggallahir" id="tanggal" />
                     </div>
                 </div>
+
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Nomor Hp</label>
@@ -115,9 +131,9 @@ export default function add_actor({visible, onClose}) {
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nomorhp" id="nohp" maxLength={15}/>
                     </div>
                     <div className="w-1/2 mr-1">
-                        <label className="text-sm">Alamat</label>
-                        <input ref={alamatref}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="alamatuser" id="alamat" maxLength={50}/>
+                        <label className="text-sm">Asal</label>
+                        <input ref={asalref}
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asaluser" id="asal" maxLength={50}/>
                     </div>
                 </div>
 
