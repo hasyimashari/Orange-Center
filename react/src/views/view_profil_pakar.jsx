@@ -47,8 +47,8 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                             <p className='w-2/3'>: {nilai.no_hp}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
-                            <p className='w-1/3'>Alamat</p>
-                            <p className='w-2/3'>: {nilai.alamat}</p>
+                            <p className='w-1/3'>Asal</p>
+                            <p className='w-2/3'>: {nilai.asal}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Email</p>

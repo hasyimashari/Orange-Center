@@ -54,7 +54,7 @@ return (
                 <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
                 <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Tanggal Lahir</li>
                 <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">No. HP</li>
-                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Alamat</li>
+                <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Asal</li>
                 <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Email</li>
             </ul>
         </div>
@@ -83,7 +83,7 @@ return (
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
                         <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
-                        <li className="w-[10rem] text-center p-1">{u.alamat}</li>
+                        <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
                     </ul>:
                     <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl">
@@ -92,7 +92,7 @@ return (
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
                         <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
-                        <li className="w-[10rem] text-center p-1">{u.alamat}</li>
+                        <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
                     </ul>
                     }

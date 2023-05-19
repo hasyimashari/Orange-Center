@@ -37,7 +37,7 @@ export default function add_actor({visible, onClose}) {
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
             no_hp: nohpref.current.value,
-            alamat: asalref.current.value,
+            asal: asalref.current.value,
             email: emailref.current.value,
             password: passwrodref.current.value,
             status_akun: "1"
@@ -88,18 +88,18 @@ export default function add_actor({visible, onClose}) {
 
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
+                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namaname" id="namaid" maxLength={30}/>
 
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Username</label>
                         <input ref={usernameref}
-                        className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
+                        className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Spesialis</label>
                         <select ref={spesialisref} 
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="sepsialisname" id="spesialisis">
                             <option value={""}>Pilih</option>
                             <option value={1}>Pakar Jeruk</option>
                             <option value={2}>Pakar Pupuk</option>
@@ -111,7 +111,7 @@ export default function add_actor({visible, onClose}) {
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="kelaminname" id="kelaminid">
                             <option value={""}>Pilih</option>
                             <option value={1}>Laki-laki</option>
                             <option value={2}>Perempuan</option>
@@ -120,7 +120,7 @@ export default function add_actor({visible, onClose}) {
                     <div className="w-1/2 mr-1">
                         <label className="text-sm" >Tanggal Lahir</label>
                         <input ref={tanggallahirref}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="tanggallahir" id="tanggal" />
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlid" />
                     </div>
                 </div>
 
@@ -128,22 +128,22 @@ export default function add_actor({visible, onClose}) {
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Nomor Hp</label>
                         <input ref={nohpref}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nomorhp" id="nohp" maxLength={15}/>
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nohpname" id="nohpid" maxLength={15}/>
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Asal</label>
                         <input ref={asalref}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asaluser" id="asal" maxLength={50}/>
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={50}/>
                     </div>
                 </div>
 
                 <label className="py-1">Email</label>
                 <input ref={emailref}
-                className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailoc" id="emaoc" maxLength={30}/>
+                className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
 
                 <label className="text-sm">Password</label>
                 <input ref={passwrodref}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="passwordcon" id="pwcon" />
+                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
                     <button onClick={onCancelSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>

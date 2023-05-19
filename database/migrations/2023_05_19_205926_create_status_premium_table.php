@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('admin', function (Blueprint $table) {
-            $table->foreign(['jenis_kelamin'], 'jenis_kelamin_admin')->references(['id_jenis_kelamin'])->on('jenis_kelamin');
+        Schema::create('status_premium', function (Blueprint $table) {
+            $table->integer('id_premium', true);
+            $table->string('status_premium', 20);
         });
     }
 
@@ -25,8 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('admin', function (Blueprint $table) {
-            $table->dropForeign('jenis_kelamin_admin');
-        });
+        Schema::dropIfExists('status_premium');
     }
 };

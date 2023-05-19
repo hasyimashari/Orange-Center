@@ -59,12 +59,12 @@ return (
             <div className="my-2">
                 <label htmlFor="emac"> Email</label>
                 <input ref={emailref}
-                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emaliac" id="emac" maxLength={30}/>
+                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
             </div>
             <div className="my-2">
                 <label htmlFor="pwac">Passwords</label>
                 <input ref={passwrodref}
-                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="password" name="passwordac" id="pwac" maxLength={12}/>
+                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" maxLength={12}/>
             </div>
             <div className="flex flex-col items-center justify-center">
                 <button type="submit" className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white">

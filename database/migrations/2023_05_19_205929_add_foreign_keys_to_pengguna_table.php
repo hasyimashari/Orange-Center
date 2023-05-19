@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pengguna', function (Blueprint $table) {
-            $table->foreign(['status_akun'], 'pengguna_ibfk_2')->references(['id_status_akun'])->on('status_akun');
-            $table->foreign(['jenis_kelamin'], 'pengguna_ibfk_1')->references(['id_jenis_kelamin'])->on('jenis_kelamin');
+            $table->foreign(['status_akun'], 'pengguna_ibfk_2')->references(['id_status_akun'])->on('status_akun')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['jenis_kelamin'], 'pengguna_ibfk_1')->references(['id_jenis_kelamin'])->on('jenis_kelamin')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['status_premium'], 'pengguna_ibfk_3')->references(['id_premium'])->on('status_premium')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
         Schema::table('pengguna', function (Blueprint $table) {
             $table->dropForeign('pengguna_ibfk_2');
             $table->dropForeign('pengguna_ibfk_1');
+            $table->dropForeign('pengguna_ibfk_3');
         });
     }
 };

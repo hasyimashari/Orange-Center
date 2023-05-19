@@ -16,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $id_pakar
  * @property string $nama_lengkap
  * @property Carbon $tanggal_lahir
- * @property string $alamat
+ * @property string $asal
  * @property string $username
  * @property string $email
  * @property string $password
@@ -26,6 +26,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $status_akun
  * 
  * @property Spesiali $spesiali
+ * @property Collection|Chat[] $chats
  * @property Collection|PembuatAkunPakar[] $pembuat_akun_pakars
  *
  * @package App\Models
@@ -51,7 +52,7 @@ class Pakar extends Authenticatable
 	protected $fillable = [
 		'nama_lengkap',
 		'tanggal_lahir',
-		'alamat',
+		'asal',
 		'username',
 		'email',
 		'password',
@@ -60,11 +61,6 @@ class Pakar extends Authenticatable
 		'spesialis',
 		'status_akun'
 	];
-
-	public function kelamin()
-	{
-		return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin');
-	}
 
 	public function status()
 	{
@@ -76,7 +72,17 @@ class Pakar extends Authenticatable
 		return $this->belongsTo(Spesiali::class, 'spesialis');
 	}
 
-	public function pembuat_akun_pakars()
+	public function kelamin()
+	{
+		return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin');
+	}
+
+	public function chats_()
+	{
+		return $this->hasMany(Chat::class, 'to_pakar');
+	}
+
+	public function pembuat_akun_pakar_()
 	{
 		return $this->hasMany(PembuatAkunPakar::class, 'id_pakar');
 	}

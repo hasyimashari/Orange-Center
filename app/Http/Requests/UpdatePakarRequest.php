@@ -30,7 +30,7 @@ class UpdatePakarRequest extends FormRequest
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required|date_format:Y-m-d',
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',
-            'alamat' => 'required|string|max:50',
+            'asal' => 'required|string|max:15',
             'password' => 'required|string|max:12',
         ];
     }

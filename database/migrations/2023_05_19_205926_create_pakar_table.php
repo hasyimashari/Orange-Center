@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->integer('id_admin', true);
+        Schema::create('pakar', function (Blueprint $table) {
+            $table->integer('id_pakar', true);
             $table->string('nama_lengkap', 30)->unique('Nama_lengkap');
             $table->date('tanggal_lahir');
-            $table->string('alamat', 50);
+            $table->string('asal', 15);
             $table->string('username', 12)->unique('Username');
             $table->string('email', 30)->unique('Email');
             $table->string('password', 60);
             $table->string('no_hp', 15);
-            $table->integer('jenis_kelamin')->index('jenis_kelamin_admin');
+            $table->integer('jenis_kelamin')->index('pakar_ibfk_1');
+            $table->integer('spesialis')->index('pakar_ibfk_3');
+            $table->integer('status_akun')->default(1)->index('pakar_ibfk_2');
         });
     }
 
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('pakar');
     }
 };

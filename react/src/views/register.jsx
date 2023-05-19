@@ -12,7 +12,7 @@ export default function Register() {
     const jeniskelaminref = useRef();
     const tanggallahirref = useRef();
     const nohpref = useRef();
-    const alamatref = useRef();
+    const asalref = useRef();
     const emailref = useRef();
     const passwrodref = useRef();
     
@@ -27,7 +27,7 @@ export default function Register() {
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
             no_hp: nohpref.current.value,
-            alamat: alamatref.current.value,
+            asal: asalref.current.value,
             email: emailref.current.value,
             password: passwrodref.current.value,
         }
@@ -61,17 +61,17 @@ return (
 
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref} 
-                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
+                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namaname" id="namaid" maxLength={30}/>
 
                 <label className="text-sm">Username</label>
                 <input ref={usernameref} 
-                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
+                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
 
                 <div className="flex flex-row gap-1">
                     <div className="w-1/2">
                         <label className="text-sm">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
-                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
+                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="kelaminname" id="kelaminid">
                             <option value={""}>Pilih</option>
                             <option value={1}>Laki-laki</option>
                             <option value={2}>Perempuan</option>
@@ -80,29 +80,29 @@ return (
                     <div className="w-1/2">
                         <label className="text-sm" >Tanggal Lahir</label>
                         <input ref={tanggallahirref} 
-                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="tanggallahir" id="tanggal" />
+                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlname" />
                     </div>
                 </div>
                 <div className="flex flex-row gap-1">
                     <div className="w-1/2">
                         <label className="text-sm">Nomor Hp</label>
                         <input ref={nohpref}
-                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nomorhp" id="nohp" maxLength={15}/>
+                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nohpname" id="nohpid" maxLength={15}/>
                     </div>
                     <div className="w-1/2">
-                        <label className="text-sm">Alamat</label>
-                        <input ref={alamatref} 
-                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="alamatuser" id="alamat" maxLength={50}/>
+                        <label className="text-sm">Asal</label>
+                        <input ref={asalref} 
+                        className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={15}/>
                     </div>
                 </div>
 
                 <label className="py-1">Email</label>
                 <input ref={emailref}
-                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailoc" id="emaoc" maxLength={30}/>
+                className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
 
                 <label className="text-sm">Password</label>
                 <input ref={passwrodref}
-                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="passwordcon" id="pwcon" />
+                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" />
 
                 <div className="flex justify-between text-sm my-6">
                     <p className="py-2.5">sudah punya akun?  

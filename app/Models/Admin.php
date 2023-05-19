@@ -16,13 +16,14 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $id_admin
  * @property string $nama_lengkap
  * @property Carbon $tanggal_lahir
- * @property string $alamat
+ * @property string $asal
  * @property string $username
  * @property string $email
  * @property string $password
  * @property string $no_hp
  * @property int $jenis_kelamin
  * 
+ * @property Collection|Artikel[] $artikels
  * @property Collection|PembuatAkunPakar[] $pembuat_akun_pakars
  *
  * @package App\Models
@@ -46,7 +47,7 @@ class Admin extends Authenticatable
 	protected $fillable = [
 		'nama_lengkap',
 		'tanggal_lahir',
-		'alamat',
+		'asal',
 		'username',
 		'email',
 		'password',
@@ -59,7 +60,12 @@ class Admin extends Authenticatable
 		return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin');
 	}
 
-	public function pembuat_akun_pakars()
+	public function artikels_()
+	{
+		return $this->hasMany(Artikel::class, 'id_admin');
+	}
+
+	public function pembuat_akun_pakars_()
 	{
 		return $this->hasMany(PembuatAkunPakar::class, 'id_admin');
 	}

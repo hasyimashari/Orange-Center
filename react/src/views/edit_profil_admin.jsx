@@ -12,7 +12,7 @@ export default function edit_profil_admin({visible, onClose}) {
     const jeniskelaminref = useRef();
     const tanggallahirref = useRef();
     const nohpref = useRef();
-    const alamatref = useRef();
+    const asal = useRef();
     const emailref = useRef();
     const passwrodref = useRef();
 
@@ -28,7 +28,7 @@ export default function edit_profil_admin({visible, onClose}) {
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
             no_hp: nohpref.current.value,
-            alamat: alamatref.current.value,
+            asal: asal.current.value,
             email: emailref.current.value,
             password: passwrodref.current.value,
         }
@@ -69,17 +69,17 @@ export default function edit_profil_admin({visible, onClose}) {
 
                 <label className="text-sm">Nama Lengkap</label>
                 <input ref={namaref} defaultValue={user.nama_lengkap}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namalengkap" id="nama" maxLength={30}/>
+                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namaname" id="namaid" maxLength={30}/>
 
                 <label className="text-sm">Username</label>
                 <input ref={usernameref} defaultValue={user.username}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="username" id="uname" maxLength={12}/>
+                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
 
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="jeniskelamin" id="jenis">
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="kelaminname" id="kelaminid">
                             <option value={""}>Pilih</option>
                             <option value={1}>Laki-laki</option>
                             <option value={2}>Perempuan</option>
@@ -88,29 +88,29 @@ export default function edit_profil_admin({visible, onClose}) {
                     <div className="w-1/2 mr-1">
                         <label className="text-sm" >Tanggal Lahir</label>
                         <input ref={tanggallahirref} defaultValue={user.tanggal_lahir}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="tanggallahir" id="tanggal" />
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlid" />
                     </div>
                 </div>
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Nomor Hp</label>
                         <input ref={nohpref} defaultValue={user.no_hp}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nomorhp" id="nohp" maxLength={15}/>
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nohpname" id="nohpid" maxLength={15}/>
                     </div>
                     <div className="w-1/2 mr-1">
-                        <label className="text-sm">Alamat</label>
-                        <input ref={alamatref} defaultValue={user.alamat}
-                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="alamatuser" id="alamat" maxLength={50}/>
+                        <label className="text-sm">Asal</label>
+                        <input ref={asal} defaultValue={user.alamat}
+                        className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={15}/>
                     </div>
                 </div>
 
                 <label className="py-1">Email</label>
                 <input ref={emailref} defaultValue={user.email}
-                className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailoc" id="emaoc" maxLength={30}/>
+                className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
 
                 <label className="text-sm">Password</label>
                 <input ref={passwrodref}
-                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="passwordcon" id="pwcon" />
+                className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwnname" id="pwid" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
                     <button onClick={onCancelSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>

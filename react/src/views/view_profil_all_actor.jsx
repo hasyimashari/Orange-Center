@@ -38,8 +38,8 @@ export default function dasboard_user({visible, onClose}) {
                             <p className='w-2/3'>: {user.no_hp}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
-                            <p className='w-1/3'>Alamat</p>
-                            <p className='w-2/3'>: {user.alamat}</p>
+                            <p className='w-1/3'>Asal</p>
+                            <p className='w-2/3'>: {user.asal}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Email</p>

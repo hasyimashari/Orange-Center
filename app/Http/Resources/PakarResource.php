@@ -18,7 +18,7 @@ class PakarResource extends JsonResource
             'id_pakar' => $this-> id_pakar,
             'nama_lengkap' => $this-> nama_lengkap,
             'tanggal_lahir' => $this-> tanggal_lahir,
-            'alamat' => $this-> alamat,
+            'asal' => $this-> asal,
             'username' => $this-> username,
             'spesialis' => $this -> spesiali -> spesialis,
             'email' => $this-> email,
