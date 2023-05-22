@@ -3,32 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-class AuthController extends Controller
+class LoginController extends Controller
 {
-    public function register(RegisterRequest $request)
+    public function login(Request $request)
     {
-
-        $data = $request->validated();
-
-        /** @var \App\Models\Pengguna $user*/
-        $data['password'] = bcrypt($data['password']);
-        Pengguna::create($data);
-
-        return response([
-            'success' => true
+        $credentials = $request->validate([
+            'email' => 'required|email|string|email|max:30',
+            'password' => 'required|max:12',
         ]);
-    }
-
-    public function login(LoginRequest $request)
-    {
-        $credentials = $request->validated();
+        
         if (Auth::guard('web')->attempt($credentials)) {
             /** @var User $user */
             $user = Auth::guard("web")->user();
@@ -73,17 +59,6 @@ class AuthController extends Controller
             'user' => $user,
             'token' => $token,
             'role' => $role
-        ]);
-    }
-
-    public function logout(Request $request){
-
-        /** @var User $user */
-        $user = Auth::user();
-        $user->currentAccessToken()->delete();
-
-        return response([
-            'success' => true
         ]);
     }
 }

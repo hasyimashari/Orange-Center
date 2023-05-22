@@ -18,7 +18,7 @@ export default function Register() {
     
     const [errors, setErrors] = useState(null)
     
-    const onSubmit = (ev) => {
+    const clickRegistration = (ev) => {
 
         ev.preventDefault()
         const payload = {
@@ -45,10 +45,14 @@ export default function Register() {
         })
     }
 
+    const setLoginPage = () => {
+        navigate('/login')
+    }
+
 return (
     <>
         {/* form */}
-        <form onSubmit={onSubmit} className="w-full px-16">
+        <form onSubmit={clickRegistration} className="w-full px-16">
                 <h1 className="font-bold text-[2.25rem]">Daftar</h1>
 
                 {/* errors */}
@@ -106,9 +110,9 @@ return (
 
                 <div className="flex justify-between text-sm my-6">
                     <p className="py-2.5">sudah punya akun?  
-                    <Link to='/login' className="text-[#4E944F] font-bold cursor-pointer mx-2">
+                    <span onClick={setLoginPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
                         MASUK 
-                    </Link> </p>
+                    </span> </p>
                     <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
                 </div>
         </form>

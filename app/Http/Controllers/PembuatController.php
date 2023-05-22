@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PembuatPakarRequest;
 use App\Models\PembuatAkunPakar;
+use Illuminate\Http\Request;
 
 class PembuatController extends Controller
 {
-    public function upmaker(PembuatPakarRequest $request)
+    public function upmaker(Request $request)
     {
 
-        $data = $request->validated();
+        $data = $request->validate([
+            'id_admin' => 'required|int',            
+            'id_pakar' => 'required|int',
+        ]);
 
         /** @var \App\Models\PembuatAkunPakar $user*/
         PembuatAkunPakar::create($data);

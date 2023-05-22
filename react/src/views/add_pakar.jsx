@@ -27,7 +27,7 @@ export default function add_actor({visible, onClose}) {
         })
     }, [])
 
-    const onSubmit = (ev) => {
+    const save = (ev) => {
 
         ev.preventDefault()
         const payload = {
@@ -65,7 +65,7 @@ export default function add_actor({visible, onClose}) {
         })
     }
 
-    const onCancelSubmit = () => {
+    const cancel = () => {
         onClose(true);
         setErrors(null);
     }
@@ -76,7 +76,7 @@ export default function add_actor({visible, onClose}) {
 
         // form
         <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
-        <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+        <form onSubmit={save} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
@@ -146,7 +146,7 @@ export default function add_actor({visible, onClose}) {
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
-                    <button onClick={onCancelSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
+                    <button onClick={cancel} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
                     <button type="submit" className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
                 </div>
             </form>

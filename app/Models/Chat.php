@@ -13,15 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  * Class Chat
  * 
  * @property int $id_chat
- * @property int|null $from_user
- * @property int|null $to_pakar
- * @property int|null $from_pakar
- * @property int|null $to_user
+ * @property int $user
+ * @property int $pakar
  * @property string $line_chat
  * @property Carbon $created_at
  * 
- * @property Pakar|null $pakar
- * @property Pengguna|null $pengguna
+ * @property Pengguna $pengguna
  *
  * @package App\Models
  */
@@ -32,27 +29,23 @@ class Chat extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'from_user' => 'int',
-		'to_pakar' => 'int',
-		'from_pakar' => 'int',
-		'to_user' => 'int'
+		'user' => 'int',
+		'pakar' => 'int'
 	];
 
 	protected $fillable = [
-		'from_user',
-		'to_pakar',
-		'from_pakar',
-		'to_user',
+		'user',
+		'pakar',
 		'line_chat'
 	];
 
 	public function pakar()
 	{
-		return $this->belongsTo(Pakar::class, 'to_pakar');
+		return $this->belongsTo(Pakar::class, 'pakar');
 	}
 
 	public function pengguna()
 	{
-		return $this->belongsTo(Pengguna::class, 'to_user');
+		return $this->belongsTo(Pengguna::class, 'user');
 	}
 }

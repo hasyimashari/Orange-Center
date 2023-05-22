@@ -1,27 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Pengguna;
+use Illuminate\Http\Request;
 
-class RegisterRequest extends FormRequest
+class RegitrasionController extends Controller
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function register(Request $request)
     {
-        return true;
-    }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
-    public function rules(): array
-    {
-        return [
+        $data = $request->validate([
             'nama_lengkap' => 'required|string|max:30|unique:Pengguna,nama_lengkap',            
             'username' => 'required|string|max:12|unique:Pengguna,username',
             'email' => 'required|email|max:30|unique:Pengguna,email',
@@ -30,6 +20,14 @@ class RegisterRequest extends FormRequest
             'no_hp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15',
             'asal' => 'required|string|max:15',
             'password' => 'required|string|max:12',
-        ];
+        ]);
+
+        /** @var \App\Models\Pengguna $user*/
+        $data['password'] = bcrypt($data['password']);
+        Pengguna::create($data);
+
+        return response([
+            'success' => true
+        ]);
     }
 }

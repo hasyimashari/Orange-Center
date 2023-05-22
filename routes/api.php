@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PakarController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SuspendController;
 use App\Http\Controllers\PembuatController;
+use App\Http\Controllers\RegitrasionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [LogoutController::class, 'logout']);
     Route::get('/user', function (Request $request) {
         $user = $request->user();
         $user->kelamin->get();
@@ -34,7 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/suspend_pakar/{id}', [SuspendController::class, 'suspend_pakar']);
     Route::put('/suspend_pengguna/{id}', [SuspendController::class, 'suspend_user']);
     Route::post('/pembuat', [PembuatController::class, 'upmaker']);
+    Route::post('/sendChat', [ChatController::class, 'storechat']);
 });
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [RegitrasionController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);

@@ -5,11 +5,13 @@ import View from './view_profil_pakar';
 
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function administrasi_akun_pakar() {
 
-    const [showEdit, setShowEdit] = useState(false)
+    const navigate = useNavigate();
+
+    const [showAddPakarAccount, setAddPakarAccount] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
     const [loading, setLoading] = useState(false)
     const [users, setUsers] = useState([])
@@ -31,14 +33,22 @@ export default function administrasi_akun_pakar() {
         getUsers();
     }, [])
 
-    const closeModal = () => {
+    const closeProfil = () => {
         setShowProfil(false)
         getUsers()
     }
-    
-    const closeModalEdit = () => {        
-        setShowEdit(false)
+
+    const closeAddPakarAccount = () => {        
+        setAddPakarAccount(false)
         getUsers()
+    }
+
+    const setAdmnistrasiAkunPakar = () => {
+        navigate("/admin-administrasi-pakar")
+    }
+
+    const setAdmnistrasiAkunUser = () => {
+        navigate("/admin-administrasi-pengguna")
     }
 
 return (
@@ -50,12 +60,12 @@ return (
                     <h1>Administrasi akun</h1>
                 </div>
                 <div className="w-1/4 flex flex-row justify-center gap-10">
-                    <Link to="/admin-administrasi-pakar" className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
+                    <div onClick={setAdmnistrasiAkunPakar} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
                         Pakar
-                    </Link>
-                    <Link to="/admin-administrasi-pengguna" className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
+                    </div>
+                    <div onClick={setAdmnistrasiAkunUser} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
                         Pengguna
-                    </Link>
+                    </div>
                 </div>
             </div>
             <ul className="flex justify-normal gap-2 pb-4">
@@ -84,10 +94,10 @@ return (
 
         {!loading && <div className="h-[20rem] pl-8 flex flex-col gap-2">
             {/* list */}
-            {users.map(u=>(
-                <div>
+            {users.map((u, id)=>(
+                <div key={id}>
                     {u.status_akun==="Aktif"?
-                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
+                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl cursor-pointer">
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
@@ -96,7 +106,7 @@ return (
                         <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
                     </ul>:
-                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl">
+                    <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl cursor-pointer">
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
@@ -109,13 +119,13 @@ return (
                 </div>
             ))}
             {/* add */}
-            <div onClick={() => setShowEdit(true)} className="absolute bottom-16 end-12 w-16 h-16 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-full flex p-2 cursor-pointer">
+            <div onClick={() => setAddPakarAccount(true)} className="absolute bottom-16 end-12 w-16 h-16 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-full flex p-2 cursor-pointer">
                 <img src={Add_pakar} className="h-6 my-auto mx-auto" />
             </div>
         </div>}
 
-        <View onClose={closeModal} visible={showProfil} nilai={nilai}/>
-        <Edit onClose={closeModalEdit} visible={showEdit}/>
+        <View onClose={closeProfil} visible={showProfil} nilai={nilai}/>
+        <Edit onClose={closeAddPakarAccount} visible={showAddPakarAccount}/>
     </>
 )
 }

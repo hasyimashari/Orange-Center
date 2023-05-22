@@ -14,11 +14,19 @@ export default function profil_user() {
     const [loading, setLoading] = useState(false)
     const {user, setUser, setToken, setRole} = useStateContext()
 
-    const closeModal = () => {
+    const openprofil = () => {
+        setShowProfil(true)
+    }
+
+    const closeprofil = () => {
         setShowProfil(false)
     }
 
-    const closeModalEdit = () => {        
+    const openeditprofil = () => {
+        setShowEdit(true)
+    }
+
+    const closeeditprofil = () => {        
         setShowEdit(false)
         setUser({})
         setLoading(true)
@@ -72,10 +80,10 @@ export default function profil_user() {
                     }
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button onClick={() => setShowProfil(true)} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                        <button onClick={openprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
-                        <button onClick={() => setShowEdit(true)} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                        <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
                         <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
@@ -86,8 +94,8 @@ export default function profil_user() {
             </div>
         </div>
 
-        <View onClose={closeModal} visible={showProfil} />
-        <Edit onClose={closeModalEdit} visible={showEdit} />
+        <View onClose={closeprofil} visible={showProfil} />
+        <Edit onClose={closeeditprofil} visible={showEdit} />
         </div>
         
     )

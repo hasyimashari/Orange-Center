@@ -20,7 +20,7 @@ export default function edit_profil_pakar({visible, onClose}) {
     const [errors, setErrors] = useState()
     const {user} = useStateContext()
 
-    const onSubmit = (ev) => {
+    const save = (ev) => {
 
         ev.preventDefault()
         const payload = {
@@ -48,7 +48,7 @@ export default function edit_profil_pakar({visible, onClose}) {
         })
     }
 
-    const onCancelSubmit = () => {
+    const cancel = () => {
         onClose(true);
         setErrors(null);
     }
@@ -59,7 +59,7 @@ export default function edit_profil_pakar({visible, onClose}) {
 
         // form
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
-        <form onSubmit={onSubmit} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+        <form onSubmit={save} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
@@ -114,7 +114,7 @@ export default function edit_profil_pakar({visible, onClose}) {
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Asal</label>
-                        <input ref={asal} defaultValue={user.alamat}
+                        <input ref={asalref} defaultValue={user.asal}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={15}/>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ export default function edit_profil_pakar({visible, onClose}) {
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwnname" id="pwid" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
-                    <button onClick={onCancelSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
+                    <button onClick={cancel} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
                     <button type="submit" className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
                 </div>
             </form>

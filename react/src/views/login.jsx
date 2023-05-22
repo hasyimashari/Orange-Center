@@ -3,9 +3,11 @@ import axiosClient from  "../axios-client"
 
 import { useRef, useState } from "react"
 import { useStateContext } from "../context/ContextProvider.jsx";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export default function login() {
+
+    const navigate = useNavigate();
 
     const emailref = useRef();
     const passwrodref = useRef();
@@ -13,9 +15,10 @@ export default function login() {
     const [errors, setErrors] = useState(null)
     const {setUser, setToken, setRole} = useStateContext()
     
-    const onSubmit = (ev) => {
+    const clickLogin = (ev) => {
 
         ev.preventDefault()
+
         const payload = {
             email: emailref.current.value,
             password: passwrodref.current.value,
@@ -41,10 +44,14 @@ export default function login() {
         })
     }
 
+    const setRegistrationPage = () => {
+        navigate('/register')
+    }
+
 return (
     <>
         {/* form */}
-        <form onSubmit={onSubmit} action="" className="w-full px-16">
+        <form onSubmit={clickLogin} action="" className="w-full px-16">
             <h1 className="font-bold text-[2.8rem] my-4">Masuk</h1>
 
             {/* error */}
@@ -72,9 +79,9 @@ return (
                     <img src={Arrow_right} />
                 </button>
                 <p className="mt-6">sudah punya akun?  
-                <Link to='/register' className="text-[#4E944F] font-bold cursor-pointer mx-2">
+                <span onClick={setRegistrationPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
                     DAFTAR 
-                </Link> </p>
+                </span> </p>
             </div>
         </form>
     </>
