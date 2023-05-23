@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer('pakar')->index('pakar');
             $table->text('line_chat');
             $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
-            $table->foreign(['user'], 'chat_ibfk_2')->references(['id_user'])->on('pengguna')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign(['pakar'], 'chat_ibfk_1')->references(['id_pakar'])->on('pakar')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

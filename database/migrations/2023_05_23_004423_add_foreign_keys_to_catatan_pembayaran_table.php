@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('catatan_pembayaran', function (Blueprint $table) {
-            $table->foreign(['id_user'], 'catatan_pembayaran_ibfk_2')->references(['id_user'])->on('pengguna')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign(['metode_pembayaran'], 'catatan_pembayaran_ibfk_1')->references(['id_metode'])->on('metode_pembayaran')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['id_user'], 'catatan_pembayaran_ibfk_2')->references(['id_user'])->on('pengguna')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -27,8 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('catatan_pembayaran', function (Blueprint $table) {
-            $table->dropForeign('catatan_pembayaran_ibfk_2');
             $table->dropForeign('catatan_pembayaran_ibfk_1');
+            $table->dropForeign('catatan_pembayaran_ibfk_2');
         });
     }
 };
