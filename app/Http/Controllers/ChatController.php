@@ -6,6 +6,7 @@ use App\Events\ChatSender;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
@@ -14,14 +15,24 @@ class ChatController extends Controller
         $data = $request->validate([
             'user' => 'required|int',            
             'pakar' => 'required|int',
-            'line_chat' => 'required',
+            'line_chat' => 'nullable',
+            'sentby_user' => 'int',
+            'sentby_pakar' => 'int',
         ]);
 
         $id_pakar = $request-> pakar;
         $id_user = $request-> user;
         $line_chat = $request-> line_chat;
+        $sentby_user = $request->sentby_user;
+        $sentby_pakar = $request->sentby_pakar;
 
-        broadcast(new ChatSender($id_pakar, $id_user, $line_chat));
+        if ($request->$sentby_user!==[]){
+            $user_session = DB::table('chat')->where('sentby_user', $sentby_user)->increment('user_session');
+        } else {
+            $user_session = 1;
+        }
+
+        broadcast(new ChatSender($id_pakar, $id_user, $line_chat, $sentby_user, $sentby_pakar, $user_session));
 
         Chat::create($data);
         return response([
@@ -29,21 +40,29 @@ class ChatController extends Controller
         ]);
     }
 
-    public function loadchatuser($request) {
+    public function loadchatpakar(Request $request) {
 
-        $chat = Chat::where("user", $request)->orderBy('craeted_at','asc')->get();
+        $data = $request->validate([
+            'user' => 'required|int',            
+            'pakar' => 'required|int',
+        ]);
+
+        $chat = Chat::where($data)->orderBy('created_at','asc')->get();
         
         return response([
             'chat' => $chat
         ]);
     }
 
-    public function loadchatpakar($request) {
-
-        $chat = Chat::where("pakar", $request)->orderBy('craeted_at','asc')->get();
-        
-        return response([
-            'chat' => $chat
+    public function checksession(Request $request){
+        $data = $request->validate([
+            'user' => 'required|int'
         ]);
+
+        $session = Chat::where($data)->orderBy('user_session','desc')->value('user_session');
+
+        return response(([
+            'user_session' => $session
+        ]));
     }
 }

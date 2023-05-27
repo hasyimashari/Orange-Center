@@ -71,7 +71,7 @@ return (
         </div>
         
         {/* conten */}
-        {loading && <div className="h-[20rem] pl-8 flex flex-col gap-2">
+        {loading && <div className="h-fit pl-8 flex flex-col gap-2">
             <ul  className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl">
                 <li className="w-[15rem] text-center p-1">Loading...</li>
                 <li className="w-[10rem] text-center p-1">Loading...</li>
@@ -83,7 +83,7 @@ return (
             </ul>
         </div>}
 
-        {!loading && <div className="h-[20rem] pl-8 flex flex-col gap-2">
+        {!loading && <div className="h-fit pl-8 flex flex-col gap-2">
             {/* list */}
             {users.map((u, id)=>(
                 <div key={id}>

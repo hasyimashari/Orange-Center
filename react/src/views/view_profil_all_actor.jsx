@@ -31,7 +31,7 @@ export default function dasboard_user({visible, onClose}) {
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>Tanggal lahir</p>
-                            <p className='w-2/3'>: {user.tanggal_lahir}</p>
+                            <p className='w-2/3'>: {user.tanggal_lahir.substring(0, 10)}</p>
                         </div>
                         <div className='flex gap-1 w-full text-left'>
                             <p className='w-1/3'>No HP</p>

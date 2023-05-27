@@ -39,7 +39,7 @@ class Pakar extends Authenticatable
 	public $timestamps = false;
 
 	protected $casts = [
-		'tanggal_lahir' => 'string',
+		'tanggal_lahir' => 'datetime',
 		'jenis_kelamin' => 'int',
 		'spesialis' => 'int',
 		'status_akun' => 'int'

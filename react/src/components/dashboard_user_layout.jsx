@@ -64,7 +64,7 @@ export default function dashboard_user_layout() {
                 </div>
 
                 {/* content */}
-                <div className="bg-white rounded-tl-3xl h-[81.5%] max-h-screen overflow-y-auto scrollbar-hide scroll-smooth">
+                <div className="bg-white rounded-tl-3xl h-[81%] max-h-screen overflow-y-auto scrollbar-hide scroll-smooth">
                     <Outlet/>
                 </div>
             </div>

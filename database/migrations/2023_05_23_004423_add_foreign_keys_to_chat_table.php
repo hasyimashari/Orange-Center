@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::table('chat', function (Blueprint $table) {
             $table->foreign(['user'], 'chat_ibfk_1')->references(['id_user'])->on('pengguna')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['sentby_user'], 'chat_ibfk_3')->references(['id_user'])->on('pengguna')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign(['pakar'], 'chat_ibfk_2')->references(['id_pakar'])->on('pakar')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['sentby_pakar'], 'chat_ibfk_4')->references(['id_pakar'])->on('pakar')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

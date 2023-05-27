@@ -17,8 +17,11 @@ return new class extends Migration
             $table->integer('id_chat', true);
             $table->integer('user')->index('user');
             $table->integer('pakar')->index('pakar');
-            $table->text('line_chat');
+            $table->integer('sentby_user')->nullable()->index('chat_ibfk_3');
+            $table->integer('sentby_pakar')->nullable()->index('sentby_pakar');
+            $table->text('line_chat')->nullable();
             $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
+            $table->integer('user_session')->default(1);
         });
     }
 

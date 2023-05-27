@@ -38,6 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/suspend_pengguna/{id}', [SuspendController::class, 'suspend_user']);
     Route::post('/pembuat', [PembuatController::class, 'upmaker']);
     Route::post('/sendChat', [ChatController::class, 'storechat']);
+    Route::post('/load_chat_pakar', [ChatController::class, 'loadchatpakar']);
+    Route::post('/get_user_session', [ChatController::class, 'checksession']);
 });
 
 Route::post('/register', [RegitrasionController::class, 'register']);

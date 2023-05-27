@@ -59,7 +59,7 @@ export default function dashboard_pakar_layout() {
                 </div>
 
                 {/* content */}
-                <div className="bg-white rounded-tl-3xl h-[81.5%] max-h-screen overflow-y-auto scrollbar-hide">
+                <div className="bg-white rounded-tl-3xl h-[81%] max-h-screen overflow-y-auto scrollbar-hide">
                     <Outlet/>
                 </div>
             </div>

@@ -76,7 +76,7 @@ export default function edit_profil_pakar({visible, onClose}) {
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
                         <label className="text-sm">Username</label>
-                        <input ref={usernameref}
+                        <input ref={usernameref} defaultValue={user.username}
                         className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
                     </div>
                     <div className="w-1/2 mr-1">
@@ -102,7 +102,7 @@ export default function edit_profil_pakar({visible, onClose}) {
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm" >Tanggal Lahir</label>
-                        <input ref={tanggallahirref} defaultValue={user.tanggal_lahir}
+                        <input ref={tanggallahirref} defaultValue={user.tanggal_lahir.substring(0, 10)}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlid" />
                     </div>
                 </div>

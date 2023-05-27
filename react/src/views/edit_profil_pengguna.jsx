@@ -87,7 +87,7 @@ export default function edit_profil_pengguna({visible, onClose}) {
                     </div>
                     <div className="w-1/2 mr-1">
                         <label className="text-sm" >Tanggal Lahir</label>
-                        <input ref={tanggallahirref} defaultValue={user.tanggal_lahir}
+                        <input ref={tanggallahirref} defaultValue={user.tanggal_lahir.substring(0, 10)}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlid" />
                     </div>
                 </div>

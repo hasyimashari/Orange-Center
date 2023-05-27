@@ -59,7 +59,7 @@ export default function profil_pakar() {
     return (
 
         <div>
-        <div className='h-[35rem] flex items-center justify-center gap-10'>
+        <div className='h-[34rem] flex items-center justify-center gap-10'>
 
             {/* profil */}
             <div className='w-80 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>

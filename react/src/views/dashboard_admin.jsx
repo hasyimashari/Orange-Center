@@ -7,7 +7,7 @@ export default function dashboard_admin() {
 
 return (
     <>
-        <div className='h-[35rem] flex items-center justify-center gap-10'>
+        <div className='h-[34rem] flex items-center justify-center gap-10'>
 
             {/* content */}
             <div className='w-80 h-80 rounded-3xl shadow-[-6px_6px_0px_3px_rgba(78,148,79,0.5)] flex flex-col items-center gap-y-2 text-center py-6 border-2'>
