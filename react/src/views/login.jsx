@@ -13,7 +13,7 @@ export default function login() {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState(null)
-    const {setUser, setToken, setRole} = useStateContext()
+    const {setUser, setToken, setRole, loading, setLoading} = useStateContext()
     
     const clickLogin = (ev) => {
 
@@ -25,15 +25,18 @@ export default function login() {
         }
 
         setErrors(null)
+        setLoading(true)
         axiosClient.post('/login', payload)
         .then((response) => {
             setUser(response.data.user)
             setToken(response.data.token)
             setRole(response.data.role)
+            setLoading(false)
         })
 
         .catch(error => {
             const response = error.response;
+            setLoading(false)
             if (response && response.status === 422) {
                 if (response.data.errors) {
                     setErrors(response.data.errors)
@@ -74,10 +77,16 @@ return (
                 className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" maxLength={12}/>
             </div>
             <div className="flex flex-col items-center justify-center">
-                <button type="submit" className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white">
-                    MASUK
-                    <img src={Arrow_right} />
-                </button>
+                {loading?
+                    <button className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white">
+                        Loading...
+                    </button>:
+
+                    <button type="submit" className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white">
+                        MASUK
+                        <img src={Arrow_right} />
+                    </button>
+                }
                 <p className="mt-6">sudah punya akun?  
                 <span onClick={setRegistrationPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
                     DAFTAR 

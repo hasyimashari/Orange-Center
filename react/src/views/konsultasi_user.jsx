@@ -9,8 +9,7 @@ import Profil from "../assets/Ellipse.png"
 export default function konsultasi_user() {
 
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false)
-    const {setTo} = useStateContext();
+    const {setTo, loading, setLoading} = useStateContext();
 
     const getUsers = () => {
         setLoading(true)

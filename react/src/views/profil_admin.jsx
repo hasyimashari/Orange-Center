@@ -11,8 +11,8 @@ export default function profil_admin() {
     
     const [showEdit, setShowEdit] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const {user, setUser, setToken, setRole} = useStateContext()
+    const [loadingE, setLoadingE] = useState(false)
+    const {user, setUser, setToken, setRole, loading, setLoading} = useStateContext()
 
     const openprofil = () => {
         setShowProfil(true)
@@ -39,11 +39,13 @@ export default function profil_admin() {
 
     const onLogout = (ev) => {
         ev.preventDefault()
+        setLoadingE(true)
         axiosClient.post('/logout')
         .then(() => {
             setUser({})
             setToken(null)
             setRole(null)
+            setLoadingE(false)
         })
     }
 
@@ -86,9 +88,15 @@ export default function profil_admin() {
                         <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
-                        <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
-                            Keluar
-                        </button>
+                        {loadingE?
+                            <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                loading...
+                            </button>:
+
+                            <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                Keluar
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

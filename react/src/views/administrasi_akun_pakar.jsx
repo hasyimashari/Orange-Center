@@ -6,6 +6,7 @@ import View from './view_profil_pakar';
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"
 import { Link, useNavigate } from 'react-router-dom';
+import { useStateContext } from "../context/ContextProvider";
 
 export default function administrasi_akun_pakar() {
 
@@ -13,7 +14,7 @@ export default function administrasi_akun_pakar() {
 
     const [showAddPakarAccount, setAddPakarAccount] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
-    const [loading, setLoading] = useState(false)
+    const {loading, setLoading} = useStateContext()
     const [users, setUsers] = useState([])
     const [nilai, setNilai] = useState()
 

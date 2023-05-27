@@ -2,6 +2,7 @@ import {Link, useNavigate} from "react-router-dom"
 import { useRef, useState } from "react"
 import axiosClient from  "../axios-client"
 import Arrow_right from "../assets/arrow_right.png"
+import { useStateContext } from "../context/ContextProvider";
 
 export default function Register() {
 
@@ -17,6 +18,7 @@ export default function Register() {
     const passwrodref = useRef();
     
     const [errors, setErrors] = useState(null)
+    const {loading, setLoading} = useStateContext()
     
     const clickRegistration = (ev) => {
 
@@ -32,8 +34,10 @@ export default function Register() {
             password: passwrodref.current.value,
         }
 
+        setLoading(true)
         axiosClient.post('/register', payload)
         .then(() => {
+            setLoading(false)
             navigate('/login')
         })
 
@@ -41,6 +45,7 @@ export default function Register() {
             const response = error.response;
             if (response && response.status === 422) {
                 setErrors(response.data.errors)
+                setLoading(false)
             }
         })
     }
@@ -113,7 +118,10 @@ return (
                     <span onClick={setLoginPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
                         MASUK 
                     </span> </p>
-                    <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
+                    {loading?
+                        <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Loading...</button>:
+                        <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
+                    }
                 </div>
         </form>
     </>

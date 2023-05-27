@@ -34,10 +34,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/admin', AdminController::class);
     Route::apiResource('/pakar', PakarController::class);
     Route::apiResource('/pengguna', PenggunaController::class);
+
     Route::put('/suspend_pakar/{id}', [SuspendController::class, 'suspend_pakar']);
     Route::put('/suspend_pengguna/{id}', [SuspendController::class, 'suspend_user']);
+
     Route::post('/pembuat', [PembuatController::class, 'upmaker']);
+
     Route::post('/sendChat', [ChatController::class, 'storechat']);
+    Route::post('/getChatFromPakar/{id}', [ChatController::class, 'loadchatuser']);
     Route::post('/load_chat_pakar', [ChatController::class, 'loadchatpakar']);
     Route::post('/get_user_session', [ChatController::class, 'checksession']);
 });

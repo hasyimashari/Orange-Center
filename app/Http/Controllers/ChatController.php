@@ -54,6 +54,15 @@ class ChatController extends Controller
         ]);
     }
 
+    public function loadchatuser($request) {
+
+        $data = Chat::where('pakar', $request)->select('sentby_user')->whereNotNull('sentby_user')->orderBy('created_at','desc')->distinct()->with('pengguna')->get();
+
+        return response([
+            'user' => $data
+        ]);
+    }
+
     public function checksession(Request $request){
         $data = $request->validate([
             'user' => 'required|int'

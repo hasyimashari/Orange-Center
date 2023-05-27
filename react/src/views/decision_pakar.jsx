@@ -7,7 +7,6 @@ export default function decision({oCls, vsb, nil}) {
 
     if (!vsb) return null;
 
-    
     const Suspend = (ev) => {
         
         ev.preventDefault()

@@ -3,6 +3,7 @@ import View from './view_profil_pengguna';
 import { useEffect, useState } from "react"
 import axiosClient from "../axios-client"
 import { Link, useNavigate } from 'react-router-dom';
+import { useStateContext } from '../context/ContextProvider';
 
 export default function administrasi_akun_pengguna() {
 
@@ -11,7 +12,7 @@ export default function administrasi_akun_pengguna() {
     const [showProfil, setShowProfil] = useState(false)
     const [nilai, setNilai] = useState()
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const {loading, setLoading} = useStateContext()
 
     useEffect(() => {
     getUsers();

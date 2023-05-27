@@ -5,10 +5,12 @@ user: {},
 token: null,
 role: null,
 to: null,
+loading: null,
 setUser: () => {},
 setToken: () => {},
 setRole: () => {},
 setTo: () => {},
+setLoading: () => {},
 })
 
 export const ContextProvider = ({children}) => {
@@ -16,6 +18,7 @@ export const ContextProvider = ({children}) => {
     const [to, _setTo] = useState(localStorage.getItem('TO'));
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
     const [role, _setRole] = useState(localStorage.getItem('ROLE'));
+    const [loading, setLoading] = useState(false);
 
     const setTo = (to) => {
         if (to) {
@@ -54,6 +57,8 @@ export const ContextProvider = ({children}) => {
             setRole,
             to,
             setTo,
+            loading,
+            setLoading,
             }}>
             {children}
             </StateContext.Provider>
