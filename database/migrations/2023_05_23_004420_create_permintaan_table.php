@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('permintaan', function (Blueprint $table) {
             $table->integer('id_permintaan', true);
             $table->integer('id_user')->index('id_user');
-            $table->binary('foto_produk');
-            $table->string('judul', 20);
+            $table->string('foto_produk');
+            $table->string('nama_produk', 20);
             $table->text('deskripsi');
             $table->integer('stock');
             $table->bigInteger('budget');
+            $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
         });
     }
 

@@ -47,7 +47,7 @@ class ChatController extends Controller
             'pakar' => 'required|int',
         ]);
 
-        $chat = Chat::where($data)->orderBy('created_at','asc')->get();
+        $chat = Chat::where($data)->orderBy('id_chat','asc')->get();
         
         return response([
             'chat' => $chat
@@ -56,7 +56,7 @@ class ChatController extends Controller
 
     public function loadchatuser($request) {
 
-        $data = Chat::where('pakar', $request)->select('sentby_user')->whereNotNull('sentby_user')->orderBy('created_at','desc')->distinct()->with('pengguna')->get();
+        $data = Chat::where('pakar', $request)->select('sentby_user')->whereNotNull('sentby_user')->orderBy('id_chat','desc')->distinct()->with('pengguna')->get();
 
         return response([
             'user' => $data

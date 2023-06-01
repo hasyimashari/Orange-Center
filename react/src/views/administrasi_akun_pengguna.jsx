@@ -15,7 +15,7 @@ export default function administrasi_akun_pengguna() {
     const {loading, setLoading} = useStateContext()
 
     useEffect(() => {
-    getUsers();
+        getUsers();
     }, [])
 
     const getUsers = () => {
@@ -93,7 +93,7 @@ return (
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
                         <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
@@ -102,7 +102,7 @@ return (
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
                         <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>

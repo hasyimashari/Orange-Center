@@ -162,7 +162,7 @@ export default function chat_pakar() {
                 <div className='w-11/12 h-16 flex items-center justify-center'>
                     <div className="w-full flex flex-row justify-between">
                         <div className="w-[95%] mr-1">
-                            <textarea rows={1} ref={messageref}
+                            <textarea rows={1} ref={messageref} draggable={false}
                             className="text-sm h-full w-full p-2.5 px-4 border-none rounded-2xl bg-green-100 scrollbar-hide scroll-smooth" name="chatn" id="chat" placeholder="Ketik Pesan..."/>
                         </div>
                         <button onClick={onSend} className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex items-center justify-center text-white">

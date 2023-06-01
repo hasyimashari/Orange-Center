@@ -64,12 +64,12 @@ export default function profil_admin() {
         <div className='h-[34rem] flex items-center justify-center gap-10'>
 
             {/* profil */}
-            <div className='w-80 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
-                <div className='w-full h-2/6 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>
+            <div className='w-80 h-fit rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
+                <div className='w-full h-28 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>
                     <img src={Profil} className='-m-8 h-[5rem] w-[5rem]' alt="" />
                 </div>
                 
-                <div className='w-full flex flex-col items-center pt-8'>
+                <div className='w-full flex flex-col items-center pt-8 mb-8'>
                     {loading?
                         <div>
                             <h1 className='font-bold mt-2'>Loading...</h1>

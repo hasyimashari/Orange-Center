@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Edit from './edit_profil_pengguna';
 import View from './view_profil_all_actor';
 import axiosClient from '../axios-client';
+import { useNavigate } from 'react-router-dom';
 
 export default function profil_user() {
     
@@ -13,6 +14,8 @@ export default function profil_user() {
     const [showProfil, setShowProfil] = useState(false)
     const [loadingE, setLoadingE] = useState(false)
     const {user, setUser, setToken, setRole, loading, setLoading} = useStateContext()
+    
+    const navigate = useNavigate()
 
     const openprofil = () => {
         setShowProfil(true)
@@ -24,6 +27,10 @@ export default function profil_user() {
 
     const openeditprofil = () => {
         setShowEdit(true)
+    }
+
+    const setPremiumPage = () => {
+        navigate("/user-premium");
     }
 
     const closeeditprofil = () => {        
@@ -64,12 +71,12 @@ export default function profil_user() {
         <div className='h-[34rem] flex items-center justify-center gap-10'>
 
             {/* profil */}
-            <div className='w-80 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
-                <div className='w-full h-2/6 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>
+            <div className='w-80 h-fit rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
+                <div className='w-full h-28 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>
                     <img src={Profil} className='-m-8 h-[5rem] w-[5rem]' alt="" />
                 </div>
                 
-                <div className='w-full flex flex-col items-center pt-8'>
+                <div className='w-full flex flex-col items-center pt-8 mb-8'>
                     {loading?
                         <div>
                             <h1 className='font-bold mt-2'>Loading...</h1>
@@ -85,6 +92,9 @@ export default function profil_user() {
                         <button onClick={openprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
+                        <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
+                            Upgrade akun
+                        </div>
                         <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>

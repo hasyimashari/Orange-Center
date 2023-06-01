@@ -17,6 +17,11 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
         setShowDec(false)
     }
 
+    const onSuspendSucces = () => {
+        setShowDec(false)
+        onClose(true)
+    }
+
     return (
         <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             <div className='bg-white w-96 h-96 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
@@ -60,7 +65,7 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                 <button className="text-sm w-10 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex  justify-center text-white cursor-pointer"> <img src={Cancel}/></button>
                 </div>
             </div>
-            <Decision oCls={closeModal} vsb={showDec} nil={nilai}/>
+            <Decision onCloseDc={closeModal} visibleDc={showDec} nilaiDc={nilai} onSucces={onSuspendSucces}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import Add_pakar from "../assets/Add Pakar.png"
 
-import Edit from "./add_pakar"
+import Add from "./add_pakar"
 import View from './view_profil_pakar';
 
 import { useEffect, useState } from "react"
@@ -29,7 +29,7 @@ export default function administrasi_akun_pakar() {
             setLoading(false)
         })
     }
-    
+
     useEffect(() => {
         getUsers();
     }, [])
@@ -102,7 +102,7 @@ return (
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
                         <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
@@ -111,7 +111,7 @@ return (
                         <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
                         <li className="w-[10rem] text-center p-1">{u.username}</li>
                         <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir}</li>
+                        <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
                         <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
                         <li className="w-[10rem] text-center p-1">{u.asal}</li>
                         <li className="w-[10rem] text-center p-1">{u.email}</li>
@@ -126,7 +126,7 @@ return (
         </div>}
 
         <View onClose={closeProfil} visible={showProfil} nilai={nilai}/>
-        <Edit onClose={closeAddPakarAccount} visible={showAddPakarAccount}/>
+        <Add onClose={closeAddPakarAccount} visible={showAddPakarAccount}/>
     </>
 )
 }

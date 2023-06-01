@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,10 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_permintaan
  * @property int $id_user
  * @property string $foto_produk
- * @property string $judul
+ * @property string $nama_produk
  * @property string $deskripsi
  * @property int $stock
  * @property int $budget
+ * @property Carbon $created_at
  * 
  * @property Pengguna $pengguna
  *
@@ -38,7 +40,7 @@ class Permintaan extends Model
 	protected $fillable = [
 		'id_user',
 		'foto_produk',
-		'judul',
+		'nama_produk',
 		'deskripsi',
 		'stock',
 		'budget'

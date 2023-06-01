@@ -16,6 +16,11 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
     const closeModal = () => {
         setShowDec(false)
     }
+
+    const onSuspendSucces = () => {
+        setShowDec(false)
+        onClose(true)
+    }
     
     return (
         <div className='fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
@@ -60,7 +65,7 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
                 <button className="text-sm w-10 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex  justify-center text-white cursor-pointer"> <img src={Cancel}/></button>
                 </div>
             </div>
-            <Decision oCls={closeModal} vsb={showDec} nil={nilai}/>
+            <Decision onCloseDc={closeModal} visibleDc={showDec} nilaiDc={nilai} onSucces={onSuspendSucces}/>
         </div>
     )
 }

@@ -183,7 +183,7 @@ export default function chat_user() {
                     {session>=3 && user.status_premium===1?
                         <div className="w-full flex flex-row justify-between">
                             <div className="w-[95%] mr-1">
-                                <textarea rows={1} ref={messageref} disabled={true}
+                                <textarea rows={1} ref={messageref} disabled={true} draggable={false}
                                 className="text-sm h-full w-full p-2.5 px-4 border-none rounded-2xl bg-green-100 scrollbar-hide scroll-smooth brightness-90" name="chatn" id="chat" placeholder="Ketik Pesan..."/>
                             </div>
                             <button className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 rounded-full flex items-center justify-center text-white cursor-default">

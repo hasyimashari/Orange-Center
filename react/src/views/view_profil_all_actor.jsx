@@ -5,12 +5,10 @@ import Cancel from "../assets/cancel.png"
 import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function dasboard_user({visible, onClose}) {
-    
+
     if (!visible) return null;
 
     const {user} = useStateContext();
-
-    console.log(user)
 
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>

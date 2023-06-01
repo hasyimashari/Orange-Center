@@ -8,6 +8,7 @@ use App\Http\Controllers\PakarController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SuspendController;
 use App\Http\Controllers\PembuatController;
+use App\Http\Controllers\PermintaanController;
 use App\Http\Controllers\RegitrasionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/getChatFromPakar/{id}', [ChatController::class, 'loadchatuser']);
     Route::post('/load_chat_pakar', [ChatController::class, 'loadchatpakar']);
     Route::post('/get_user_session', [ChatController::class, 'checksession']);
+
+    Route::post('/buatPermintaan', [PermintaanController::class, 'tambahPermintaan']);
+    Route::get('/permintaan', [PermintaanController::class, 'lihatSemuaPermintaan']);
+    Route::post('/permintaan_saya/{id}', [PermintaanController::class, 'lihatPermintaanSaya']);
+    Route::post('/edit_permintaan_saya/{id}', [PermintaanController::class, 'editPermintaan']);
+    Route::put('/delete_permintaan_saya/{id}', [PermintaanController::class, 'hapusPermintaan']);
+
 });
 
 Route::post('/register', [RegitrasionController::class, 'register']);

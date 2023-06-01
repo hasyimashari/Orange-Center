@@ -3,9 +3,9 @@ import Arrow_right from "../assets/arrow_right.png"
 import Cancel from "../assets/cancel.png"
 import axiosClient from '../axios-client';
 
-export default function decision({oCls, vsb, nil}) {
+export default function decision({onCloseDc, visibleDc, nilaiDc, onSucces}) {
 
-    if (!vsb) return null;
+    if (!visibleDc) return null;
 
     const Suspend = (ev) => {
 
@@ -18,18 +18,20 @@ export default function decision({oCls, vsb, nil}) {
             status_akun: "1"
         }
 
-        if (nil.status_akun==="Aktif"){
-            axiosClient.put(`/suspend_pengguna/${nil.id_user}`, suspend)
+        if (nilaiDc.status_akun==="Aktif"){
+            axiosClient.put(`/suspend_pengguna/${nilaiDc.id_user}`, suspend)
             .then(() => {
-                oCls(true)
+                onCloseDc(true)
+                onSucces(true)
             })
             .catch((response) => {
                 console.log(response)
             })
         } else {
-            axiosClient.put(`/suspend_pengguna/${nil.id_user}`, aktif)
+            axiosClient.put(`/suspend_pengguna/${nilaiDc.id_user}`, aktif)
             .then(() => {
-                oCls(true)
+                onCloseDc(true)
+                onSucces(true)
             })
             .catch((response) => {
                 console.log(response)
@@ -38,10 +40,11 @@ export default function decision({oCls, vsb, nil}) {
     }
 
     const cancel = () =>{
-        oCls(true)
+        onCloseDc(true)
     }
 
     return (
+        // decission yes or no
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             <div className='bg-white w-[30rem] h-32 rounded-2xl flex flex-col'>
                 <p className='text-xl font-extrabold self-center mt-6'>Apakah Anda Yakin</p>

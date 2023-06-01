@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useStateContext } from '../context/ContextProvider';
 
 import Profil from "../assets/Ellipse.png"
+import NoChat from "../assets/No Chat 1.png"
 
 export default function konsultasi_pakar() {
 
@@ -21,10 +22,10 @@ export default function konsultasi_pakar() {
 
     const getUsers = () => {
         setLoading(true)
-        axiosClient.post(`/getChatFromPakar/${1}`)
+        axiosClient.post(`/getChatFromPakar/${user.id_pakar}`)
         .then(({data}) => {
-            setLoading(false)
             setUsers(data.user)
+            setLoading(false)
         })
     }
 
@@ -76,6 +77,15 @@ export default function konsultasi_pakar() {
                         }
                     </div>
                 ))}
+
+                {!users.length && !loading && 
+                    <div className='row-span-full col-span-full flex items-center justify-center'>
+                        <div className='w-1/3 h-3/4 flex flex-col gap-4 items-center justify-center'>
+                            <img src={NoChat} className='h-4/6' alt="" />
+                            <h1 className="font-bold text-2xl">Belum ada Percakapan</h1>
+                        </div>
+                    </div>
+                }
 
             </div>
         </div>

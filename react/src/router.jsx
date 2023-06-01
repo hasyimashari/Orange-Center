@@ -8,16 +8,23 @@ import Layout_pakar from "./components/dashboard_pakar_layout";
 import Dashboar_admin from "./views/dashboard_admin"
 import Dashboard_user from "./views/dashboard_user";
 import Dashboard_pakar from "./views/dashboard_pakar";
+
 import Administrasi_akun_pakar from "./views/administrasi_akun_pakar";
 import Administrasi_akun_pengguna from "./views/administrasi_akun_pengguna";
+
 import Konsultasi_user from "./views/konsultasi_user";
 import Konsultasi_pakar from "./views/konsultasi_pakar";
 import Chat_pakar from "./views/chat_pakar";
 import Chat_user from "./views/chat_user";
 
+import Permintaan from "./views/permintaan";
+import Permintaan_user from "./views/permintaan_user";
+import Permintaan_admin from "./views/permintaan_admin";
+
 import Profile_pakar from "./views/profil_pakar"
 import Profile_admin from "./views/profil_admin"
 import Profile_user from "./views/profil_pengguna"
+import Premium_page from "./views/premium_page";
 
 import Register from "./views/register"
 import Login from "./views/login";
@@ -44,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: 'admin-administrasi-pengguna',
                 element: <Administrasi_akun_pengguna/>
+            },
+            {
+                path: 'admin-permintaan',
+                element: <Permintaan_admin/>,
             },
         ],
     },
@@ -82,12 +93,24 @@ const router = createBrowserRouter([
                 element: <Profile_user/>,
             },
             {
+                path: 'user-premium',
+                element: <Premium_page/>,
+            },
+            {
                 path: 'user-konsultasi',
                 element: <Konsultasi_user/>,
             },
             {
                 path: 'user-chat',
                 element: <Chat_user/>,
+            },
+            {
+                path: 'user-permintaan',
+                element: <Permintaan/>,
+            },
+            {
+                path: 'user-permintaan-saya',
+                element: <Permintaan_user/>,
             },
         ],
     },
