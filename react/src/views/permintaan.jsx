@@ -18,7 +18,10 @@ export default function permintaan() {
     const {loading, setLoading} = useStateContext()
     const [nilai, setNilai] = useState()
 
-    axiosClient.put('/autoDelete')
+    useEffect(()=>{
+        axiosClient.post('/sendReminder'),
+        axiosClient.put('/autoDelete')
+    }, [])
 
     const getPermintaan = () => {
         setLoading(true)

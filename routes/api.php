@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit_permintaan_saya/{id}', [PermintaanController::class, 'editPermintaan']);
     Route::put('/delete_permintaan_saya/{id}', [PermintaanController::class, 'hapusPermintaan']);
     Route::put('/autoDelete', [PermintaanController::class, 'autoHapus']);
+    Route::post('/sendReminder', [PermintaanController::class, 'sendEmailReminder']);
 
 });
 

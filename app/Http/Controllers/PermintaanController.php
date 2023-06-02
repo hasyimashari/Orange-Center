@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReminderEmail;
+use App\Models\Pengguna;
 use App\Models\Permintaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class PermintaanController extends Controller
 {
@@ -77,9 +80,6 @@ class PermintaanController extends Controller
 
         $permintaan_saya -> update($data);
 
-        return response([
-            'succes' => true
-        ]);
     }
 
     public function hapusPermintaan($request)
@@ -92,18 +92,22 @@ class PermintaanController extends Controller
 
         $permintaan_saya -> delete();
 
-        return response([
-            'succes' => true
-        ]);
     }
 
     public function autoHapus()
     {
         Permintaan::where('created_at', '<', Carbon::now()->subDays(10))->delete();
 
-        return response([
-            'success'=> true
-        ]);
+    }
+
+    public function sendEmailReminder()
+    {
+        $permintaanKL = Permintaan::whereDate('created_at', '=', Carbon::today()->subDays(7))->with('pengguna')->get();
+
+        foreach ($permintaanKL as $data) {
+            Mail::to($data->pengguna)->send(new ReminderEmail());
+        }
+
     }
 
 }
