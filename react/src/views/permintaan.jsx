@@ -5,7 +5,6 @@ import Person from "../assets/Person 1.png"
 import Detail from "./detail_permintaan"
 import Tambah_permintaan from "./tambah_permintaan"
 import { useNavigate } from "react-router-dom"
-import tambah_permintaan from "./tambah_permintaan"
 import axiosClient from "../axios-client"
 import { useStateContext } from "../context/ContextProvider"
 
@@ -18,6 +17,8 @@ export default function permintaan() {
     const [permintaan, setPermintaan] = useState([])
     const {loading, setLoading} = useStateContext()
     const [nilai, setNilai] = useState()
+
+    axiosClient.put('/autoDelete')
 
     const getPermintaan = () => {
         setLoading(true)

@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react"
 
 import Detail from "./detail_permintaan"
-import { useNavigate } from "react-router-dom"
 import axiosClient from "../axios-client"
 import { useStateContext } from "../context/ContextProvider"
 
 export default function permintaan_admin() {
 
-    const navigate = useNavigate()
-
     const [detail, setDetail] = useState(false)
-    const [buatPermintaan, setBuatPermintaan] = useState(false)
     const [permintaan, setPermintaan] = useState([])
     const {loading, setLoading} = useStateContext()
     const [nilai, setNilai] = useState()
+
+    axiosClient.put('/autoDelete')
 
     const getPermintaan = () => {
         setLoading(true)

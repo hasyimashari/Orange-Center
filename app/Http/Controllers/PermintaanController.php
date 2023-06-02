@@ -7,6 +7,7 @@ use App\Models\Permintaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PermintaanController extends Controller
 {
@@ -88,11 +89,20 @@ class PermintaanController extends Controller
         $storage = Storage::disk('public');
         if($storage->exists($permintaan_saya->foto_produk))
             $storage->delete($permintaan_saya->foto_produk);
-            
+
         $permintaan_saya -> delete();
 
         return response([
             'succes' => true
+        ]);
+    }
+
+    public function autoHapus()
+    {
+        Permintaan::where('created_at', '<', Carbon::now()->subDays(10))->delete();
+
+        return response([
+            'success'=> true
         ]);
     }
 
