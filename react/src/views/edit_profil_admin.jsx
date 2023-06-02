@@ -28,7 +28,7 @@ export default function edit_profil_admin({visible, onClose}) {
             jenis_kelamin: jeniskelaminref.current.value,
             tanggal_lahir: tanggallahirref.current.value,
             no_hp: nohpref.current.value,
-            asal: asal.current.value,
+            asal: asalref.current.value,
             email: emailref.current.value,
             password: passwrodref.current.value,
         }
@@ -41,7 +41,7 @@ export default function edit_profil_admin({visible, onClose}) {
             .catch(err => {
             const response = err.response;
                 if (response && response.status === 422) {
-                    setErrors(response.data.errors)
+                    setErrors({message: "isi semua data dengan benar" })
                 }
         })
     }
@@ -61,7 +61,7 @@ export default function edit_profil_admin({visible, onClose}) {
 
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
-                        <p key={key}>{errors[key][0]}</p>
+                        <p key={key}>{errors[key]}</p>
                     ))}
 
                 </div>

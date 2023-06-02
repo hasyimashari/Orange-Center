@@ -31,7 +31,7 @@ class LoginController extends Controller
                 $role = 'pkr';
             } else {
                 return response([
-                    'message' => 'User is suspended'
+                    'message' => 'akun pakar sedang di suspend'
                 ], 422);
             }} 
         
@@ -44,13 +44,13 @@ class LoginController extends Controller
                 $role = 'usr';
             } else {
                 return response([
-                    'message' => 'User is suspended'
+                    'message' => 'akun pengguna sedang di suspend'
                 ], 422);
             }} 
         
         else {
             return response([
-                'message' => 'Provided email or password is incorrect'
+                'message' => 'data yang diberikan kurang tepat'
             ], 422);
         } 
 

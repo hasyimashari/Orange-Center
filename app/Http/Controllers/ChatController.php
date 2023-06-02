@@ -15,7 +15,7 @@ class ChatController extends Controller
         $data = $request->validate([
             'user' => 'required|int',            
             'pakar' => 'required|int',
-            'line_chat' => 'nullable',
+            'line_chat' => 'required|string',
             'sentby_user' => 'int',
             'sentby_pakar' => 'int',
         ]);

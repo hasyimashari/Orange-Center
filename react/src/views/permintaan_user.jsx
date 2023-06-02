@@ -4,6 +4,7 @@ import Detail from "./detail_permintaan"
 import EditPermintaan from './edit_permintaan_user'
 import Edit from "../assets/Edit 1.png"
 import Back from '../assets/Back 1.png'
+import PemintaanNull from "../assets/Permintaan null.png"
 
 import { useNavigate } from 'react-router-dom'
 import axiosClient from '../axios-client'
@@ -161,6 +162,15 @@ export default function permintaan_user() {
                     ))}
 
                 </>}
+
+                {!permintaan.length && !loading && 
+                        <div className='row-span-full col-span-full flex items-center justify-center'>
+                            <div className='w-1/3 h-3/4 flex flex-col gap-4 items-center justify-center'>
+                                <img src={PemintaanNull} className='h-5/6' alt="" />
+                                <h1 className="font-bold text-2xl">Belum ada Permintaan</h1>
+                            </div>
+                        </div>
+                }
 
                 </div>
             </div>

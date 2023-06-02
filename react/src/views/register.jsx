@@ -44,7 +44,7 @@ export default function Register() {
         .catch(error => {
             const response = error.response;
             if (response && response.status === 422) {
-                setErrors(response.data.errors)
+                setErrors({message: "isi semua data dengan benar" })
                 setLoading(false)
             }
         })
@@ -63,7 +63,7 @@ return (
                 {/* errors */}
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
-                        <p key={key}>{errors[key][0]}</p>
+                        <p key={key}>{errors[key]}</p>
                     ))}
                 </div>
                 }

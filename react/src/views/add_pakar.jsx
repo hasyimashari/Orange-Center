@@ -60,7 +60,7 @@ export default function add_actor({visible, onClose}) {
         .catch(error => {
             const response = error.response;
             if (response && response.status === 422) {
-                setErrors(response.data.errors)
+                setErrors({message: "isi semua data dengan benar" })
             }
         })
     }
@@ -80,7 +80,7 @@ export default function add_actor({visible, onClose}) {
 
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
-                        <p key={key}>{errors[key][0]}</p>
+                        <p key={key}>{errors[key]}</p>
                     ))}
 
                 </div>

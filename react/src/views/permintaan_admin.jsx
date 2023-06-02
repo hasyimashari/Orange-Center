@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Detail from "./detail_permintaan"
 import axiosClient from "../axios-client"
 import { useStateContext } from "../context/ContextProvider"
+import PemintaanNull from "../assets/Permintaan null.png"
 
 export default function permintaan_admin() {
 
@@ -11,7 +12,10 @@ export default function permintaan_admin() {
     const {loading, setLoading} = useStateContext()
     const [nilai, setNilai] = useState()
 
-    axiosClient.put('/autoDelete')
+    useEffect(()=>{
+        axiosClient.post('/sendReminder'),
+        axiosClient.put('/autoDelete')
+    }, [])
 
     const getPermintaan = () => {
         setLoading(true)
@@ -123,6 +127,15 @@ export default function permintaan_admin() {
                         ))}
 
                     </>}
+
+                    {!permintaan.length && !loading && 
+                        <div className='row-span-full col-span-full flex items-center justify-center'>
+                            <div className='w-1/3 h-3/4 flex flex-col gap-4 items-center justify-center'>
+                                <img src={PemintaanNull} className='h-5/6' alt="" />
+                                <h1 className="font-bold text-2xl">Belum ada Permintaan</h1>
+                            </div>
+                        </div>
+                    }
 
             </div>
 

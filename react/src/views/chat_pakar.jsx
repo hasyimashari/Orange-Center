@@ -13,6 +13,7 @@ export default function chat_pakar() {
     const {to, setTo, loading, setLoading} = useStateContext();
     const [user, setUser] = useState({});
     const [messages, setMessages] = useState([]);
+    const [errors, setErrors] = useState()
 
     useEffect(() => {
         axiosClient.get('/user')
@@ -63,7 +64,10 @@ export default function chat_pakar() {
         })
 
         .catch(error => {
-            console.log(error)
+            const response = error.response;
+            if (response && response.status === 422) {
+                setErrors({message: "mohon isi pesan" })
+            }
         })
     }
 
@@ -158,7 +162,16 @@ export default function chat_pakar() {
             </div> 
 
             {/* send chat */}
-            <div className='w-full h-16 bg-white sticky bottom-2 z-10 mt-auto flex items-center justify-center'>
+            <div className='w-full min-h-16 h-fit bg-white sticky bottom-2 z-10 mt-auto flex flex-col items-center justify-center'>
+
+                {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
+                        {Object.keys(errors).map(key => (
+                            <p key={key}>{errors[key]}</p>
+                        ))}
+
+                    </div>
+                    }
+
                 <div className='w-11/12 h-16 flex items-center justify-center'>
                     <div className="w-full flex flex-row justify-between">
                         <div className="w-[95%] mr-1">

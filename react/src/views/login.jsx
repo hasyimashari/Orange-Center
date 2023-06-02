@@ -39,7 +39,7 @@ export default function login() {
             setLoading(false)
             if (response && response.status === 422) {
                 if (response.data.errors) {
-                    setErrors(response.data.errors)
+                    setErrors({message: "isi semua data dengan benar" })
                 } else {
                     setErrors({email: [response.data.message]})
                 }
@@ -60,7 +60,7 @@ return (
             {/* error */}
             {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                 {Object.keys(errors).map(key => (
-                    <p key={key}>{errors[key][0]}</p>
+                    <p key={key}>{errors[key]}</p>
                 ))}
             </div>
             }

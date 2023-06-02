@@ -43,7 +43,7 @@ export default function edit_profil_pakar({visible, onClose}) {
             .catch(err => {
             const response = err.response;
                 if (response && response.status === 422) {
-                    setErrors(response.data.errors)
+                    setErrors({message: "isi semua data dengan benar" })
                 }
         })
     }
