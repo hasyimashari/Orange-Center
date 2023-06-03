@@ -26,10 +26,18 @@ import Profile_admin from "./views/profil_admin"
 import Profile_user from "./views/profil_pengguna"
 import Premium_page from "./views/premium_page";
 
+import Tambah_artikel from "./views/tambah_artikel";
+import Artikel_admin from "./views/artikel_admin";
+import Melihat_artikel_admin from "./views/melihat_artikel_admin";
+import Edit_artikel from "./views/edit_artikel";
+import Artikel_pakar from "./views/artikel_pakar";
+import Melihat_artikel_pakar from "./views/melihat_artikel_pakar";
+import Artikel_user from "./views/artikel_user";
+import Melihat_artikel_user from "./views/melihat_artikel_user";
+
 import Register from "./views/register"
 import Login from "./views/login";
 import Not_found from "./views/not_found";
-
 
 const router = createBrowserRouter([
     {
@@ -56,6 +64,22 @@ const router = createBrowserRouter([
                 path: 'admin-permintaan',
                 element: <Permintaan_admin/>,
             },
+            {
+                path: 'admin-artikel',
+                element: <Artikel_admin/>,
+            },
+            {
+                path: 'admin-buat-artikel',
+                element: <Tambah_artikel/>,
+            },
+            {
+                path: 'admin-lihat-artikel',
+                element: <Melihat_artikel_admin/>,
+            },
+            {
+                path: 'admin-edit-artikel',
+                element: <Edit_artikel/>,
+            },
         ],
     },
     {
@@ -77,6 +101,14 @@ const router = createBrowserRouter([
             {
                 path: 'pakar-chat',
                 element: <Chat_pakar/>,
+            },
+            {
+                path: 'pakar-artikel',
+                element: <Artikel_pakar/>,
+            },
+            {
+                path: 'pakar-lihat-artikel',
+                element: <Melihat_artikel_pakar/>,
             },
         ],
     },
@@ -111,6 +143,14 @@ const router = createBrowserRouter([
             {
                 path: 'user-permintaan-saya',
                 element: <Permintaan_user/>,
+            },
+            {
+                path: 'user-artikel',
+                element: <Artikel_user/>,
+            },
+            {
+                path: 'user-lihat-artikel',
+                element: <Melihat_artikel_user/>,
             },
         ],
     },

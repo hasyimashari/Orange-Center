@@ -4,7 +4,7 @@ import Cancel from "../assets/cancel.png"
 
 import { useStateContext } from "../context/ContextProvider.jsx";
 
-export default function dasboard_user({visible, onClose}) {
+export default function view_profil_all_actor({visible, onClose}) {
 
     if (!visible) return null;
 

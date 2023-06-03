@@ -33,6 +33,10 @@ export default function dashboard_admin_layout() {
         navigate('/admin-dashboard')
     }
 
+    const setArtikelPage = () => {
+        navigate('/admin-artikel')
+    }
+
     const setPermintaanPage = () => {
         navigate('/admin-permintaan')
     }
@@ -48,7 +52,7 @@ export default function dashboard_admin_layout() {
                 <div onClick={setAdministrationPage} className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Administrasi} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </div>
-                <div className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
+                <div onClick={setArtikelPage} className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
                     <img src={Artikel} className='h-[2rem] w-[2rem] mx-auto m-2' alt="" />
                 </div>
                 <div onClick={setPermintaanPage} className="w-full hover:bg-white rounded-lg hover:bg-opacity-25 cursor-pointer">
