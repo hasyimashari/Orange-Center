@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -53,6 +54,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/delete_permintaan_saya/{id}', [PermintaanController::class, 'hapusPermintaan']);
     Route::put('/autoDelete', [PermintaanController::class, 'autoHapus']);
     Route::post('/sendReminder', [PermintaanController::class, 'sendEmailReminder']);
+
+    Route::post('/tambah_artikel', [ArtikelController::class, 'tambahArtikel']);
+    Route::get('/artikel', [ArtikelController::class, 'lihatArtikel']);
+    Route::put('/hapus_artikel/{id}', [ArtikelController::class, 'hapusArtikel']);
+    Route::post('/edit_artikel/{id}', [ArtikelController::class, 'editArtikel']);
 
 });
 

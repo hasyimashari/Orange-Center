@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('jenis_kelamin')->index('pakar_ibfk_1');
             $table->integer('spesialis')->index('pakar_ibfk_3');
             $table->integer('status_akun')->default(1)->index('pakar_ibfk_2');
+            $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
         });
     }
 

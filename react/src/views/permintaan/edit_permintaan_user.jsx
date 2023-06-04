@@ -84,7 +84,7 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
                     </div>
 
                     <div className='w-full h-40 rounded-lg border-none bg-green-100 flex flex-col items-center justify-center'>
-                        <img className='max-w-36 max-h-36 rounded-lg' alt="isi gambar kembali" src={imagePre}/>
+                        <img className='max-w-36 max-h-36 rounded-lg' alt="isi foto kembali" src={imagePre}/>
                     </div>
                     
                     <div className='w-full'>

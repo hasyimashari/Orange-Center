@@ -24,9 +24,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $jenis_kelamin
  * @property int $status_akun
  * @property int $status_premium
- * @property int|null $detail_pembayaran
+ * @property Carbon $created_at
  * 
- * @property CatatanPembayaran|null $catatan_pembayaran
  * @property Collection|Chat[] $chats
  * @property Collection|Permintaan[] $permintaans
  *
@@ -43,8 +42,7 @@ class Pengguna extends Authenticatable
 		'tanggal_lahir' => 'datetime',
 		'jenis_kelamin' => 'int',
 		'status_akun' => 'int',
-		'status_premium' => 'int',
-		'detail_pembayaran' => 'int'
+		'status_premium' => 'int'
 	];
 
 	protected $hidden = [
@@ -61,8 +59,7 @@ class Pengguna extends Authenticatable
 		'no_hp',
 		'jenis_kelamin',
 		'status_akun',
-		'status_premium',
-		'detail_pembayaran'
+		'status_premium'
 	];
 
 	public function kelamin()
@@ -80,14 +77,9 @@ class Pengguna extends Authenticatable
 		return $this->belongsTo(StatusPremium::class, 'status_premium');
 	}
 
-	public function catatan_pembayaran_()
-	{
-		return $this->hasMany(CatatanPembayaran::class, 'id_user');
-	}
-
 	public function chats_()
 	{
-		return $this->hasMany(Chat::class, 'to_user');
+		return $this->hasMany(Chat::class, 'sentby_user');
 	}
 
 	public function permintaans_()

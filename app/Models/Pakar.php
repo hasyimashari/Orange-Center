@@ -24,6 +24,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $jenis_kelamin
  * @property int $spesialis
  * @property int $status_akun
+ * @property Carbon $created_at
  * 
  * @property Spesiali $spesiali
  * @property Collection|Chat[] $chats
@@ -79,7 +80,7 @@ class Pakar extends Authenticatable
 
 	public function chats_()
 	{
-		return $this->hasMany(Chat::class, 'to_pakar');
+		return $this->hasMany(Chat::class, 'sentby_pakar');
 	}
 
 	public function pembuat_akun_pakar_()

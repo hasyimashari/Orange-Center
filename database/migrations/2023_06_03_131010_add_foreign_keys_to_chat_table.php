@@ -30,7 +30,9 @@ return new class extends Migration
     {
         Schema::table('chat', function (Blueprint $table) {
             $table->dropForeign('chat_ibfk_1');
+            $table->dropForeign('chat_ibfk_3');
             $table->dropForeign('chat_ibfk_2');
+            $table->dropForeign('chat_ibfk_4');
         });
     }
 };

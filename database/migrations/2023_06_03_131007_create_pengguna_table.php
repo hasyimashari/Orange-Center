@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('jenis_kelamin')->index('jenis_kelamin');
             $table->integer('status_akun')->default(1)->index('status_akun');
             $table->integer('status_premium')->default(1)->index('status_premium');
+            $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
         });
     }
 

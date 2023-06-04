@@ -7,8 +7,9 @@ export default function decision_permintaan({onCloseDc, visibleDc, nilaiDc, onDe
 
     if (!visibleDc) return null;
 
-    const delete_permintaan = () => {
+    const delete_permintaan = (ev) => {
 
+        ev.preventDefault()
         axiosClient.put(`/delete_permintaan_saya/${nilaiDc.id_permintaan}`)
         .then(() => {
             onCloseDc(true)

@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('metode_pembayaran', function (Blueprint $table) {
-            $table->integer('id_metode', true);
-            $table->string('metode', 20);
+        Schema::table('artikel', function (Blueprint $table) {
+            $table->foreign(['id_admin'], 'artikel_ibfk_1')->references(['id_admin'])->on('admin')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metode_pembayaran');
+        Schema::table('artikel', function (Blueprint $table) {
+            $table->dropForeign('artikel_ibfk_1');
+        });
     }
 };

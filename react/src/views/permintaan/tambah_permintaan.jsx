@@ -24,7 +24,7 @@ export default function tambah_permintaan({visible, onClose}) {
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
         setImage(event.target.files[0]);
-        steImagePre((URL.createObjectURL(event.target.files[0])))
+        steImagePre(URL.createObjectURL(event.target.files[0]))
         }
     }
 
@@ -78,11 +78,11 @@ export default function tambah_permintaan({visible, onClose}) {
                     {/* form */}
                     <div className='flex items-center justify-center w-full rounded-xl'>
                         <input type="file" onChange={onImageChange}
-                        className='h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
+                        className='h-8 w-full px-2 text-sm py-1 border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
                     </div>
                     
-                    <div className='w-full h-40 rounded-lg border-none bg-green-100 flex flex-col items-center justify-center'>
-                        <img className='max-w-36 max-h-36 rounded-lg' alt="preview image" src={imagePre}/>
+                    <div className='w-full h-40 rounded-lg border-none bg-green-100 flex flex-col items-center justify-center p-2'>
+                        <img className='max-w-full max-h-full rounded-lg' alt="preview image" src={imagePre}/>
                     </div>
                     
                     <div className='w-full'>

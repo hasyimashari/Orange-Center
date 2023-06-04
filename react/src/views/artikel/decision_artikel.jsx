@@ -9,11 +9,11 @@ export default function decision_artikel({onCloseDc, visibleDc, nilaiDc, onDelet
 
     const delete_permintaan = () => {
 
-        // axiosClient.put(`/delete_permintaan_saya/${nilaiDc.id_permintaan}`)
-        // .then(() => {
-        //     onCloseDc(true)
-        //     onDelete(true)
-        // })
+        axiosClient.put(`/hapus_artikel/${nilaiDc.id_artikel}`)
+        .then(() => {
+            onCloseDc(true)
+            onDelete(true)
+        })
 
     }
 

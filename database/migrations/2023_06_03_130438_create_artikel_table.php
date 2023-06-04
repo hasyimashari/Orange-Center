@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('id_artikel', true);
             $table->integer('id_admin')->index('id_admin');
             $table->string('judul', 20);
-            $table->binary('foto');
+            $table->string('foto');
             $table->text('content');
             $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();
         });
