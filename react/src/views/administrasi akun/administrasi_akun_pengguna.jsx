@@ -14,10 +14,6 @@ export default function administrasi_akun_pengguna() {
     const [users, setUsers] = useState([]);
     const {loading, setLoading} = useStateContext()
 
-    useEffect(() => {
-        getUsers();
-    }, [])
-
     const getUsers = () => {
         setLoading(true)
         axiosClient.get('/pengguna')
@@ -29,6 +25,11 @@ export default function administrasi_akun_pengguna() {
             setLoading(false)
         })
     }
+    
+    axiosClient.put('cek_status_premium');
+    useEffect(() => {
+        getUsers();
+    }, [])
 
     const closeProfil = () => {
         setShowProfil(false)

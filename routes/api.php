@@ -11,6 +11,7 @@ use App\Http\Controllers\SuspendController;
 use App\Http\Controllers\PembuatController;
 use App\Http\Controllers\PermintaanController;
 use App\Http\Controllers\RegitrasionController;
+use App\Http\Controllers\UpgradeAkunController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/hapus_artikel/{id}', [ArtikelController::class, 'hapusArtikel']);
     Route::post('/edit_artikel/{id}', [ArtikelController::class, 'editArtikel']);
 
+    Route::put('/upgrade_akun_user/{id}', [UpgradeAkunController::class, 'upgradePremium']);
+    Route::put('/cek_status_premium', [UpgradeAkunController::class, 'downgradePremium']);
 });
 
 Route::post('/register', [RegitrasionController::class, 'register']);

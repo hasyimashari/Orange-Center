@@ -72,12 +72,12 @@ export default function profil_pakar() {
                 <div className='w-full flex flex-col items-center pt-8 mb-8'>
                     {loading?
                         <div>
-                            <h1 className='font-bold mt-2'>Loading...</h1>
-                            <h4 className='text-sm mb-2'>Loading...</h4>
+                            <h1 className='text-lg font-bold mt-2'>Loading...</h1>
+                            <h4 className='mb-2'>Loading...</h4>
                         </div>:
                         <div>
-                            <h1 className='font-bold mt-2'>{user.nama_lengkap}</h1>
-                            <h4 className='text-sm mb-2'>{user.username}</h4>
+                            <h1 className='text-lg font-bold mt-2'>{user.nama_lengkap}</h1>
+                            <h4 className='mb-2'>{user.username}</h4>
                         </div>
                     }
 

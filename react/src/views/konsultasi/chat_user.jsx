@@ -10,12 +10,13 @@ import echo from '../../echo';
 export default function chat_user() {
 
     const messageref = useRef();
-    const {to, setTo, loading, setLoading} = useStateContext();
+    const {setTo, loading, setLoading} = useStateContext();
     const [user, setUser] = useState({});
     const [messages, setMessages] = useState([]);
     const [session, setSession] = useState([]);
     const [errors, setErrors] = useState()
 
+    const to = JSON.parse(localStorage.getItem("TO"))
     useEffect(() => {
         axiosClient.get('/user')
         .then(({data}) => {

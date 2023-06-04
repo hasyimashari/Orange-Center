@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 import Edit from './edit_profil_pengguna';
 import View from './view_profil_all_actor';
+import Premium from "../../assets/Premium 1.png"
+
 import axiosClient from '../../axios-client';
 import { useNavigate } from 'react-router-dom';
 
@@ -79,12 +81,21 @@ export default function profil_user() {
                 <div className='w-full flex flex-col items-center pt-8 mb-8'>
                     {loading?
                         <div>
-                            <h1 className='font-bold mt-2'>Loading...</h1>
-                            <h4 className='text-sm mb-2'>Loading...</h4>
+                            <h1 className='text-lg font-bold mt-2'>Loading...</h1>
+                            <h4 className='mb-2'>Loading...</h4>
                         </div>:
                         <div>
-                            <h1 className='font-bold mt-2'>{user.nama_lengkap}</h1>
-                            <h4 className='text-sm mb-2'>{user.username}</h4>
+                            {user.status_premium===1?
+                                <div className='flex gap-1 w-full items-center justify-center'>
+                                    <img className='w-8 h-8 grayscale' src={Premium} alt="" />
+                                    <h1 className='text-lg font-bold mt-2'>{user.nama_lengkap}</h1>
+                                </div>:
+                                <div className='flex gap-1 w-full items-center justify-center'>
+                                    <img className='w-8 h-8' src={Premium} alt="" />
+                                    <h1 className='text-lg font-bold mt-2'>{user.nama_lengkap}</h1>
+                                </div>
+                            }
+                            <h4 className='mb-2'>{user.username}</h4>
                         </div>
                     }
 
@@ -92,9 +103,14 @@ export default function profil_user() {
                         <button onClick={openprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
-                        <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
-                            Upgrade akun
-                        </div>
+                        {user.status_premium===1?
+                            <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
+                                Upgrade akun
+                            </div>:
+                            <div className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                                Upgrade akun
+                            </div>
+                        }
                         <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>

@@ -36,7 +36,6 @@ export default function melihat_artikel_admin() {
     return (
         <div className='h-[34rem] flex pl-8 pt-4 pr-8 items-center justify-center'>
 
-            {console.log(content)}
                 <div className='w-full h-full flex gap-4'>
                     {/* gambar artikel */}
                     <div className='h-full w-3/12  flex flex-col gap-0.5'>
