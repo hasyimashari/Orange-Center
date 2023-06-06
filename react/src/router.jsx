@@ -13,30 +13,30 @@ import Profile_admin from "./views/dashboard/profil_admin"
 import Profile_user from "./views/dashboard/profil_pengguna"
 import Premium_page from "./views/dashboard/premium_page";
 
-import Administrasi_akun_pakar from "./views/administrasi akun/administrasi_akun_pakar";
-import Administrasi_akun_pengguna from "./views/administrasi akun/administrasi_akun_pengguna";
+import Administrasi_akun_pakar from "./views/administrasi akun/administrasiAkunPakar";
+import Administrasi_akun_pengguna from "./views/administrasi akun/administrasiAkunUser";
 
-import Konsultasi_user from "./views/konsultasi/konsultasi_user";
-import Konsultasi_pakar from "./views/konsultasi/konsultasi_pakar";
+import Konsultasi_user from "./views/konsultasi/konsultasiPageUser";
+import Konsultasi_pakar from "./views/konsultasi/konsultasiPagePakar";
 import Chat_pakar from "./views/konsultasi/chat_pakar";
 import Chat_user from "./views/konsultasi/chat_user";
 
-import Permintaan from "./views/permintaan/permintaan";
-import Permintaan_user from "./views/permintaan/permintaan_user";
-import Permintaan_admin from "./views/permintaan/permintaan_admin";
+import Permintaan from "./views/permintaan/permintaanPageUser";
+import Permintaan_user from "./views/permintaan/permintaanSaya";
+import Permintaan_admin from "./views/permintaan/permintaanPageAdmin";
 
-import Tambah_artikel from "./views/artikel/tambah_artikel";
-import Artikel_admin from "./views/artikel/artikel_admin";
-import Melihat_artikel_admin from "./views/artikel/melihat_artikel_admin";
-import Edit_artikel from "./views/artikel/edit_artikel";
-import Artikel_user from "./views/artikel/artikel_user";
-import Melihat_artikel_user from "./views/artikel/melihat_artikel_user";
-import Artikel_pakar from "./views/artikel/artikel_pakar";
-import Melihat_artikel_pakar from "./views/artikel/melihat_artikel_pakar";
+import Tambah_artikel from "./views/artikel/addArtikelPage";
+import Artikel_admin from "./views/artikel/artikelPageAdmin";
+import Melihat_artikel_admin from "./views/artikel/detailArtikelAdmin";
+import Edit_artikel from "./views/artikel/editArtikelPage";
+import Artikel_user from "./views/artikel/artikelPageUser";
+import Melihat_artikel_user from "./views/artikel/detailArtikelPengguna";
+import Artikel_pakar from "./views/artikel/artikelPagePakar";
+import Melihat_artikel_pakar from "./views/artikel/detailArtikelPakar";
 
-import Register from "./views/register"
-import Login from "./views/login";
-import Not_found from "./views/not_found";
+import Register from "./views/registrationPage"
+import Login from "./views/loginPage";
+import Not_found from "./views/notFoundPage";
 
 const router = createBrowserRouter([
     {

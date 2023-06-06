@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-
 import { useStateContext } from '../../context/ContextProvider'
 import axiosClient from '../../axios-client'
 
@@ -17,9 +16,9 @@ export default function tambah_permintaan({visible, onClose}) {
 
     const {user, setUser} = useStateContext()
     const [errors, setErrors] = useState()
-
     const [image, setImage] = useState()
     const [imagePre, steImagePre] = useState()
+    const [loading, setLoading] = useState(false)
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -35,10 +34,10 @@ export default function tambah_permintaan({visible, onClose}) {
         })
     }, [])
 
-    const onSubmit = (ev) => {
+    const tambahPermintaan = (ev) => {
         
         ev.preventDefault()
-        const payload = {
+        const dataPermintaan = {
             id_user: user.id_user,
             foto_produk: image,
             nama_produk: namabarangref.current.value,
@@ -47,15 +46,18 @@ export default function tambah_permintaan({visible, onClose}) {
             stock: kebutuhanref.current.value
         }
 
-        axiosClient.post('/buatPermintaan', payload, {headers:{'Content-Type':"multipart/form-data"}})
+        setLoading(true)
+        axiosClient.post('/buatPermintaan', dataPermintaan, {headers:{'Content-Type':"multipart/form-data"}})
         .then(()=>{
             onClose(true)
+            setLoading(false)
         })
 
         .catch(error => {
             const response = error.response;
             if (response && response.status === 422) {
                 setErrors({message: "isi semua data dengan benar" })
+                setLoading(false)
             }
         })
     }
@@ -115,10 +117,16 @@ export default function tambah_permintaan({visible, onClose}) {
                             Batal 
                             <img src={Cancel}/>
                         </button>
-                        <button onClick={onSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
-                            Tambah
-                            <img src={Arrow_right}/>
-                        </button>
+                        {loading?
+                            <button className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
+                                Loading...
+                            </button>
+                                :
+                            <button onClick={tambahPermintaan} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                                Tambah
+                                <img src={Arrow_right}/>
+                            </button>
+                        }
                     </div>
 
                 </div>

@@ -1,22 +1,26 @@
-import View from './view_profil_pengguna';
+import Add_pakar from "../../assets/Add Pakar.png"
+
+import Add from "./add_pakar"
+import View from './view_profil_pakar';
 
 import { useEffect, useState } from "react"
 import axiosClient from "../../axios-client"
 import { Link, useNavigate } from 'react-router-dom';
-import { useStateContext } from '../../context/ContextProvider';
+import { useStateContext } from "../../context/ContextProvider";
 
-export default function administrasi_akun_pengguna() {
+export default function administrasiAkunPakar() {
 
     const navigate = useNavigate();
 
+    const [showAddPakarAccount, setAddPakarAccount] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
-    const [nilai, setNilai] = useState()
-    const [users, setUsers] = useState([]);
     const {loading, setLoading} = useStateContext()
+    const [users, setUsers] = useState([])
+    const [nilai, setNilai] = useState()
 
     const getUsers = () => {
         setLoading(true)
-        axiosClient.get('/pengguna')
+        axiosClient.get('/pakar')
         .then(({ data }) => {
             setLoading(false)
             setUsers(data.data)
@@ -25,14 +29,18 @@ export default function administrasi_akun_pengguna() {
             setLoading(false)
         })
     }
-    
-    axiosClient.put('cek_status_premium');
+
     useEffect(() => {
         getUsers();
     }, [])
 
-    const closeProfil = () => {
+    const closePopUpDetailProfil = () => {
         setShowProfil(false)
+        getUsers()
+    }
+
+    const closeFormAddPakarAccount = () => {        
+        setAddPakarAccount(false)
         getUsers()
     }
 
@@ -41,22 +49,22 @@ export default function administrasi_akun_pengguna() {
     }
 
     const setAdmnistrasiAkunUser = () => {
-        navigate("/admin-administrasi-Pengguna")
+        navigate("/admin-administrasi-pengguna")
     }
 
 return (
     <>
         {/* conten header */}
-        <div className="sticky top-0 z-10 bg-white h-32 font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
+        <div className="sticky top-0 z-10 bg-white h-[8rem] font-bold flex flex-col items-end justify-end gap-4 px-4 rounded-tl-3xl">
             <div className="w-full flex flex-row items-center justify-between">
                 <div className="w-3/4 text-center text-4xl pl-20">
                     <h1>Administrasi akun</h1>
                 </div>
                 <div className="w-1/4 flex flex-row justify-center gap-10">
-                    <div onClick={setAdmnistrasiAkunPakar} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
+                    <div onClick={setAdmnistrasiAkunPakar} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-default grayscale">
                         Pakar
                     </div>
-                    <div onClick={setAdmnistrasiAkunUser} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
+                    <div onClick={setAdmnistrasiAkunUser} className="text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 p-5 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] text-white cursor-pointer">
                         Pengguna
                     </div>
                 </div>
@@ -111,9 +119,14 @@ return (
                     }
                 </div>
             ))}
+            {/* add */}
+            <div onClick={() => setAddPakarAccount(true)} className="absolute bottom-16 end-12 w-16 h-16 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-full flex p-2 cursor-pointer">
+                <img src={Add_pakar} className="h-6 my-auto mx-auto" />
+            </div>
         </div>}
 
-        <View onClose={closeProfil} visible={showProfil} nilai={nilai}/>
+        <View onClose={closePopUpDetailProfil} visible={showProfil} nilai={nilai}/>
+        <Add onClose={closeFormAddPakarAccount} visible={showAddPakarAccount}/>
     </>
 )
 }

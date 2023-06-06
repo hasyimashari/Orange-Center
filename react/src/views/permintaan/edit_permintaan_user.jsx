@@ -19,6 +19,7 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
     const [image, setImage] = useState()
     const [imagePre, setImagePre] = useState()
     const [decission, setDecission] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [nilaiDc, setNilaiDc] = useState(nilai)
 
     const onImageChange = (event) => {
@@ -28,10 +29,10 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
         }
     }
 
-    const onSubmit = (ev) => {
+    const editPermintaan = (ev) => {
         
         ev.preventDefault()
-        const payload = {
+        const dataPermintaan = {
             id_user: nilai.id_user,
             foto_produk: image,
             nama_produk: namabarangref.current.value,
@@ -40,20 +41,23 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
             stock: kebutuhanref.current.value
         }
 
-        axiosClient.post(`/edit_permintaan_saya/${nilai.id_permintaan}`, payload, {headers:{'Content-Type':"multipart/form-data"}})
+        setLoading(true)
+        axiosClient.post(`/edit_permintaan_saya/${nilai.id_permintaan}`, dataPermintaan, {headers:{'Content-Type':"multipart/form-data"}})
         .then(()=>{
             onClose(true)
+            setLoading(false)
         })
 
         .catch(error => {
             const response = error.response;
             if (response && response.status === 422) {
                 setErrors({message: "isi semua data dengan benar" })
+                setLoading(false)
             }
         })
     }
 
-    const closeDecission = () => {
+    const closePermintaanDecission = () => {
         setDecission(false)
     }
 
@@ -120,15 +124,21 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
                             Batal 
                             <img src={Cancel}/>
                         </button>
-                        <button onClick={onSubmit} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
-                            Ubah
-                            <img src={Arrow_right}/>
-                        </button>
+                        {loading?
+                            <button className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
+                                Loading...
+                            </button>
+                                :
+                            <button onClick={editPermintaan} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                                Ubah
+                                <img src={Arrow_right}/>
+                            </button>
+                        }
                     </div>
                 </div>
 
             </div>
-            <Decision_permintaan visibleDc={decission} onCloseDc={closeDecission} nilaiDc={nilaiDc} onDelete={onDeletePermintaan}/>
+            <Decision_permintaan visibleDc={decission} onCloseDc={closePermintaanDecission} nilaiDc={nilaiDc} onDelete={onDeletePermintaan}/>
         </div>
     )
 }

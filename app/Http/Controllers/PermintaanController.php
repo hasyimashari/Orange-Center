@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditPermintaanRequest;
+use App\Http\Requests\StorePermintaanRequest;
 use App\Mail\ReminderEmail;
-use App\Models\Pengguna;
 use App\Models\Permintaan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -14,28 +14,22 @@ use Illuminate\Support\Facades\Mail;
 
 class PermintaanController extends Controller
 {
-    public function tambahPermintaan(Request $request) {
+    public function tambah(StorePermintaanRequest $request) {
 
-        $data = $request->validate([
-            'id_user' => 'required|int',
-            'foto_produk' => 'required|image|mimes:jpeg,png,jpg,svg',
-            'nama_produk' => 'required|string|max:20',
-            'deskripsi' => 'required|string',
-            'budget' => 'required|int',
-            'stock' => 'required|int',
-        ]);
+        $data = $request->validated();
 
         $nama_gambar = Str::random(32).".".$request->foto_produk->getClientOriginalExtension();
         $data['foto_produk'] = $nama_gambar;
         
         Permintaan::create($data);
         Storage::disk('public')->put($nama_gambar, file_get_contents($request->foto_produk));
+
         return response([
             'data' => $data
         ]);
     }
 
-    public function lihatSemuaPermintaan() {
+    public function dataPermintaan() {
 
         $data = Permintaan::orderBy('id_permintaan', 'desc')->with('pengguna')->get();
 
@@ -44,7 +38,7 @@ class PermintaanController extends Controller
         ]);
     }
     
-    public function lihatPermintaanSaya($request)
+    public function permintaanSaya($request)
     {
         $data = Permintaan::where('id_user', $request)->orderBy('id_permintaan', 'desc')->with('pengguna')->get();
 
@@ -53,15 +47,10 @@ class PermintaanController extends Controller
         ]);
     }
 
-    public function editPermintaan(Request $request, $id)
+    public function edit(EditPermintaanRequest $request, $id)
     {
         $data = $request -> validate([
-            'id_user' => 'required|int',
-            'foto_produk' => 'required|image|mimes:jpeg,png,jpg,svg',
-            'nama_produk' => 'required|string|max:20',
-            'deskripsi' => 'required|string',
-            'budget' => 'required|int',
-            'stock' => 'required|int',
+
         ]);
 
         $permintaan_saya = Permintaan::findorfail($id);
@@ -82,7 +71,7 @@ class PermintaanController extends Controller
 
     }
 
-    public function hapusPermintaan($request)
+    public function hapus($request)
     {
         $permintaan_saya = Permintaan::findorfail($request);
 

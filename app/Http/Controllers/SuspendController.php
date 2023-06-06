@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class SuspendController extends Controller
 {
-    public function suspend_pakar(Request $request, $id)
+    public function suspendPakar(Request $request, $id)
     {
         $data = $request->validate([
             'status_akun' => 'string',
@@ -19,7 +19,7 @@ class SuspendController extends Controller
         $pakar->update($data);
     }
 
-    public function suspend_user(Request $request, $id)
+    public function suspendUser(Request $request, $id)
     {
         $data = $request->validate([
             'status_akun' => 'string',

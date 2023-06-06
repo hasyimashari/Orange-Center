@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function masuk(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email|string|email|max:30',
-            'password' => 'required|max:12',
-        ]);
+        $credentials = $request->validated();
         
         if (Auth::guard('web')->attempt($credentials)) {
             /** @var User $user */
@@ -59,6 +56,17 @@ class LoginController extends Controller
             'user' => $user,
             'token' => $token,
             'role' => $role
+        ]);
+    }
+
+    public function keluar()
+    {
+        /** @var User $user */
+        $user = Auth::user();
+        $user->currentAccessToken()->delete();
+
+        return response([
+            'success' => true
         ]);
     }
 }

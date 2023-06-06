@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Add from "../../assets/Add 1.png"
 import { useNavigate } from 'react-router-dom'
-import axiosClient from '../../axios-client'
 import { useStateContext } from '../../context/ContextProvider'
+import axiosClient from '../../axios-client'
 
-export default function artikel_admin() {
+export default function artikelPageUser() {
 
     const navigate = useNavigate()
 
@@ -26,18 +25,14 @@ export default function artikel_admin() {
         setContent()
     }, [])
 
-    const setTambahArtikelPage = () => {
-        navigate('/admin-buat-artikel')
-    }
-
-    const setLihatArtikelAdmin = () => {
-        navigate('/admin-lihat-artikel')
+    const setDetailArtikelPengguna = () => {
+        navigate('/user-lihat-artikel')
     }
 
     return (
         <div className='h-[34rem] grid grid-cols-1 gap-4 pl-8 pt-4 pr-8 items-center'>
             
-            {/* conetent when loading */}
+            {/* artikel when loading */}
             {loading &&             
                 <div className="mx-4 min-h-48 h-48 w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
                     
@@ -71,7 +66,7 @@ export default function artikel_admin() {
             }
 
 
-            {/* content when not loading */}
+            {/* artikel when not loading */}
             {!loading && <>
                 
                 {artikel.map((u, id)=>(
@@ -99,7 +94,7 @@ export default function artikel_admin() {
                                 </div>
                             </div>
                             <div className='w-full'>
-                                <div onClick={() => {setLihatArtikelAdmin(true); setContent(u); }} className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
+                                <div onClick={() => {setDetailArtikelPengguna(true); setContent(u); }} className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
                                     <h1>Baca Selengkapnya</h1>
                                 </div>
                             </div>
@@ -109,12 +104,8 @@ export default function artikel_admin() {
                 ))}
 
             </>}
-
-            {/* add */}
-            <div onClick={setTambahArtikelPage} className="absolute bottom-16 end-12 w-14 h-14 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex cursor-pointer">
-                <img src={Add} className="h-[3rem] w-[3rem] mx-auto my-auto" />
-            </div>
             
+        
         </div>
     )
 }

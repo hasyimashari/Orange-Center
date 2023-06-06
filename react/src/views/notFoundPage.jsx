@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function not_found() {
+export default function notFoundPage() {
     return (
         <>
         <div className='relative w-full min-h-screen bg-[url("src/assets/bg_logres.png")] bg-center bg-cover flex flex-col items-center justify-center'>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useStateContext } from '../../context/ContextProvider';
+import { Link, useNavigate } from 'react-router-dom';
 import axiosClient from '../../axios-client';
-import { Link } from 'react-router-dom';
 
 import Back from '../../assets/Back 1.png'
 import Sent from '../../assets/Send 2.png'
@@ -9,13 +9,18 @@ import echo from '../../echo';
 
 export default function chat_pakar() {
 
+    const navigate = useNavigate();
+
     const messageref = useRef();
+
     const {setTo, loading, setLoading} = useStateContext();
+    const [loadingMessage, setLoadingMessage] = useState(false);
     const [user, setUser] = useState({});
     const [messages, setMessages] = useState([]);
     const [errors, setErrors] = useState()
 
     const to = JSON.parse(localStorage.getItem("TO"))
+
     useEffect(() => {
         axiosClient.get('/user')
         .then(({data}) => {
@@ -31,35 +36,42 @@ export default function chat_pakar() {
                 user:to.id_user,
                 pakar:user.id_pakar,
             }
+
+            setLoadingMessage(true)
             axiosClient.post('/load_chat_pakar/', id)
             .then((data) => {
                 setMessages(data.data.chat)
                 setLoading(false)
+                setLoadingMessage(false)
             })
         }, [user])
     )
+
     .listen('ChatSender', ()=> {
         const id = {
             user:to.id_user,
             pakar:user.id_pakar,
         }
+
+        setLoadingMessage(true)
         axiosClient.post('/load_chat_pakar/', id)
         .then((data) => {
             setMessages(data.data.chat)
+            setLoadingMessage(false)
         })
     })
 
-    const onSend = (ev) => {
+    const send = (ev) => {
 
         ev.preventDefault()
-        const payload = {
+        const dataJawaban = {
             user: to.id_user,
             pakar: user.id_pakar,
             line_chat: messageref.current.value.replace('\n\n', '\n'),
             sentby_pakar: user.id_pakar,
         }
 
-        axiosClient.post('/sendChat', payload)
+        axiosClient.post('/sendChat', dataJawaban)
         .then(() => {
             messageref.current.value = ""
         })
@@ -72,10 +84,11 @@ export default function chat_pakar() {
         })
     }
 
-    const onCli = () => {
+    const setKonsultasiPagePakar = () => {
         setTo()
         setMessages()
         echo.leave(`channel_konsultasi.${user.id_pakar}.${to.id_user}`);
+        navigate('/pakar-konsultasi')
     }
 
     const lastMsgRef = useRef(null)
@@ -90,11 +103,11 @@ export default function chat_pakar() {
             {/* header */}
             <div className='w-full h-16 bg-white sticky top-0 z-10 flex items-center justify-between font-bold text-2xl rounded-tl-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
                 
-                <Link to='/pakar-konsultasi' className='w-1/12 h-16 flex pl-6'>
-                    <button onClick={onCli}>
+                <div onClick={setKonsultasiPagePakar} className='w-1/12 h-16 flex pl-6'>
+                    <button >
                         <img className='w-8' src={Back}/>
                     </button>
-                </Link>
+                </div>
                 <div className='w-11/12 h-16 flex items-center justify-center pr-20'>
                     {to.nama_lengkap}
                 </div>
@@ -179,9 +192,15 @@ export default function chat_pakar() {
                             <textarea rows={1} ref={messageref} draggable={false}
                             className="text-sm h-full w-full p-2.5 px-4 border-none rounded-2xl bg-green-100 scrollbar-hide scroll-smooth" name="chatn" id="chat" placeholder="Ketik Pesan..."/>
                         </div>
-                        <button onClick={onSend} className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex items-center justify-center text-white">
-                            <img className='w-6' src={Sent} />
-                        </button>
+                        {loadingMessage?
+                            <button className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 rounded-full flex items-center justify-center text-white cursor-default grayscale">
+                                <img className='w-8' src={Sent} />
+                            </button>
+                                :
+                            <button onClick={send} className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex items-center justify-center text-white">
+                                <img className='w-8' src={Sent} />
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

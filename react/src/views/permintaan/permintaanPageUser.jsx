@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react"
-import Add from "../../assets/Add 1.png"
-import Person from "../../assets/Person 1.png"
-
+import { useNavigate } from "react-router-dom"
+import { useStateContext } from "../../context/ContextProvider"
+import axiosClient from "../../axios-client"
 import Detail from "./detail_permintaan"
+
+import Person from "../../assets/Person 1.png"
 import Tambah_permintaan from "./tambah_permintaan"
+import Add from "../../assets/Add 1.png"
 import PemintaanNull from "../../assets/Permintaan null.png"
 
-import { useNavigate } from "react-router-dom"
-import axiosClient from "../../axios-client"
-import { useStateContext } from "../../context/ContextProvider"
-
-export default function permintaan() {
+export default function permintaanPageUser() {
     
     const navigate = useNavigate()
 
@@ -38,19 +37,19 @@ export default function permintaan() {
         getPermintaan();
     }, [])
 
-    const bukaDetail = () => {
+    const showPopUpDetailPermintaan = () => {
         setDetail(true)
     }
 
-    const tutupDetail = () => {
+    const closePopUpDetailPermintaan = () => {
         setDetail(false)
     }
 
-    const bukaBuatPermintaan = () => {
+    const showPopUpFormPermintaan = () => {
         setBuatPermintaan(true)
     }
 
-    const tutupBuatPermintaan = () => {
+    const closePopUpFormPermintaan = () => {
         setBuatPermintaan(false)
         getPermintaan()
     }
@@ -63,7 +62,7 @@ return (
     <>
         <div className='h-[34rem] flex flex-col gap-8 pl-4 pt-4 justify-center'>
 
-            {/* contenct header */}
+            {/* permintaan header */}
             <div className="mx-4 h-24 bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-xl p-5">
                 <div className="w-full h-full flex px-4">
                     <div className="w-1/2 text-lg text-white h-full pr-40">
@@ -71,20 +70,36 @@ return (
                     </div>
 
                     <div className="w-1/2 h-full flex gap-4">
-                        <div onClick={setPermintaanSaya} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
-                            <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1" src={Person} alt="" />
-                            <h1>Permintaan Saya</h1>
-                        </div>
-                        <div onClick={bukaBuatPermintaan} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
-                            <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8" src={Add} alt="" />
-                            <h1>Ajukan Permintaan</h1>
-                        </div>
+                        {loading?
+                            <>                            
+                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 brightness-90 cursor-default grayscale">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1" src={Person} alt="" />
+                                    <h1>Permintaan Saya</h1>
+                                </div>
+                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 brightness-90 cursor-default grayscale">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8" src={Add} alt="" />
+                                    <h1>Ajukan Permintaan</h1>
+                                </div>
+                            </>
+                                :
+                            <>                            
+                                <div onClick={setPermintaanSaya} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1" src={Person} alt="" />
+                                    <h1>Permintaan Saya</h1>
+                                </div>
+                                <div onClick={showPopUpFormPermintaan} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8" src={Add} alt="" />
+                                    <h1>Ajukan Permintaan</h1>
+                                </div>
+                            </>
+
+                        }
                     </div>
 
                 </div>
             </div>
 
-            {/* content */}
+            {/* permintaan */}
             <div className="w-ful h-full grid grid-cols-3 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
 
                     {/* when loading */}
@@ -149,7 +164,7 @@ return (
                                         </div>
                                     </div>
 
-                                    <div onClick={() => {bukaDetail(true); setNilai(u);}}  className="w-full h-1/4">
+                                    <div onClick={() => {showPopUpDetailPermintaan(true); setNilai(u);}}  className="w-full h-1/4">
                                         <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
                                             <h1>Lihat Detail</h1>
                                         </div>
@@ -174,8 +189,8 @@ return (
 
         </div>
 
-        <Detail onClose={tutupDetail} visible={detail} nilai={nilai}/>
-        <Tambah_permintaan onClose={tutupBuatPermintaan} visible={buatPermintaan}/>
+        <Detail onClose={closePopUpDetailPermintaan} visible={detail} nilai={nilai}/>
+        <Tambah_permintaan onClose={closePopUpFormPermintaan} visible={buatPermintaan}/>
     </>
 )
 }

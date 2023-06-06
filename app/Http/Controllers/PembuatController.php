@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PembuatController extends Controller
 {
-    public function upmaker(Request $request)
+    public function pembuatPakar(Request $request)
     {
 
         $data = $request->validate([

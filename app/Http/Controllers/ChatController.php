@@ -4,21 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Events\ChatSender;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreChatRequest;
 use App\Models\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
-    public function storechat(Request $request) {
+    public function storechat(StoreChatRequest $request) {
 
-        $data = $request->validate([
-            'user' => 'required|int',            
-            'pakar' => 'required|int',
-            'line_chat' => 'required|string',
-            'sentby_user' => 'int',
-            'sentby_pakar' => 'int',
-        ]);
+        $data = $request->validated();
 
         $id_pakar = $request-> pakar;
         $id_user = $request-> user;

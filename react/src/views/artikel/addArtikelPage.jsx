@@ -13,7 +13,7 @@ export default function tambah_artikel() {
     const judulref = useRef()
     const isiartikelref = useRef()
 
-    const {user, setUser} = useStateContext()
+    const {user, setUser, loading, setLoading} = useStateContext()
     const [errors, setErrors] = useState()
 
     const [image, setImage] = useState()
@@ -36,26 +36,29 @@ export default function tambah_artikel() {
     const tambahArtikel = (ev) => {
 
         ev.preventDefault()
-        const payload = {
+        const dataArtikel = {
             id_admin : user.id_admin,
             judul: judulref.current.value,
             foto: image,
             content: isiartikelref.current.value.replace('\n\n', '\n')
         }
 
-        axiosClient.post('/tambah_artikel', payload, {headers:{'Content-Type':"multipart/form-data"}})
+        setLoading(true)
+        axiosClient.post('/tambah_artikel', dataArtikel, {headers:{'Content-Type':"multipart/form-data"}})
         .then(()=>{
-            setArtikelAdminPage()
+            setArtikelPageAdmin()
+            setLoading(false)
         })
         .catch(error => {
             const response = error.response;
             if (response && response.status === 422) {
                 setErrors({message: "isi semua data dengan benar" })
+                setLoading(false)
             }
         })
     }
 
-    const setArtikelAdminPage = () => {
+    const setArtikelPageAdmin = () => {
         navigate('/admin-artikel')
     }
 
@@ -63,7 +66,7 @@ export default function tambah_artikel() {
         <div className='h-[34rem] pl-8 pt-4 flex p-4'>
             <div className='w-full h-full flex flex-col'>
 
-                {/* content */}
+                {/* artikel */}
                 <div className='w-full h-[85%] flex gap-4'>
 
                     <div className='h-full w-[60%] flex flex-col justify-between'>
@@ -104,14 +107,20 @@ export default function tambah_artikel() {
                         </div>
                         }
 
-                        <button onClick={setArtikelAdminPage} className="text-sm w-32 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                        <button onClick={setArtikelPageAdmin} className="text-sm w-32 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
                             Kembali 
                             <img src={Cancel}/>
                         </button>
-                        <button onClick={tambahArtikel} className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
-                            Tambah
-                            <img src={Arrow_right}/>
-                        </button>
+                        {loading?
+                            <button className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
+                                Loading...
+                            </button>
+                                :
+                            <button onClick={tambahArtikel} className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                                Tambah
+                                <img src={Arrow_right}/>
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-
-import Detail from "./detail_permintaan"
-import axiosClient from "../../axios-client"
 import { useStateContext } from "../../context/ContextProvider"
+import axiosClient from "../../axios-client"
+import Detail from "./detail_permintaan"
+
 import PemintaanNull from "../../assets/Permintaan null.png"
 
-export default function permintaan_admin() {
+export default function permintaanPageAdmin() {
 
     const [detail, setDetail] = useState(false)
     const [permintaan, setPermintaan] = useState([])
@@ -30,11 +30,11 @@ export default function permintaan_admin() {
         getPermintaan();
     }, [])
 
-    const bukaDetail = () => {
+    const showPopUpDetailPermintaan = () => {
         setDetail(true)
     }
 
-    const tutupDetail = () => {
+    const closePopUpDetailPermintaan = () => {
         setDetail(false)
     }
 
@@ -42,7 +42,7 @@ export default function permintaan_admin() {
         <>
         <div className='h-[34rem] flex flex-col gap-8 pl-4 pt-4 justify-center'>
 
-            {/* contenct header */}
+            {/* permintaan header */}
             <div className="mx-4 h-24 bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-xl p-5">
                 <div className="w-full h-full flex px-4">
                     <div className="w-1/2 text-lg text-white h-full pr-40">
@@ -51,7 +51,7 @@ export default function permintaan_admin() {
                 </div>
             </div>
 
-            {/* content */}
+            {/* permintaan */}
             <div className="w-ful h-full grid grid-cols-3 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
 
                     {/* when loading */}
@@ -116,7 +116,7 @@ export default function permintaan_admin() {
                                         </div>
                                     </div>
 
-                                    <div onClick={() => {bukaDetail(true); setNilai(u);}}  className="w-full h-1/4">
+                                    <div onClick={() => {showPopUpDetailPermintaan(true); setNilai(u);}}  className="w-full h-1/4">
                                         <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
                                             <h1>Lihat Detail</h1>
                                         </div>
@@ -141,7 +141,7 @@ export default function permintaan_admin() {
 
         </div>
 
-        <Detail onClose={tutupDetail} visible={detail} nilai={nilai}/>
+        <Detail onClose={closePopUpDetailPermintaan} visible={detail} nilai={nilai}/>
     </>
     )
 }

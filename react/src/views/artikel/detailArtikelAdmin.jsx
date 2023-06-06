@@ -7,7 +7,7 @@ import Decision_artikel from './decision_artikel'
 import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../../context/ContextProvider'
 
-export default function melihat_artikel_admin() {
+export default function detailArtikelAdmin() {
 
     const navigate = useNavigate()
 

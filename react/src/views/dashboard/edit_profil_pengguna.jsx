@@ -17,12 +17,12 @@ export default function edit_profil_pengguna({visible, onClose}) {
     const passwrodref = useRef();
 
     const [errors, setErrors] = useState()
-    const {user} = useStateContext()
+    const {user, loading, setLoading} = useStateContext()
 
-    const save = (ev) => {
+    const simpan = (ev) => {
 
         ev.preventDefault()
-        const payload = {
+        const dataAkun = {
             nama_lengkap: namaref.current.value,
             username: usernameref.current.value,
             jenis_kelamin: jeniskelaminref.current.value,
@@ -33,20 +33,23 @@ export default function edit_profil_pengguna({visible, onClose}) {
             password: passwrodref.current.value,
         }
 
-        axiosClient.put(`/pengguna/${user.id_user}`, payload)
+        setLoading(true)
+        axiosClient.put(`/pengguna/${user.id_user}`, dataAkun)
             .then(() => {
                 onClose(true)
                 setErrors()
+                setLoading(false)
             })
             .catch(err => {
             const response = err.response;
                 if (response && response.status === 422) {
                     setErrors({message: "isi semua data dengan benar" })
+                    setLoading(false)
                 }
         })
     }
 
-    const cancel = () => {
+    const batal = () => {
         onClose(true);
         setErrors(null);
     }
@@ -55,13 +58,14 @@ export default function edit_profil_pengguna({visible, onClose}) {
 
     return (
 
-        // form
+        // form edit
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
-        <form onSubmit={save} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+        <form onSubmit={simpan} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
+                {/* errors message */}
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
-                        <p key={key}>{errors[key][0]}</p>
+                        <p key={key}>{errors[key]}</p>
                     ))}
 
                 </div>
@@ -113,8 +117,12 @@ export default function edit_profil_pengguna({visible, onClose}) {
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwnname" id="pwid" />
 
                 <div className="flex justify-end gap-x-6 text-sm my-6">
-                    <button onClick={cancel} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
-                    <button type="submit" className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
+                    <button onClick={batal} className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Batal <img src={Cancel}/></button>
+                    {loading?
+                        <button className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">Loading...</button>
+                            :
+                        <button type="submit" className="text-sm w-4/12 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Simpan <img src={Arrow_right}/></button>
+                    }
                 </div>
             </form>
         </div>

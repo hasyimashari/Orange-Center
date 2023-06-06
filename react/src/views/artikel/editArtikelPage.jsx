@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../../context/ContextProvider'
 import axiosClient from '../../axios-client'
 
-export default function edit_artikel() {
+export default function editArtikelPage() {
 
     const navigate =  useNavigate()
 
@@ -40,7 +40,7 @@ export default function edit_artikel() {
         })
     }, [])
 
-    const editArtikel = (ev) => {
+    const ubah = (ev) => {
 
         ev.preventDefault()
         const payload = {
@@ -50,8 +50,10 @@ export default function edit_artikel() {
             content: isiartikelref.current.value.replace('\n\n', '\n')
         }
 
+        setLoading(true)
         axiosClient.post(`/edit_artikel/${content.id_artikel}`, payload, {headers:{'Content-Type':"multipart/form-data"}})
         .then((response)=>{
+            setLoading(false)
             setContent()
             setContent(response.data.data)
             setLihatArtikelAdminPage()
@@ -61,7 +63,7 @@ export default function edit_artikel() {
             const response = error.response;
             if (response && response.status === 422) {
                 setErrors({message: "isi semua data dengan benar" })
-            }
+                setLoading(false)            }
         })
     }
 
@@ -70,7 +72,7 @@ export default function edit_artikel() {
         <div className='h-[34rem] pl-8 pt-4 flex p-4'>
             <div className='w-full h-full flex flex-col'>
 
-                {/* content */}
+                {/* artikel */}
                 <div className='w-full h-[85%] flex gap-4'>
 
                     <div className='h-full w-[60%] flex flex-col justify-between'>
@@ -114,10 +116,16 @@ export default function edit_artikel() {
                             Kembali 
                             <img src={Cancel}/>
                         </button>
-                        <button onClick={editArtikel} className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
-                            Tambah
-                            <img src={Arrow_right}/>
-                        </button>
+                        {loading?
+                            <button className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
+                                Loading...
+                            </button>
+                                :
+                            <button onClick={ubah} className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                                Tambah
+                                <img src={Arrow_right}/>
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

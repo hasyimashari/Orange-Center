@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-export default function melihat_artikel_user() {
-
+export default function detailArtikelPakar() {
+    
     const content = JSON.parse(localStorage.getItem("CONTENT"))
 
     return (

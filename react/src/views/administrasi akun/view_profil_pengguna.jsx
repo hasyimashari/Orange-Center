@@ -13,12 +13,15 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
     if (!visible) return null;
 
     const [showDec, setShowDec] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const upgradeAkun = (ev) => {
 
         ev.preventDefault()
+        setLoading(true)
         axiosClient.put(`/upgrade_akun_user/${nilai.id_user}`)
         .then(()=>{
+            setLoading(false)
             onClose(true)
         })
     }
@@ -48,10 +51,20 @@ export default function view_profil_pengguna({onClose, visible, nilai}) {
                     <div className='w-full h-[85%] flex flex-col items-center justify-center pt-8'>
                         <div>
                             {nilai.status_premium==="Gratis"?
-                                <div className='flex gap-1 w-full items-center justify-center'>
-                                    <img onClick={upgradeAkun} className='w-8 h-8 cursor-pointer grayscale' src={Premium} alt="" />
-                                    <h1 className='text-lg font-bold mt-2'>{nilai.nama_lengkap}</h1>
-                                </div>:
+                                <>
+                                    {loading?
+                                        <div className='flex gap-1 w-full items-center justify-center'>
+                                            <h1 className='w-8 h-8 font-bold text-xl'>...</h1>
+                                            <h1 className='text-lg font-bold mt-2'>{nilai.nama_lengkap}</h1>
+                                        </div>
+                                        :
+                                        <div className='flex gap-1 w-full items-center justify-center'>
+                                            <img onClick={upgradeAkun} className='w-8 h-8 cursor-pointer grayscale' src={Premium} alt="" />
+                                            <h1 className='text-lg font-bold mt-2'>{nilai.nama_lengkap}</h1>
+                                        </div>
+                                    }
+                                </>
+                                    :
                                 <div className='flex gap-1 w-full items-center justify-center'>
                                     <img className='w-8 h-8' src={Premium} alt="" />
                                     <h1 className='text-lg font-bold mt-2'>{nilai.nama_lengkap}</h1>

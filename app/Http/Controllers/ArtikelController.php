@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditArtikelRequest;
+use App\Http\Requests\StoreArtikelRequest;
 use App\Models\Artikel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ArtikelController extends Controller
 {
-    public function tambahArtikel(Request $request)
+    public function tambahArtikel(StoreArtikelRequest $request)
     {
-        $data = $request -> validate([
-            'id_admin' => 'required|int',
-            'judul' => 'required|string|max:20',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,svg',
-            'content' => 'required|string'
-        ]);
+        $data = $request -> validated();
 
         $nama_gambar = Str::random(32).".".$request->foto->getClientOriginalExtension();
         $data['foto'] = $nama_gambar;
@@ -38,14 +34,9 @@ class ArtikelController extends Controller
         ]);
     }
 
-    public function editArtikel(Request $request, $id)
+    public function editArtikel(EditArtikelRequest $request, $id)
     {
-        $data = $request -> validate([
-            'id_admin' => 'required|int',
-            'judul' => 'required|string|max:20',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,svg',
-            'content' => 'required|string'
-        ]);
+        $data = $request -> validated();
 
         $artikel = Artikel::findorfail($id);
 

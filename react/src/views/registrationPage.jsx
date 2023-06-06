@@ -1,10 +1,11 @@
-import {Link, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useRef, useState } from "react"
-import axiosClient from  "../axios-client"
-import Arrow_right from "../assets/arrow_right.png"
 import { useStateContext } from "../context/ContextProvider";
+import axiosClient from  "../axios-client"
 
-export default function Register() {
+import Arrow_right from "../assets/arrow_right.png"
+
+export default function registrationPage() {
 
     const navigate = useNavigate();
 
@@ -20,10 +21,10 @@ export default function Register() {
     const [errors, setErrors] = useState(null)
     const {loading, setLoading} = useStateContext()
     
-    const clickRegistration = (ev) => {
+    const daftar = (ev) => {
 
         ev.preventDefault()
-        const payload = {
+        const dataRegistration = {
             nama_lengkap: namaref.current.value,
             username: usernameref.current.value,
             jenis_kelamin: jeniskelaminref.current.value,
@@ -35,7 +36,7 @@ export default function Register() {
         }
 
         setLoading(true)
-        axiosClient.post('/register', payload)
+        axiosClient.post('/register', dataRegistration)
         .then(() => {
             setLoading(false)
             navigate('/login')
@@ -57,10 +58,10 @@ export default function Register() {
 return (
     <>
         {/* form */}
-        <form onSubmit={clickRegistration} className="w-full px-16">
+        <form onSubmit={daftar} className="w-full px-16">
                 <h1 className="font-bold text-[2.25rem]">Daftar</h1>
 
-                {/* errors */}
+                {/* errors message*/}
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                     {Object.keys(errors).map(key => (
                         <p key={key}>{errors[key]}</p>
@@ -111,7 +112,7 @@ return (
 
                 <label className="text-sm">Password</label>
                 <input ref={passwrodref}
-                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" />
+                className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" maxLength={15}/>
 
                 <div className="flex justify-between text-sm my-6">
                     <p className="py-2.5">sudah punya akun?  
@@ -119,7 +120,7 @@ return (
                         MASUK 
                     </span> </p>
                     {loading?
-                        <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Loading...</button>:
+                        <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-default grayscale">Loading...</button>:
                         <button type="submit" className="text-sm w-4/12 px-6 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
                     }
                 </div>

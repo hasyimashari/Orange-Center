@@ -1,32 +1,32 @@
-import Arrow_right from "../assets/arrow_right.png"
-import axiosClient from  "../axios-client"
-
 import { useRef, useState } from "react"
 import { useStateContext } from "../context/ContextProvider.jsx";
 import {Link, useNavigate} from 'react-router-dom';
 
-export default function login() {
+import Arrow_right from "../assets/arrow_right.png"
+import axiosClient from  "../axios-client"
+
+export default function loginPage() {
 
     const navigate = useNavigate();
+
+    const [errors, setErrors] = useState(null)
+    const {setUser, setToken, setRole, loading, setLoading} = useStateContext()
 
     const emailref = useRef();
     const passwrodref = useRef();
     
-    const [errors, setErrors] = useState(null)
-    const {setUser, setToken, setRole, loading, setLoading} = useStateContext()
-    
-    const clickLogin = (ev) => {
+    const masuk = (ev) => {
 
         ev.preventDefault()
 
-        const payload = {
+        const dataLogin = {
             email: emailref.current.value,
             password: passwrodref.current.value,
         }
 
         setErrors(null)
         setLoading(true)
-        axiosClient.post('/login', payload)
+        axiosClient.post('/login', dataLogin)
         .then((response) => {
             setUser(response.data.user)
             setToken(response.data.token)
@@ -54,10 +54,10 @@ export default function login() {
 return (
     <>
         {/* form */}
-        <form onSubmit={clickLogin} action="" className="w-full px-16">
+        <form onSubmit={masuk} action="" className="w-full px-16">
             <h1 className="font-bold text-[2.8rem] my-4">Masuk</h1>
 
-            {/* error */}
+            {/* errors message */}
             {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
                 {Object.keys(errors).map(key => (
                     <p key={key}>{errors[key]}</p>
@@ -65,7 +65,6 @@ return (
             </div>
             }
 
-            {/* form */}
             <div className="my-2">
                 <label htmlFor="emac"> Email</label>
                 <input ref={emailref}
@@ -78,7 +77,7 @@ return (
             </div>
             <div className="flex flex-col items-center justify-center">
                 {loading?
-                    <button className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white">
+                    <button className="w-5/12 px-7 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 mt-6 py-2 rounded-3xl shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex justify-between text-white cursor-default grayscale">
                         Loading...
                     </button>:
 

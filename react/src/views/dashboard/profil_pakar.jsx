@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import Profil from "../../assets/Ellipse.png"
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import { useState } from 'react';
 
+import Profil from "../../assets/Ellipse.png"
 import Edit from './edit_profil_pakar';
 import View from './view_profil_all_actor';
 import axiosClient from '../../axios-client';
@@ -14,19 +14,19 @@ export default function profil_pakar() {
     const [loadingE, setLoadingE] = useState(false)
     const {user, setUser, setToken, setRole, loading, setLoading} = useStateContext()
 
-    const openprofil = () => {
+    const showPopUpAkun = () => {
         setShowProfil(true)
     }
 
-    const closeprofil = () => {
+    const closePopUpAkun = () => {
         setShowProfil(false)
     }
 
-    const openeditprofil = () => {
+    const showFormEdit = () => {
         setShowEdit(true)
     }
 
-    const closeeditprofil = () => {        
+    const closeFormEdit = () => {        
         setShowEdit(false)
         setUser({})
         setLoading(true)
@@ -37,7 +37,7 @@ export default function profil_pakar() {
             })
     }
 
-    const onLogout = (ev) => {
+    const keluar = (ev) => {
         ev.preventDefault()
         setLoadingE(true)
         axiosClient.post('/logout')
@@ -82,18 +82,18 @@ export default function profil_pakar() {
                     }
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button onClick={openprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                        <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
-                        <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                        <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
                         {loadingE?
-                            <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                            <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm grayscale">
                                 Loading...
                             </button>:
 
-                            <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                            <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                                 Keluar
                             </button>
                         }
@@ -102,8 +102,8 @@ export default function profil_pakar() {
             </div>
         </div>
 
-        <View onClose={closeprofil} visible={showProfil} />
-        <Edit onClose={closeeditprofil} visible={showEdit} />
+        <View onClose={closePopUpAkun} visible={showProfil} />
+        <Edit onClose={closeFormEdit} visible={showEdit} />
         </div>
         
     )

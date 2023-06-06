@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import Profil from "../../assets/Ellipse.png"
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import { useState } from 'react';
 
+import Profil from "../../assets/Ellipse.png"
 import Edit from './edit_profil_pengguna';
 import View from './view_profil_all_actor';
 import Premium from "../../assets/Premium 1.png"
@@ -12,41 +12,42 @@ import { useNavigate } from 'react-router-dom';
 
 export default function profil_user() {
     
+    const navigate = useNavigate()
+
     const [showEdit, setShowEdit] = useState(false)
     const [showProfil, setShowProfil] = useState(false)
     const [loadingE, setLoadingE] = useState(false)
     const {user, setUser, setToken, setRole, loading, setLoading} = useStateContext()
     
-    const navigate = useNavigate()
 
-    const openprofil = () => {
+    const showPopUpAkun = () => {
         setShowProfil(true)
     }
 
-    const closeprofil = () => {
+    const closePopUpAkun = () => {
         setShowProfil(false)
     }
 
-    const openeditprofil = () => {
+    const showFormEdit = () => {
         setShowEdit(true)
     }
-
-    const setPremiumPage = () => {
-        navigate("/user-premium");
-    }
-
-    const closeeditprofil = () => {        
+    
+    const closeFormEdit = () => {        
         setShowEdit(false)
         setUser({})
         setLoading(true)
         axiosClient.get('/user')
-            .then(({data}) => {
+        .then(({data}) => {
                 setUser(data)
                 setLoading(false)
             })
+        }
+        
+    const setPremiumPage = () => {
+        navigate("/user-premium");
     }
 
-    const onLogout = (ev) => {
+    const keluar = (ev) => {
         setLoadingE(true)
         ev.preventDefault()
         axiosClient.post('/logout')
@@ -90,7 +91,7 @@ export default function profil_user() {
                                     <img className='w-8 h-8 grayscale' src={Premium} alt="" />
                                     <h1 className='text-lg font-bold mt-2'>{user.nama_lengkap}</h1>
                                 </div>:
-                                <div className='flex gap-1 w-full items-center justify-center'>
+                                <div className='flex gap-1 w-full items-center justify-center cursor-default'>
                                     <img className='w-8 h-8' src={Premium} alt="" />
                                     <h1 className='text-lg font-bold mt-2'>{user.nama_lengkap}</h1>
                                 </div>
@@ -100,26 +101,26 @@ export default function profil_user() {
                     }
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button onClick={openprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                        <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
                             Profil saya
                         </button>
                         {user.status_premium===1?
                             <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
                                 Upgrade akun
                             </div>:
-                            <div className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                            <div className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-default grayscale">
                                 Upgrade akun
                             </div>
                         }
-                        <button onClick={openeditprofil} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                        <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                             Edit
                         </button>
                         {loadingE?
-                            <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                            <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm grayscale">
                                 Loading...
                             </button>:
 
-                            <button onClick={onLogout} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                            <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
                                 Keluar
                             </button>
                         }
@@ -128,8 +129,8 @@ export default function profil_user() {
             </div>
         </div>
 
-        <View onClose={closeprofil} visible={showProfil} />
-        <Edit onClose={closeeditprofil} visible={showEdit} />
+        <View onClose={closePopUpAkun} visible={showProfil} />
+        <Edit onClose={closeFormEdit} visible={showEdit} />
         </div>
         
     )
