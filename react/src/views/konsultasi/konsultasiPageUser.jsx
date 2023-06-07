@@ -21,14 +21,14 @@ export default function konsultasiPageUser() {
             setUsers(data.data)
         })
     }
+    
+    useEffect(() => {
+        getUsers();
+    }, [])
 
     const setChatPageUser = () => {
         navigate('/user-chat')
     }
-
-    useEffect(() => {
-        getUsers();
-    }, [])
 
     return (
         <div>

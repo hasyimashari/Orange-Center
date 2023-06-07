@@ -63,7 +63,7 @@ class ChatController extends Controller
             'user' => 'required|int'
         ]);
 
-        $session = Chat::where($data)->orderBy('user_session','desc')->value('user_session');
+        $session = Chat::where($data)->whereNotNull('sentby_user')->orderBy('user_session','desc')->value('user_session');
 
         return response(([
             'user_session' => $session

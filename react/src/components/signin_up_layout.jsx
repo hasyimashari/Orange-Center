@@ -26,7 +26,7 @@ export default function signin_up_layout() {
                     <ul className='flex flex-col items-center justify-center gap-5 py-16'>
                         <li className="text-[2.8rem] font-bold">OrangeCenter</li>
                         <li><img src={Icon} className="drop-shadow-[-8px_6px_8px_rgba(0,0,0,0.25)] w-72"/></li>
-                        <li className="text-xl">deksripsi singkat web</li>
+                        <li className="text-base text-center">Temukan Fakta dan Tips Tentang Jeruk Melalui Pakar Terpecaya</li>
                     </ul>
                 </div>
 

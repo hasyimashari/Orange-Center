@@ -28,38 +28,37 @@ export default function chat_pakar() {
         })
     }, [])
 
-    echo.channel(`channel_konsultasi.${user.id_pakar}.${to.id_user}`)
-    .subscribed(
-        useEffect(()=>{
-            setLoading(true)
-            const id = {
-                user:to.id_user,
-                pakar:user.id_pakar,
-            }
+    useEffect(() => {
+        const channel = echo.channel(`channel_konsultasi.${user.id_pakar}.${to.id_user}`);
+        const id = {
+            user: to.id_user,
+            pakar: user.id_pakar,
+        };
+    
+        channel.subscribed(() => {
 
-            setLoadingMessage(true)
+            setLoading(true);
+            setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
             .then((data) => {
-                setMessages(data.data.chat)
-                setLoading(false)
-                setLoadingMessage(false)
-            })
-        }, [user])
-    )
+                setMessages(data.data.chat);
+                setLoading(false);
+                setLoadingMessage(false);
+                });
 
-    .listen('ChatSender', ()=> {
-        const id = {
-            user:to.id_user,
-            pakar:user.id_pakar,
-        }
+        });
+    
+        channel.listen('ChatSender', () => {
+    
+            setLoadingMessage(true);
+            axiosClient.post('/load_chat_pakar/', id)
+            .then((data) => {
+                setMessages(data.data.chat);
+                setLoadingMessage(false);
+                });
+        });
 
-        setLoadingMessage(true)
-        axiosClient.post('/load_chat_pakar/', id)
-        .then((data) => {
-            setMessages(data.data.chat)
-            setLoadingMessage(false)
-        })
-    })
+    }, [user]);
 
     const send = (ev) => {
 

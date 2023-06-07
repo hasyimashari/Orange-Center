@@ -23,21 +23,21 @@ export default function konsultasiPagePakar() {
             setLoading(false)
         })
     }
-
-    const setChatPageUser = () => {
-        navigate('/pakar-chat')
-    }
-
+    
     useEffect(() => {
         axiosClient.get('/user')
         .then(({data}) => {
             setUser(data)
         })
     }, [])
-
+    
     useEffect(() => {
         getUsers();
     }, [user])
+    
+    const setChatPageUser = () => {
+        navigate('/pakar-chat')
+    }
 
     return (
         <div>

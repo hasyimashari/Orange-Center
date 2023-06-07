@@ -29,56 +29,44 @@ export default function chat_user() {
         })
     }, [])
 
-    echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`)
-    .subscribed(
-        useEffect(()=>{
-            setLoading(true)
-            const id = {
-                user:user.id_user,
-                pakar:to.id_pakar,
-            }
+    useEffect(() => {
+        const channel = echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`)
+        const id = {
+            user: user.id_user,
+            pakar: to.id_pakar,
+        };
 
-            setLoadingMessage(true)
+        channel.subscribed(() => {
+
+            setLoading(true);
+            setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
             .then((data) => {
-                setMessages(data.data.chat)
-                setLoadingMessage(false)
-                setLoading(false)
-            })
-        }, [user]),
+                setMessages(data.data.chat);
+                setLoadingMessage(false);
+                setLoading(false);
+            });
 
-        useEffect(()=>{
-            axiosClient.post('/get_user_session', {
-                user: user.id_user
-            })
-            .then(({data}) => {
-                setSession(3-(data.user_session))
-            })
-        }, [user])
-    )
+        });
 
-    .listen('ChatSender', ()=> {
+        channel.listen('ChatSender', () => {
 
-        const id = {
-            user:user.id_user,
-            pakar:to.id_pakar,
-        }
+            setLoadingMessage(true);
+            axiosClient.post('/load_chat_pakar/', id)
+            .then((data) => {
+                setMessages(data.data.chat);
+                setLoadingMessage(false);
+                });
+            });
+            
+    }, [user]);
 
-        setLoadingMessage(true)
-        axiosClient.post('/load_chat_pakar/', id)
-        .then((data) => {
-            setMessages(data.data.chat)
-            setLoadingMessage(false)
-        }),
-
-        axiosClient.post('/get_user_session', {
-            user: user.id_user
-        })
-        .then(({data}) => {
-            setSession(3-(data.user_session))
-        })
-
+    axiosClient.post('/get_user_session', {
+        user: user.id_user,
     })
+    .then(({ data }) => {
+        setSession(3 - data.user_session);
+    });
 
     const send = (ev) => {
 

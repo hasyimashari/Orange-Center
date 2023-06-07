@@ -66,7 +66,7 @@ return (
             <div className="mx-4 h-24 bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-xl p-5">
                 <div className="w-full h-full flex px-4">
                     <div className="w-1/2 text-lg text-white h-full pr-40">
-                        <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+                    <h1>Butuh Jenis Jeruk Tertentu? <br/> Ajukan Sekarang</h1>
                     </div>
 
                     <div className="w-1/2 h-full flex gap-4">
