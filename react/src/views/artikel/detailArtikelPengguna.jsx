@@ -11,8 +11,8 @@ export default function detailArtikelUser() {
                     {/* gambar artikel */}
                     <div className='h-full w-3/12  flex flex-col gap-0.5'>
 
-                        <div className="w-full h-[55%] bg-slate-300 rounded-lg flex">
-                            <img src={`http://127.0.0.1:8000/storage/${content.foto}`} className="m-auto" alt="" />
+                        <div className="w-full h-[55%] bg-slate-300 rounded-lg flex p-4">
+                            <img src={`http://127.0.0.1:8000/storage/${content.foto}`} className="m-auto max-w-full max-h-full" alt="" />
                         </div>
 
                         <div className='w-full'>
