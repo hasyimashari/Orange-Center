@@ -79,7 +79,7 @@ export default function artikelPageAdmin() {
                     <div key={id} className="mx-4 min-h-48 h-48 w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
                                         
                         {/* photo */}
-                        <div className="w-2/12 h-full bg-slate-300 rounded-lg flex p-4">
+                        <div className="w-2/12 h-full bg-slate-300 rounded-lg flex p-2">
                             <img src={`http://127.0.0.1:8000/storage/${u.foto}`} className="m-auto max-w-full max-h-full" alt="" />
                         </div>
 
