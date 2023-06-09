@@ -11,8 +11,8 @@ export default function detail_permintaan({visible, onClose, nilai}) {
             {/* content */}
             <div className='bg-white w-[40rem] h-80 rounded-xl flex p-4'>
                 {/* photo */}
-                <div className='w-[45%] h-full bg-slate-300 rounded-lg flex'>
-                    <img src={`http://127.0.0.1:8000/storage/${nilai.foto_produk}`} className='m-auto' alt="" />
+                <div className='w-[45%] h-full bg-slate-300 rounded-lg flex p-2'>
+                    <img src={`http://127.0.0.1:8000/storage/${nilai.foto_produk}`} className='m-auto max-w-full max-h-full' alt="" />
                 </div>
 
                 {/* desc */}

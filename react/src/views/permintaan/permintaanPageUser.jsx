@@ -143,8 +143,8 @@ return (
 
                             <div key={id} className="h-32 bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl flex p-1.5 gap-2">
                                 {/* photo */}
-                                <div className="w-1/3 h-full bg-slate-300 rounded-lg flex">
-                                    <img src={`http://127.0.0.1:8000/storage/${u.foto_produk}`} className="m-auto" alt="" />
+                                <div className="w-1/3 h-full bg-slate-300 rounded-lg flex p-2">
+                                    <img src={`http://127.0.0.1:8000/storage/${u.foto_produk}`} className="m-auto max-w-full max-h-full" alt="" />
                                 </div>
 
                                 {/* desc */}
