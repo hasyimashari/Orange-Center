@@ -23,56 +23,42 @@ export default function chat_pakar() {
 
     useEffect(() => {
         axiosClient.get('/user')
-        .then(({ data }) => {
-            setUser(data);
+        .then(({data}) => {
+            setUser(data)
         })
-        .catch((error) => {
-            // Handle the error appropriately
-            console.error('Error fetching user:', error);
-        });
-    }, []);
-    
+    }, [])
+
     useEffect(() => {
-        if (user) {
-        const channel = echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`);
+        const channel = echo.channel(`channel_konsultasi.${user.id_pakar}.${to.id_user}`);
         const id = {
-            user: user.id_user,
-            pakar: to.id_pakar,
+            user: to.id_user,
+            pakar: user.id_pakar,
         };
     
         channel.subscribed(() => {
+
             setLoading(true);
             setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
-            .then(({ data }) => {
-                setMessages(data.chat);
-                setLoadingMessage(false);
+            .then((data) => {
+                setMessages(data.data.chat);
                 setLoading(false);
-            })
-            .catch((error) => {
-                // Handle the error appropriately
-                console.error('Error loading chat messages:', error);
-            });
+                setLoadingMessage(false);
+                });
+
         });
-        }
+    
+        channel.listen('ChatSender', () => {
+    
+            setLoadingMessage(true);
+            axiosClient.post('/load_chat_pakar/', id)
+            .then((data) => {
+                setMessages(data.data.chat);
+                setLoadingMessage(false);
+                });
+        });
+
     }, [user]);
-
-    echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`)
-    .listen('.chat-sender', ()=> {
-
-        const id = {
-            user:user.id_user,
-            pakar:to.id_pakar,
-        }
-
-        setLoadingMessage(true)
-        axiosClient.post('/load_chat_pakar/', id)
-        .then((data) => {
-            setMessages(data.data.chat)
-            setLoadingMessage(false)
-        })
-    })
-
 
     const send = (ev) => {
 

@@ -28,10 +28,18 @@ class ChatController extends Controller
         }
 
         broadcast(new ChatSender($id_pakar, $id_user, $line_chat, $sentby_user, $sentby_pakar, $user_session));
+        $data_response = ([
+            $id_pakar, 
+            $id_user, 
+            $line_chat, 
+            $sentby_user, 
+            $sentby_pakar, 
+            $user_session
+        ]);
 
         Chat::create($data);
         return response([
-            'message' => $line_chat
+            'message' => $data_response
         ]);
     }
 

@@ -48,24 +48,18 @@ export default function chat_user() {
             });
 
         });
+
+        channel.listen('ChatSender', () => {
+
+            setLoadingMessage(true);
+            axiosClient.post('/load_chat_pakar/', id)
+            .then((data) => {
+                setMessages(data.data.chat);
+                setLoadingMessage(false);
+                });
+            });
             
     }, [user]);
-
-    echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`)
-    .listen('.chat-sender', ()=> {
-
-        const id = {
-            user:user.id_user,
-            pakar:to.id_pakar,
-        }
-
-        setLoadingMessage(true)
-        axiosClient.post('/load_chat_pakar/', id)
-        .then((data) => {
-            setMessages(data.data.chat)
-            setLoadingMessage(false)
-        })
-    })
 
     axiosClient.post('/get_user_session', {
         user: user.id_user,
