@@ -42,4 +42,12 @@ class ChatSender implements ShouldBroadcast
             new Channel('channel_konsultasi.'.$this-> id_pakar.".".$this->id_user)
         ];
     }
+
+    /**
+     * The event's broadcast name.
+     */
+    public function broadcastAs(): string
+    {
+        return 'chat-sender';
+    }
 }

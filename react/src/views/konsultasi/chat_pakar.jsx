@@ -23,42 +23,53 @@ export default function chat_pakar() {
 
     useEffect(() => {
         axiosClient.get('/user')
-        .then(({data}) => {
-            setUser(data)
+        .then(({ data }) => {
+            setUser(data);
         })
-    }, [])
-
+        .catch((error) => {
+            // Handle the error appropriately
+            console.error('Error fetching user:', error);
+        });
+    }, []);
+    
     useEffect(() => {
-        const channel = echo.channel(`channel_konsultasi.${user.id_pakar}.${to.id_user}`);
+        if (user) {
+        const channel = echo.channel(`channel_konsultasi.${to.id_pakar}.${user.id_user}`);
         const id = {
-            user: to.id_user,
-            pakar: user.id_pakar,
+            user: user.id_user,
+            pakar: to.id_pakar,
         };
     
         channel.subscribed(() => {
-
             setLoading(true);
             setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
-            .then((data) => {
-                setMessages(data.data.chat);
-                setLoading(false);
+            .then(({ data }) => {
+                setMessages(data.chat);
                 setLoadingMessage(false);
-                });
-
+                setLoading(false);
+            })
+            .catch((error) => {
+                // Handle the error appropriately
+                console.error('Error loading chat messages:', error);
+            });
         });
     
-        channel.listen('ChatSender', () => {
-    
+        channel.listen('.chat-sender', (event) => {
             setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
-            .then((data) => {
-                setMessages(data.data.chat);
+            .then(({ data }) => {
+                setMessages(data.chat);
                 setLoadingMessage(false);
-                });
+            })
+            .catch((error) => {
+                // Handle the error appropriately
+                console.error('Error loading chat messages:', error);
+            });
         });
-
+        }
     }, [user]);
+    
 
     const send = (ev) => {
 
