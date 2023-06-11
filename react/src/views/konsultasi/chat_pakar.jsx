@@ -48,7 +48,7 @@ export default function chat_pakar() {
 
         });
     
-        channel.listen('ChatSender', () => {
+        channel.listen('.chat-sender', () => {
     
             setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)

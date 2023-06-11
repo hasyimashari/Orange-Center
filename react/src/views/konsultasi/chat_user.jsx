@@ -49,7 +49,7 @@ export default function chat_user() {
 
         });
 
-        channel.listen('ChatSender', () => {
+        channel.listen('.chat-sender', () => {
 
             setLoadingMessage(true);
             axiosClient.post('/load_chat_pakar/', id)
