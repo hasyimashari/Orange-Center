@@ -67,13 +67,13 @@ return (
 
                 <div className="w-full max-w-full">
                     <ul className="flex justify-normal gap-2 pb-4">
-                        <li className="w-[15rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
-                        <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Username</li>
-                        <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
-                        <li className="w-[8rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Tanggal Lahir</li>
-                        <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">No. HP</li>
-                        <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Asal</li>
-                        <li className="w-[10rem] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Email</li>
+                        <li className="w-[22%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Nama lengkap</li>
+                        <li className="w-[12%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Username</li>
+                        <li className="w-[12%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Jenis Kelamin</li>
+                        <li className="w-[12%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Tanggal Lahir</li>
+                        <li className="w-[14%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">No. HP</li>
+                        <li className="w-[14%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Asal</li>
+                        <li className="w-[14%] rounded-xl text-center p-1 border-1 shadow-[0px_2px_0px_1px_rgba(78,148,79,0.25)]">Email</li>
                     </ul>
                 </div>
 
@@ -86,13 +86,13 @@ return (
                 <div>
                     {loading && 
                         <ul className="flex justify-normal gap-2 pb-4">
-                            <li className="w-[15rem] text-center p-1">Loading...</li>
-                            <li className="w-[10rem] text-center p-1">Loading...</li>
-                            <li className="w-[8rem] text-center p-1">Loading...</li>
-                            <li className="w-[8rem] text-center p-1">Loading...</li>
-                            <li className="w-[10rem] text-center p-1">Loading...</li>
-                            <li className="w-[10rem] text-center p-1">Loading...</li>
-                            <li className="w-[10rem] text-center p-1">Loading...</li>
+                            <li className="w-[22%] text-center p-1">Loading...</li>
+                            <li className="w-[12%] text-center p-1">Loading...</li>
+                            <li className="w-[12%] text-center p-1">Loading...</li>
+                            <li className="w-[12%] text-center p-1">Loading...</li>
+                            <li className="w-[14%] text-center p-1">Loading...</li>
+                            <li className="w-[14%] text-center p-1">Loading...</li>
+                            <li className="w-[14%] text-center p-1">Loading...</li>
                         </ul>
                     }
                 </div>
@@ -105,22 +105,22 @@ return (
                             <div key={id}>
                                 {u.status_akun==="Aktif"?
                                 <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white hover:brightness-90 rounded-2xl cursor-pointer mb-2">
-                                    <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.username}</li>
-                                    <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                                    <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.asal}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.email}</li>
+                                    <li className="w-[22%] text-center p-1">{u.nama_lengkap}</li>
+                                    <li className="w-[12%] text-center p-1">{u.username}</li>
+                                    <li className="w-[12%] text-center p-1">{u.jenis_kelamin}</li>
+                                    <li className="w-[12%] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
+                                    <li className="w-[14%] text-center p-1">{u.no_hp}</li>
+                                    <li className="w-[14%] text-center p-1">{u.asal}</li>
+                                    <li className="w-[14%] text-center p-1">{u.email}</li>
                                 </ul>:
                                 <ul onClick={() => {setShowProfil(true); setNilai(u);}} className="flex justify-normal gap-2 bg-white text-red-500 hover:brightness-90 rounded-2xl cursor-pointer mb-2">
-                                    <li className="w-[15rem] text-center p-1">{u.nama_lengkap}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.username}</li>
-                                    <li className="w-[8rem] text-center p-1">{u.jenis_kelamin}</li>
-                                    <li className="w-[8rem] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.no_hp}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.asal}</li>
-                                    <li className="w-[10rem] text-center p-1">{u.email}</li>
+                                    <li className="w-[22%] text-center p-1">{u.nama_lengkap}</li>
+                                    <li className="w-[12%] text-center p-1">{u.username}</li>
+                                    <li className="w-[12%] text-center p-1">{u.jenis_kelamin}</li>
+                                    <li className="w-[12%] text-center p-1">{u.tanggal_lahir.substring(0, 10)}</li>
+                                    <li className="w-[14%] text-center p-1">{u.no_hp}</li>
+                                    <li className="w-[14%] text-center p-1">{u.asal}</li>
+                                    <li className="w-[14%] text-center p-1">{u.email}</li>
                                 </ul>
                                 }
                             </div>

@@ -40,7 +40,7 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                             <h1 className='text-lg font-bold mt-2'>{nilai.nama_lengkap}</h1>
                             <h4 className='mb-2'>{nilai.username}</h4>
                         </div>
-                        <div className='w-full text-sm flex flex-col gap-2 items-start pl-6'>
+                        <div className='w-full text-base flex flex-col gap-2 items-start pl-6'>
                             <div className='flex gap-1 w-full text-left'>
                                 <p className='w-1/3'>Jenis kelamin</p>
                                 <p className='w-2/3'  >: {nilai.jenis_kelamin}</p>
