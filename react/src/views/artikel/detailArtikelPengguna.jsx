@@ -25,7 +25,7 @@ export default function detailArtikelUser() {
                     </div>
 
                     {/* isi artikel */}
-                    <div className='h-full w-9/12 overflow-y-auto scrollbar-hide whitespace-pre-line'>
+                    <div className='h-full w-9/12 overflow-y-auto scrollbar-hide whitespace-pre-line pb-2'>
                         {content.content}
                     </div>
                 </div>

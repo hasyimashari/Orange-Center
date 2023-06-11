@@ -13,10 +13,10 @@ export default function view_profil_all_actor({visible, onClose}) {
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
 
-            <div className='bg-white w-[22rem] h-[28rem] rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
+            <div className='bg-white w-[24rem] h-[28rem] rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] flex flex-col items-center text-center border-2'>
 
                 <div className='relative w-full h-1/4 bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-t-3xl flex items-end justify-center'>
-                    <div onClick={onClose} className='absolute self-start ml-64 pl-4 pt-4 cursor-pointer w-full flex items-center justify-center'>
+                    <div onClick={onClose} className='absolute self-start ml-72 pl-4 pt-4 cursor-pointer w-full flex items-center justify-center'>
                         <button className="text-sm w-10 text-center bg-gradient-to-tr from-[#F77979] from-4%  to-[#B4161B] to-90% hover:brightness-90 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] flex  justify-center text-white cursor-pointer"> <img src={Cancel}/></button>
                     </div>
                     <img src={Profil} className='-m-12 w-24' alt="" />

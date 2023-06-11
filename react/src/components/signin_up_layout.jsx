@@ -16,7 +16,7 @@ export default function signin_up_layout() {
     }
 
     return (
-        <div className='relative w-full min-h-screen bg-[url("src/assets/bg_logres.png")] bg-center bg-cover flex flex-col items-center py-14'>
+        <div className='relative w-full h-screen max-h-screen bg-[url("src/assets/bg_logres.png")] bg-center bg-cover flex flex-col items-center py-14'>
             
             {/* content */}
             <div className='relative w-8/12 h-[35rem] bg-white rounded-3xl flex shadow-[2px_6px_25px_-4px_rgba(0,0,0,0.25)]'>
