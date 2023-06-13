@@ -128,7 +128,7 @@ return (
                                 </div>
 
                                 <div className="w-full h-1/4">
-                                    <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold ">
+                                    <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold brightness-90 grayscale cursor-default">
                                         <h1>Loading...</h1>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@ return (
                         </div>
                     }
 
-                    {/* when not loadibg */}
+                    {/* when not loading */}
                     {!loading && <>
                     
                         {permintaan.map((u, id)=>(

@@ -101,13 +101,29 @@ export default function profil_user() {
                     }
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
-                            Profil saya
-                        </button>
+                        {loading?
+                            <button className="bg-white grayscale brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-default">
+                                Profil saya
+                            </button>
+                                :
+                            <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                                Profil saya
+                            </button>
+                        }
                         {user.status_premium===1?
-                            <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
-                                Upgrade akun
-                            </div>:
+                            <>
+                                {loading?
+                                    <div className="bg-white brightness-90 grayscale border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-default">
+                                        Upgrade akun
+                                    </div>
+                                        :
+                                    <div onClick={setPremiumPage} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-pointer">
+                                        Upgrade akun
+                                    </div>
+
+                                }
+                            </>
+                                :
                             <div className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-default grayscale">
                                 Upgrade akun
                             </div>

@@ -22,7 +22,7 @@ export default function view_profil_all_actor({visible, onClose}) {
                     <img src={Profil} className='-m-12 w-24' alt="" />
                 </div>
 
-                <div className='w-full h-3/4 flex flex-col items-center justify-center'>
+                <div className='w-full h-3/4 mt-4 flex flex-col items-center justify-center'>
 
                     <div className='w-full h-[85%] flex flex-col items-center justify-center pt-8'>
                         <div>

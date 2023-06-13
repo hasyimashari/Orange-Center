@@ -33,7 +33,7 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                     <img src={Profil} className='-m-12 w-24' alt="" />
                 </div>
 
-                <div className='w-full h-3/4 flex flex-col items-center justify-center'>
+                <div className='w-full h-3/4 mt-4 flex flex-col items-center justify-center'>
 
                     <div className='w-full h-[85%] flex flex-col items-center justify-center pt-8'>
                         <div>
@@ -64,7 +64,7 @@ export default function view_profil_pakar({onClose, visible, nilai}) {
                         </div>
                     </div>
 
-                    <div className='w-full h-[15%] pb-10 cursor-pointer flex items-center justify-center'>
+                    <div className='w-full h-[15%] pb-10 mt-6 cursor-pointer flex items-center justify-center'>
                         {nilai.status_akun==="Aktif"?
                             <img onClick={() => setShowDec(true)} className='w-8 cursor-pointer' src={Ban} alt="" />:
                             <img onClick={() => setShowDec(true)} className='w-8 grayscale cursor-pointer' src={Ban} alt="" />

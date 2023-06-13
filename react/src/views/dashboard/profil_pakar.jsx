@@ -82,20 +82,40 @@ export default function profil_pakar() {
                     }
 
                     <div className='w-full flex flex-col items-center gap-2 pt-2'>
-                        <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
-                            Profil saya
-                        </button>
-                        <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
-                            Edit
-                        </button>
+                        {loading?
+                            <button className="bg-white brightness-90 grayscale border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm cursor-default">
+                                Profil saya
+                            </button>
+                                :
+                            <button onClick={showPopUpAkun} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-10 py-2 text-sm">
+                                Profil saya
+                            </button>
+                        }
+                        {loading?
+                            <button className="bg-white brightness-90 grayscale border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm cursor-default">
+                                Edit
+                            </button>
+                                :
+                            <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                Edit
+                            </button>
+                        }
                         {loadingE?
                             <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm grayscale">
-                                Loading...
-                            </button>:
-
-                            <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
-                                Keluar
+                                loading...
                             </button>
+                                :
+                            <>
+                                {loading?
+                                    <button className="bg-white grayscale brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm cursor-default">
+                                        Keluar
+                                    </button>
+                                        :
+                                    <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                        Keluar
+                                    </button>
+                                }
+                            </>
                         }
                     </div>
                 </div>

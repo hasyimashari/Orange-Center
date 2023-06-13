@@ -69,17 +69,17 @@ return (
                 </div>
                 }
 
-                <label className="text-sm">Nama Lengkap</label>
+                <label className="text-base">Nama Lengkap</label>
                 <input ref={namaref} 
                 className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namaname" id="namaid" maxLength={30}/>
 
-                <label className="text-sm">Username</label>
+                <label className="text-base">Username</label>
                 <input ref={usernameref} 
                 className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
 
                 <div className="flex flex-row gap-1">
                     <div className="w-1/2">
-                        <label className="text-sm">Jenis Kelamin</label>
+                        <label className="text-base">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
                         className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="kelaminname" id="kelaminid">
                             <option value={""}>Pilih</option>
@@ -88,19 +88,19 @@ return (
                         </select>
                     </div>
                     <div className="w-1/2">
-                        <label className="text-sm" >Tanggal Lahir</label>
+                        <label className="text-base" >Tanggal Lahir</label>
                         <input ref={tanggallahirref} 
                         className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlname" />
                     </div>
                 </div>
                 <div className="flex flex-row gap-1">
                     <div className="w-1/2">
-                        <label className="text-sm">Nomor Hp</label>
+                        <label className="text-base">Nomor Hp</label>
                         <input ref={nohpref}
                         className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nohpname" id="nohpid" maxLength={15}/>
                     </div>
                     <div className="w-1/2">
-                        <label className="text-sm">Asal</label>
+                        <label className="text-base">Asal</label>
                         <input ref={asalref} 
                         className="text-sm h-[2rem] w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={15}/>
                     </div>
@@ -110,19 +110,19 @@ return (
                 <input ref={emailref}
                 className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
 
-                <label className="text-sm">Password</label>
+                <label className="text-base">Password</label>
                 <input ref={passwrodref}
                 className="h-[2rem] w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" maxLength={15}/>
 
-                <div className="flex justify-between text-sm my-6">
+                <div className="flex justify-between text-base my-6">
                     <p className="py-2.5">sudah punya akun?  
                     <span onClick={setLoginPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
-                        MASUK 
+                        Masuk
                     </span> </p>
                     {loading?
-                        <button type="submit" className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">Loading...</button>
+                        <button type="submit" className="text-base w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">Loading...</button>
                             :
-                        <button type="submit" className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
+                        <button type="submit" className="text-base w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">Daftar <img src={Arrow_right}/></button>
                     }
                 </div>
         </form>

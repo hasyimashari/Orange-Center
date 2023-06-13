@@ -1,7 +1,6 @@
 <?php
 
 use App\Events\ChatSender;
-use App\Events\TestEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +20,5 @@ Route::get('/', function () {
 
 Route::get('/send', function(){
     broadcast(new ChatSender(9, 7, 'test', 7, null, 18));
-});
-
-Route::get('/test', function(){
-    broadcast(new TestEvent());
 });
 

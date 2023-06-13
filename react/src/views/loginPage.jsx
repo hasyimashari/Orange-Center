@@ -66,29 +66,29 @@ return (
             }
 
             <div className="my-2">
-                <label htmlFor="emac"> Email</label>
+                <label htmlFor="emac" className="text-base"> Email</label>
                 <input ref={emailref}
                 className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
             </div>
             <div className="my-2">
-                <label htmlFor="pwac">Passwords</label>
+                <label htmlFor="pwac" className="text-base">Passwords</label>
                 <input ref={passwrodref}
                 className="h-[2rem] w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="password" name="pwname" id="pwid" maxLength={12}/>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center mt-4 text-base">
                 {loading?
-                    <button className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
+                    <button className="w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-default grayscale">
                         Loading...
                     </button>
                         :
-                    <button type="submit" className="text-sm w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
-                        MASUK
+                    <button type="submit" className="w-32 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 py-2 rounded-3xl shadow-[0px_2px_4px_rgba(0,0,0,0.25)] flex items-center justify-center gap-1 text-white cursor-pointer">
+                        Masuk
                         <img src={Arrow_right} />
                     </button>
                 }
                 <p className="mt-6">sudah punya akun?  
                 <span onClick={setRegistrationPage} className="text-[#4E944F] font-bold cursor-pointer mx-2">
-                    DAFTAR 
+                    Daftar
                 </span> </p>
             </div>
         </form>

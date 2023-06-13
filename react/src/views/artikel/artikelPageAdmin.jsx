@@ -62,7 +62,7 @@ export default function artikelPageAdmin() {
                             </div>
                         </div>
                         <div className='w-full'>
-                            <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
+                            <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-default brightness-90 grayscale">
                                 <h1>Baca Selengkapnya</h1>
                             </div>
                         </div>
