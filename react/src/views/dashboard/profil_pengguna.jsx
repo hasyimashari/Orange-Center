@@ -128,17 +128,31 @@ export default function profil_user() {
                                 Upgrade akun
                             </div>
                         }
-                        <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
-                            Edit
-                        </button>
+                        {loading?
+                            <button className="bg-white grayscale brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm cursor-default">
+                                Edit
+                            </button>
+                                :
+                            <button onClick={showFormEdit} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                Edit
+                            </button>
+                        }
                         {loadingE?
                             <button className="bg-white brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm grayscale">
                                 Loading...
-                            </button>:
-
-                            <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
-                                Keluar
                             </button>
+                                :
+                                <>
+                                    {loading?
+                                        <button className="bg-white grayscale brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm cursor-default">
+                                            Keluar
+                                        </button>
+                                            :
+                                        <button onClick={keluar} className="bg-white hover:brightness-90 border-[1px] border-[#4E944F]  w-7/12 text-black rounded-xl p-12 py-2 text-sm">
+                                            Keluar
+                                        </button>
+                                    }
+                                </>
                         }
                     </div>
                 </div>

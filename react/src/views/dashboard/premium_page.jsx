@@ -14,12 +14,13 @@ export default function premium_page() {
                         Benefit Berlangganan
                     </h1>
 
-                    <p className='w-1/2 font-semibold text-sm'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ducimus quasi porro, cupiditate, omnis voluptates nulla praesentium laboriosam incidunt
+                    <p className='w-full font-semibold text-base'>
+                        - Ajukan pertanyaan tanpa bantas <br />
+                        - Konsultasi dengan Pakar sebanyak mungkin
                     </p>
 
-                    <p className='w-1/2 font-semibold text-sm'>
-                        Cara Berlangganan OrangeCenter: <br/> Kirim Komfirmasi ke <span className='font-extrabold'>OCenter@gmail.com</span> atau ke nomor WA <span className='font-extrabold'>0858-0893-5247</span> 
+                    <p className='w-full font-semibold text-base'>
+                        Cara Berlangganan OrangeCenter: <br/> Kirim Komfirmasi ke <span className='font-extrabold'>OCenter@gmail.com</span> atau <br /> ke nomor WA <span className='font-extrabold'>0858-0893-5247</span> 
                     </p>
                 </div>
             </div>
