@@ -32,11 +32,11 @@ export default function konsultasiPageUser() {
 
     return (
         <div>
-            <div className='h-[34rem] grid grid-cols-4 gap-2 pl-4 pt-4 justify-center'>
+            <div className='h-[34rem] grid grid-cols-4 sm:flex sm:flex-col sm:h-fit sm:py-10 sm:items-center sm:justify-center gap-2 pl-4 pt-4 justify-center'>
                 
                 {/* cards chat pakar loading*/}
-                {loading && <div className="m-2 mx-4 h-56 bg-white shadow-[-3px_3px_0px_3px_rgba(78,148,79,0.5)] border-[1px] border-[#4E944F] rounded-xl">
-                        <div className=' w-full h-full flex flex-col items-center justify-center gap-3 '>
+                {loading && <div className="m-2 mx-4 h-56 sm:w-64 sm:h-64 bg-white shadow-[-3px_3px_0px_3px_rgba(78,148,79,0.5)] border-[1px] border-[#4E944F] rounded-xl">
+                        <div className=' w-full h-full flex flex-col items-center justify-center gap-3 sm:gap-5 '>
                             <div className='w-20 h-20 flex items-center justify-center'>
                                 loading...
                             </div>
@@ -57,9 +57,9 @@ export default function konsultasiPageUser() {
                 {/* cards chat pakar not loading */}
                 {users.map((u, id)=>(
                     u.status_akun==="Aktif" && !loading &&
-                    <div onClick={() => {setTo(u)}} key={id} className='m-2 mx-4 h-56 bg-white shadow-[-3px_3px_0px_3px_rgba(78,148,79,0.5)] border-[1px] border-[#4E944F] rounded-xl'>
+                    <div onClick={() => {setTo(u)}} key={id} className='m-2 mx-4 h-56 sm:w-64 sm:h-64 bg-white shadow-[-3px_3px_0px_3px_rgba(78,148,79,0.5)] border-[1px] border-[#4E944F] rounded-xl'>
                         {
-                        <div className=' w-full h-full flex flex-col items-center justify-center gap-3 '>
+                        <div className=' w-full h-full flex flex-col items-center justify-center gap-3 sm:gap-5 '>
                             <div>
                                 <img src={Profil} className='w-20' alt="" />
                             </div>

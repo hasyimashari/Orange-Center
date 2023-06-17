@@ -39,18 +39,18 @@ export default function artikelPageAdmin() {
             
             {/* artikel when loading */}
             {loading &&             
-                <div className="mx-4 min-h-48 h-48 w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
+                <div className="mx-4 min-h-48 h-48 sm:h-36  w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
                     
                     {/* photo */}
-                    <div className="w-2/12 h-full bg-slate-300 rounded-lg flex">
+                    <div className="w-2/12 sm:w-3/12 h-full bg-slate-300 rounded-lg flex">
 
                     </div>
 
                     {/* description */}
-                    <div className="w-10/12 h-full rounded-lg flex flex-col justify-between">
+                    <div className="w-10/12 sm:w-9/12 h-full rounded-lg flex flex-col justify-between">
                         <div className='w-full flex flex-col gap-0.5'>
                             <div className='w-full'>
-                                <h1 className='font-bold text-3xl'>Loading...</h1>
+                                <h1 className='font-bold text-3xl sm:text-2xl'>Loading...</h1>
                             </div>
 
                             <div className='w-full'>
@@ -58,11 +58,12 @@ export default function artikelPageAdmin() {
                             </div>
 
                             <div className='w-full'>
-                                <p className='text-xs text-slate-300'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta maxime facilis laborum, enim eveniet a est dolores odit reiciendis omnis assumenda molestiae debitis aliquam voluptatum culpa voluptate quam totam amet.</p>
+                                <p className='text-xs sm:hidden text-slate-300'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta maxime facilis laborum, enim eveniet a est dolores odit reiciendis omnis assumenda molestiae debitis aliquam voluptatum culpa voluptate quam totam amet.</p>
+                                <p className='text-xs md:hidden text-slate-300'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta maxime facilis laborum</p>
                             </div>
                         </div>
                         <div className='w-full'>
-                            <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-default brightness-90 grayscale">
+                            <div className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 sm:text-sm to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-default brightness-90 grayscale">
                                 <h1>Baca Selengkapnya</h1>
                             </div>
                         </div>
@@ -76,18 +77,18 @@ export default function artikelPageAdmin() {
                 
                 {artikel.map((u, id)=>(
 
-                    <div key={id} className="mx-4 min-h-48 h-48 w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
+                    <div key={id} className="mx-4 min-h-48 h-48 sm:h-36  w-full bg-white shadow-[0px_0px_5px_rgba(0,0,0,0.25)] border-[1px] border-gray-200 rounded-xl p-2 flex gap-4 self-start">
                                         
                         {/* photo */}
-                        <div className="w-2/12 h-full bg-slate-300 rounded-lg flex p-2">
+                        <div className="w-2/12 sm:w-3/12 h-full bg-slate-300 rounded-lg flex p-2">
                             <img src={`http://127.0.0.1:8000/storage/${u.foto}`} className="m-auto max-w-full max-h-full" alt="" />
                         </div>
 
                         {/* description */}
-                        <div className="w-10/12 h-full rounded-lg flex flex-col justify-between">
+                        <div className="w-10/12 sm:w-9/12 h-full rounded-lg flex flex-col justify-between">
                             <div className='w-full flex flex-col gap-0.5'>
                                 <div className='w-full'>
-                                    <h1 className='font-bold text-3xl'>{u.judul}</h1>
+                                    <h1 className='font-bold text-3xl sm:text-2xl'>{u.judul}</h1>
                                 </div>
 
                                 <div className='w-full'>
@@ -95,11 +96,12 @@ export default function artikelPageAdmin() {
                                 </div>
 
                                 <div className='w-full'>
-                                    <p className='text-xs text-slate-300'>{u.content.substring(0,255)}...</p>
+                                    <p className='text-xs text-slate-300 md:hidden'>{u.content.substring(0,100)}...</p>
+                                    <p className='text-xs text-slate-300 sm:hidden'>{u.content.substring(0,255)}...</p>
                                 </div>
                             </div>
                             <div className='w-full'>
-                                <div onClick={() => {setDetailArtikelAdmin(true); setContent(u); }} className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
+                                <div onClick={() => {setDetailArtikelAdmin(true); setContent(u); }} className="text-center bg-gradient-to-tr from-[#4E944F] from-4% p-1 sm:text-sm to-[#B4E197] to-90% rounded-lg text-sm text-white font-bold cursor-pointer hover:brightness-90">
                                     <h1>Baca Selengkapnya</h1>
                                 </div>
                             </div>

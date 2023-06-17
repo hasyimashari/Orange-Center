@@ -69,7 +69,7 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             
-            <div className='bg-white w-96 min-h-[32rem] h-fit rounded-xl flex p-4 px-8 items-center justify-center'>
+            <div className='bg-white w-96 min-h-[32rem] sm:w-[22rem] sm:min-h-[30rem] h-fit rounded-xl flex p-4 px-8 items-center justify-center'>
                 
                 <div className='w-full h-full flex flex-col gap-2 items-center'>
 
@@ -84,35 +84,35 @@ export default function edit_permintaan_user({visible, onClose, nilai}) {
                     {/* form */}
                     <div className='flex items-center justify-center w-full rounded-xl'>
                         <input type="file" onChange={onImageChange} 
-                        className='h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
+                        className='h-8 w-full pl-2 text-sm sm:h-6 sm:text-xs py-1 border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
                     </div>
 
                     <div className='w-full h-40 rounded-lg border-none bg-green-100 flex flex-col items-center justify-center'>
-                        <img className='max-w-36 max-h-36 rounded-lg' alt="isi foto kembali" src={imagePre}/>
+                        <img className='max-w-36 max-h-36 rounded-lg sm:text-xs' alt="isi foto kembali" src={imagePre}/>
                     </div>
                     
                     <div className='w-full'>
                         <label className="w-full text-sm text-left">Nama Barang</label>
                         <input ref={namabarangref} defaultValue={nilai.nama_produk}
-                        className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" maxLength={20} placeholder='nama barang'/>
+                        className="h-8 w-full pl-2 sm:h-6 sm:text-xs text-sm py-1 border-none rounded-lg bg-green-100" type="text" maxLength={20} placeholder='nama barang'/>
                     </div>
 
                     <div className='w-full'>
                         <label className="w-full text-sm text-left">Deskripsi</label>
                         <textarea name="" id="" rows="4" ref={deskrisiref} defaultValue={nilai.deskripsi}
-                        className='bg-green-100 w-full rounded-lg resize-none pl-2 py-1 text-sm' draggable={false} placeholder='deskripsi barang'></textarea>
+                        className='bg-green-100 w-full rounded-lg resize-none pl-2 py-1 text-sm sm:text-xs' draggable={false} placeholder='deskripsi barang'></textarea>
                     </div>
 
                     <div className="w-full flex flex-row">
                         <div className="w-1/2 mr-1">
                             <label className="text-sm">Budget (Rp/Kg)</label>
                             <input ref={budgetref} type='text' defaultValue={nilai.budget}
-                            className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='10000'/>
+                            className="h-8 w-full pl-2 sm:h-6 sm:text-xs text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='10000'/>
                         </div>
                         <div className="w-1/2 mr-1">
                             <label className="text-sm">Kebutuhan (Kg)</label>
                             <input ref={kebutuhanref} type='text' defaultValue={nilai.stock}
-                            className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='100'/>
+                            className="h-8 w-full pl-2 sm:h-6 sm:text-xs text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='100'/>
                         </div>
                     </div>
 

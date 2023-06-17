@@ -83,7 +83,7 @@ export default function permintaan_user() {
         
             {/* content */}
             <div className='pl-4 pt-4'>
-                <div className="w-ful h-full grid grid-cols-3 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
+                <div className="w-ful h-full grid grid-cols-3 sm:grid-cols-1 sm:px-14 sm:pb-2 sm:gap-6 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
 
                 {/* when loading */}
                 {loading && 

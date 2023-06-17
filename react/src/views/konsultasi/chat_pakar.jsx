@@ -108,7 +108,9 @@ export default function chat_pakar() {
                     </button>
                 </div>
                 <div className='w-11/12 h-16 flex items-center justify-center pr-20'>
-                    {to.nama_lengkap}
+                    <div className='sm:text-xl'>
+                        {to.nama_lengkap}
+                    </div>
                 </div>
             </div>
 
@@ -122,7 +124,7 @@ export default function chat_pakar() {
                             {/* chat when loadng */}
                             <div className='self-end max-w-[40%] mr-4'>
                                 <div className="p-2.5 px-4 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-2xl flex flex-col items-center justify-center gap-1 text-white">
-                                    <div className='text-lg text-left whitespace-pre-line'>
+                                    <div className='text-lg sm:text-base text-left whitespace-pre-line'>
                                         Loading...
                                     </div>
                                 </div>
@@ -130,7 +132,7 @@ export default function chat_pakar() {
                             
                             <div className='self-start max-w-[40%] mr-4'>
                                 <div className="p-2.5 px-4 text-center bg-gray-200 rounded-2xl flex flex-col items-center justify-center gap-1 text-black">
-                                    <div className='text-lg text-left whitespace-pre-line'>
+                                    <div className='text-lg sm:text-base text-left whitespace-pre-line'>
                                         Loading...
                                     </div>
                                 </div>
@@ -145,7 +147,7 @@ export default function chat_pakar() {
                             <>{u.sentby_pakar===user.id_pakar?
                                 <div key={id} className='self-end max-w-[40%] mr-4'>
                                     <div className="p-2.5 px-4 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% rounded-2xl flex flex-col items-center justify-center gap-1 text-white">
-                                        <div className='text-lg text-left whitespace-pre-line'>
+                                        <div className='text-lg sm:text-base text-left whitespace-pre-line'>
                                             {u.line_chat}
                                         </div>
                                         <div className='text-xs self-end'>
@@ -156,7 +158,7 @@ export default function chat_pakar() {
 
                                 <div key={id} className='self-start max-w-[40%] mr-4'>
                                     <div className="p-2.5 px-4 text-center bg-gray-200 rounded-2xl flex flex-col items-center justify-center gap-1 text-black">
-                                        <div className='text-lg text-left whitespace-pre-line'>
+                                        <div className='text-lg sm:text-base text-left whitespace-pre-line'>
                                             {u.line_chat}
                                         </div>
                                         <div className='text-xs self-end'>
@@ -189,14 +191,14 @@ export default function chat_pakar() {
                     <div className="w-full flex flex-row justify-between">
                         <div className="w-[95%] mr-1">
                             <textarea rows={1} ref={messageref} draggable={false}
-                            className="text-sm h-full w-full p-2.5 px-4 border-none rounded-2xl bg-green-100 scrollbar-hide scroll-smooth" name="chatn" id="chat" placeholder="Ketik Pesan..."/>
+                            className="text-sm h-full w-full p-2.5 sm:p-2 px-4 border-none rounded-2xl bg-green-100 scrollbar-hide scroll-smooth" name="chatn" id="chat" placeholder="Ketik Pesan..."/>
                         </div>
                         {loadingMessage?
-                            <button className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 rounded-full flex items-center justify-center text-white cursor-default grayscale">
+                            <button className="p-2.5 sm:p-2 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% brightness-90 rounded-full flex items-center justify-center text-white cursor-default grayscale">
                                 <img className='w-8' src={Sent} />
                             </button>
                                 :
-                            <button onClick={send} className="p-2.5 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex items-center justify-center text-white">
+                            <button onClick={send} className="p-2.5 sm:p-2 text-center bg-gradient-to-tr from-[#4E944F] from-4%  to-[#B4E197] to-90% hover:brightness-90 rounded-full flex items-center justify-center text-white">
                                 <img className='w-8' src={Sent} />
                             </button>
                         }

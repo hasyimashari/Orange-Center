@@ -65,30 +65,30 @@ return (
             {/* permintaan header */}
             <div className="mx-4 h-24 bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-xl p-5">
                 <div className="w-full h-full flex px-4">
-                    <div className="w-1/2 text-lg text-white h-full pr-40">
+                    <div className="w-4/12 text-lg text-white h-full pr-40 sm:pr-0 sm:text-sm">
                     <h1>Butuh Jenis Jeruk Tertentu? <br/> Ajukan Sekarang</h1>
                     </div>
 
-                    <div className="w-1/2 h-full flex gap-4">
+                    <div className="w-8/12 h-full flex gap-4">
                         {loading?
                             <>                            
-                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 brightness-90 cursor-default grayscale">
-                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1" src={Person} alt="" />
+                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg sm:text-xs font-bold text-[#4E944F] gap-2  sm:p-1 brightness-90 cursor-default grayscale">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1 sm:w-6" src={Person} alt="" />
                                     <h1>Permintaan Saya</h1>
                                 </div>
-                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 brightness-90 cursor-default grayscale">
-                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8" src={Add} alt="" />
+                                <div className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg sm:text-xs font-bold text-[#4E944F] gap-2  sm:p-1 brightness-90 cursor-default grayscale">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 sm:w-6" src={Add} alt="" />
                                     <h1>Ajukan Permintaan</h1>
                                 </div>
                             </>
                                 :
                             <>                            
-                                <div onClick={setPermintaanSaya} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
-                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1" src={Person} alt="" />
+                                <div onClick={setPermintaanSaya} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg sm:text-xs font-bold text-[#4E944F] gap-2  sm:p-1 hover:brightness-90 cursor-pointer">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 p-1 sm:w-6" src={Person} alt="" />
                                     <h1>Permintaan Saya</h1>
                                 </div>
-                                <div onClick={showPopUpFormPermintaan} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg font-bold text-[#4E944F] gap-2 hover:brightness-90 cursor-pointer">
-                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8" src={Add} alt="" />
+                                <div onClick={showPopUpFormPermintaan} className="w-1/2 h-full bg-white rounded-lg flex items-center justify-center text-lg sm:text-xs font-bold text-[#4E944F] gap-2  sm:p-1 hover:brightness-90 cursor-pointer">
+                                    <img className="bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-full w-8 sm:w-6" src={Add} alt="" />
                                     <h1>Ajukan Permintaan</h1>
                                 </div>
                             </>
@@ -100,7 +100,7 @@ return (
             </div>
 
             {/* permintaan */}
-            <div className="w-ful h-full grid grid-cols-3 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
+            <div className="w-ful h-full grid grid-cols-3 sm:grid-cols-1 sm:px-14 sm:pb-2 sm:gap-6 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
 
                     {/* when loading */}
                     {loading && 

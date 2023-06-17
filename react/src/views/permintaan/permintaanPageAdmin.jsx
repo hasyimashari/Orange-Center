@@ -45,14 +45,14 @@ export default function permintaanPageAdmin() {
             {/* permintaan header */}
             <div className="mx-4 h-24 bg-gradient-to-tr from-[#4E944F] from-4% to-[#B4E197] to-90% rounded-xl p-5">
                 <div className="w-full h-full flex px-4">
-                    <div className="w-1/2 text-lg text-white h-full pr-40">
+                    <div className="w-1/2 text-lg text-white h-full pr-40 sm:pr-0 sm:text-sm">
                         <h1>Butuh Jenis Jeruk Tertentu? <br/> Ajukan Sekarang</h1>
                     </div>
                 </div>
             </div>
 
             {/* permintaan */}
-            <div className="w-ful h-full grid grid-cols-3 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
+            <div className="w-ful h-full grid grid-cols-3 sm:grid-cols-1 sm:px-14 sm:pb-2 sm:gap-6 gap-4 mx-4 justify-center overflow-y-auto scrollbar-hide scroll-smooth">
 
                     {/* when loading */}
                     {loading && 
@@ -88,7 +88,7 @@ export default function permintaanPageAdmin() {
                         </div>
                     }
 
-                    {/* when not loadibg */}
+                    {/* when not loading */}
                     {!loading && <>
                     
                         {permintaan.map((u, id)=>(

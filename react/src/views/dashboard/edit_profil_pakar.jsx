@@ -62,7 +62,7 @@ export default function edit_profil_pakar({visible, onClose}) {
 
         // form edit
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-8 gap-10'>
-        <form onSubmit={simpan} className="bg-white w-2/6 px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
+        <form onSubmit={simpan} className="bg-white w-2/6 sm:w-[64%] px-16 rounded-3xl shadow-[0px_6px_0px_rgba(78,148,79,0.5)] border-2 pt-6">
 
                 {/* errors message */}
                 {errors && <div className="bg-red-500 rounded py-2 px-3 font-bold">
@@ -73,18 +73,18 @@ export default function edit_profil_pakar({visible, onClose}) {
                 </div>
                 }
 
-                <label className="">Nama Lengkap</label>
+                <label className=" sm:text-sm">Nama Lengkap</label>
                 <input ref={namaref} defaultValue={user.nama_lengkap}
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="namaname" id="namaid" maxLength={30}/>
 
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
-                        <label className="">Username</label>
+                        <label className=" sm:text-sm">Username</label>
                         <input ref={usernameref} defaultValue={user.username}
                         className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" name="unname" id="unid" maxLength={12}/>
                     </div>
                     <div className="w-1/2 mr-1">
-                        <label className="">Spesialis</label>
+                        <label className=" sm:text-sm">Spesialis</label>
                         <select ref={spesialisref} 
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="sepsialisname" id="spesialisis">
                             <option value={""}>Pilih</option>
@@ -96,7 +96,7 @@ export default function edit_profil_pakar({visible, onClose}) {
                 
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
-                        <label className="">Jenis Kelamin</label>
+                        <label className=" sm:text-sm">Jenis Kelamin</label>
                         <select ref={jeniskelaminref} 
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" name="kelaminname" id="kelaminid">
                             <option value={""}>Pilih</option>
@@ -105,29 +105,29 @@ export default function edit_profil_pakar({visible, onClose}) {
                         </select>
                     </div>
                     <div className="w-1/2 mr-1">
-                        <label className="" >Tanggal Lahir</label>
+                        <label className=" sm:text-sm" >Tanggal Lahir</label>
                         <input ref={tanggallahirref} defaultValue={user.tanggal_lahir.substring(0, 10)}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="date" name="ttlname" id="ttlid" />
                     </div>
                 </div>
                 <div className="flex flex-row">
                     <div className="w-1/2 mr-1">
-                        <label className="">Nomor Hp</label>
+                        <label className=" sm:text-sm">Nomor Hp</label>
                         <input ref={nohpref} defaultValue={user.no_hp}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="tel" name="nohpname" id="nohpid" maxLength={15}/>
                     </div>
                     <div className="w-1/2 mr-1">
-                        <label className="">Asal</label>
+                        <label className=" sm:text-sm">Asal</label>
                         <input ref={asalref} defaultValue={user.asal}
                         className="text-sm h-8 w-full pl-2 py-1 border-none rounded-lg bg-green-100" type="text" name="asalname" id="asalid" maxLength={15}/>
                     </div>
                 </div>
 
-                <label className="py-1">Email</label>
+                <label className="py-1 sm:text-sm">Email</label>
                 <input ref={emailref} defaultValue={user.email}
                 className="h-8 w-full pl-2 my-1 border-none rounded-lg bg-green-100" type="email" name="emailname" id="emailid" maxLength={30}/>
 
-                <label className="">Password</label>
+                <label className=" sm:text-sm">Password</label>
                 <input ref={passwrodref}
                 className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="password" name="pwnname" id="pwid" />
 

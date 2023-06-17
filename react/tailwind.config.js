@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sm': {'max':'768px'},
+        // => @media (min-width: 640px) { ... }
+  
+        'md': '768px',
+      }
+    },
   },
   plugins: [
     require('tailwind-scrollbar-hide')

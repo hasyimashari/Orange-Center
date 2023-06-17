@@ -65,7 +65,7 @@ export default function tambah_permintaan({visible, onClose}) {
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-16 gap-10'>
             
-            <div className='bg-white w-96 min-h-[32rem] h-fit rounded-xl flex p-4 px-8 items-center justify-center'>
+            <div className='bg-white w-96 min-h-[32rem] sm:w-[22rem] sm:min-h-[30rem] h-fit rounded-xl flex p-4 px-8 items-center justify-center'>
                 
                 <div className='w-full h-full flex flex-col gap-2 items-center'>
 
@@ -80,35 +80,35 @@ export default function tambah_permintaan({visible, onClose}) {
                     {/* form */}
                     <div className='flex items-center justify-center w-full rounded-xl'>
                         <input type="file" onChange={onImageChange}
-                        className='h-8 w-full px-2 text-sm py-1 border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
+                        className='h-8 w-full px-2 text-sm py-1 sm:h-6 sm:text-xs border-none rounded-lg bg-green-100' name="" id="" accept=".png, .jpg, .jpeg" />
                     </div>
                     
                     <div className='w-full h-40 rounded-lg border-none bg-green-100 flex flex-col items-center justify-center p-2'>
-                        <img className='max-w-full max-h-full rounded-lg' alt="preview image" src={imagePre}/>
+                        <img className='max-w-full max-h-full rounded-lg sm:text-xs' alt="preview image" src={imagePre}/>
                     </div>
                     
                     <div className='w-full'>
                         <label className="w-full text-sm text-left">Nama Barang</label>
                         <input ref={namabarangref}
-                        className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" type="text" maxLength={20} placeholder='nama barang'/>
+                        className="h-8 w-full pl-2 text-sm py-1 sm:h-6 sm:text-xs border-none rounded-lg bg-green-100" type="text" maxLength={20} placeholder='nama barang'/>
                     </div>
 
                     <div className='w-full'>
                         <label className="w-full text-sm text-left">Deskripsi</label>
                         <textarea name="" id="" rows="4" ref={deskrisiref}
-                        className='bg-green-100 w-full rounded-lg resize-none pl-2 py-1 text-sm' draggable={false} placeholder='deskripsi barang'></textarea>
+                        className='bg-green-100 w-full rounded-lg resize-none pl-2 py-1 text-sm sm:text-xs' draggable={false} placeholder='deskripsi barang'></textarea>
                     </div>
 
                     <div className="w-full flex flex-row">
                         <div className="w-1/2 mr-1">
                             <label className="text-sm">Budget (Rp/Kg)</label>
                             <input ref={budgetref} type='text'
-                            className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='10000'/>
+                            className="h-8 w-full pl-2 text-sm py-1 sm:h-6 sm:text-xs border-none rounded-lg bg-green-100" maxLength={7} placeholder='10000'/>
                         </div>
                         <div className="w-1/2 mr-1">
                             <label className="text-sm">Kebutuhan (Kg)</label>
                             <input ref={kebutuhanref} type='text'
-                            className="h-8 w-full pl-2 text-sm py-1 border-none rounded-lg bg-green-100" maxLength={7} placeholder='100'/>
+                            className="h-8 w-full pl-2 text-sm py-1 sm:h-6 sm:text-xs border-none rounded-lg bg-green-100" maxLength={7} placeholder='100'/>
                         </div>
                     </div>
 
